@@ -176,7 +176,7 @@
 {{ if not .CmdArgs }}
     {{ $prefix := exec "prefix" }}
     {{ $prefix := slice $prefix (sub (len $prefix) 2) (sub (len $prefix) 1) }}
-    To check the local time of a member/timezone, type `{{ $prefix }}timeof user_id` or `{{ $prefix }}timeof timezone`
+    To check the local time of a member/timezone, type `{{ $prefix }}timeof user_id` or `{{ $prefix }}time timezone`
 {{ else }}
     {{ $ns := dict }}
     {{ $arg := index .CmdArgs 0 }}
@@ -220,7 +220,7 @@
             {{ $msg :=
                 joinStr "" "**" ($ns.Get "name") "** is in **" ($ns.Get "tzRole")
                 "**\nTheir local time is **"
-                ($datetime.Format "2 Jan 2006 3:04:05 PM")
+                ($datetime.Format "2 Jan 2006 3:04 PM")
                 "**"
             }}
             {{ $ns.Set "msg" $msg }}
@@ -232,7 +232,7 @@
             {{ $capitalized := $spellings.Get $target }}
             {{ $msg :=
                 joinStr "" "Local time for **" $capitalized "** is **"
-                ($datetime.Format "2 Jan 2006 3:04:05 PM")
+                ($datetime.Format "2 Jan 2006 3:04 PM")
                 "**\n"
                 "Timezone: `" $tz "`"
             }}
