@@ -20,7 +20,7 @@
 
 ### Exclusive
 
-- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) chicken editor `#14c7eb` **Bright Turquoise**
+- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) Chicken Editor `#14c7eb` **Bright Turquoise**
 - ![#ff0000](https://placehold.it/12/ff0000/000000?text=+) darknut :) `#ff0000` **Red**
 - ![#7c48ff](https://placehold.it/12/7c48ff/000000?text=+) dragon was bored `#7c48ff` **Electric Violet/Neon Blue**
 - ![#ff80e8](https://placehold.it/12/ff80e8/000000?text=+) Grandma `#ff80e8` **Blush Pink/Fuchsia Pink**
@@ -29,10 +29,14 @@
 - ![#ccccff](https://placehold.it/12/ccccff/000000?text=+) mandy&koda/protectors of da discord `#ccccff` **Periwinkle/Lavender Blue**
 - ![#ff55cc](https://placehold.it/12/ff55cc/000000?text=+) mobbindirty :D `#ff80f5` **Hot Pink/Neon Pink**
 
-### Guilds
+### Coloring
 
 - ![#eb578d](https://placehold.it/12/eb578d/000000?text=+) salmon colour `#eb578d` **French Rose/Dark Pink**
-    - ~~aka "Calculus Crew" & "Mod Calculus Crew"~~
+- ![#ff7f50](https://placehold.it/12/ff7f50/000000?text=+) coral color `#ff7f50` **Coral**
+
+### Guilds
+
+- ~~![#eb578d](https://placehold.it/12/eb578d/000000?text=+) Calculus Crew `#eb578d` **French Rose/Dark Pink**~~
 - ~~![#b0169b](https://placehold.it/12/b0169b/000000?text=+) Grandma Crew `#b0169b` **Violet Eggplant/Medium Violet Red**~~
 
 ### Commemoration
@@ -88,6 +92,7 @@
 - ![#e74d3c](https://placehold.it/12/e74d3c/000000?text=+) Super Patron Deluxe for Wii U `#e74d3c` **Cinnabar**
 - ![#e74d3c](https://placehold.it/12/e74d3c/000000?text=+) Uploads `#e74d3c` **Cinnabar**
 - ![#ff1d00](https://placehold.it/12/ff1d00/000000?text=+) Game Event LIVE hosted by `#ff1d00` **Scarlet**
+- ![#ff7f50](https://placehold.it/12/ff7f50/000000?text=+) coral color `#ff7f50` **Coral**
 - ![#e67e22](https://placehold.it/12/e67e22/000000?text=+) Lord Pepper `#e67e22` **Zest/Carrot Orange**
 - ![#c27d0e](https://placehold.it/12/c27d0e/000000?text=+) VODs `#c27d0e` **Meteor/Dark Goldenrod**
 - ![#4a412a](https://placehold.it/12/4a412a/000000?text=+) Cringe `#4a412a` **Judge Gray/Onion/[Pantone 448 C](https://en.wikipedia.org/wiki/Pantone_448_C)**
@@ -104,7 +109,7 @@
 - ![#1abc9c](https://placehold.it/12/1abc9c/000000?text=+) Dannyling `#1abc9c` **Mountain Meadow**
 - ![#1abc9c](https://placehold.it/12/1abc9c/000000?text=+) Founders `#1abc9c` **Mountain Meadow**
 - ![#29ffff](https://placehold.it/12/29ffff/000000?text=+) Admins `#29ffff` **Cyan/Aqua**
-- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) chicken editor `#14c7eb` **Bright Turquoise**
+- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) Chicken Editor `#14c7eb` **Bright Turquoise**
 - ![#607d8b](https://placehold.it/12/607d8b/000000?text=+) Hidden Bots `#607d8b` **Lynch/Hoki**
 - ![#3498db](https://placehold.it/12/3498db/000000?text=+) Streams `#3498db` **Curious Blue/Summer Sky**
 - ![#0051ca](https://placehold.it/12/0051ca/000000?text=+) MC Developer `#0051ca` **Science Blue/Navy Blue**
