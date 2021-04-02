@@ -20,8 +20,8 @@
 
 ### Exclusive
 
-- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) Chicken Editor `#14c7eb` **Bright Turquoise**
-- ![#ff0000](https://placehold.it/12/ff0000/000000?text=+) darknut :) `#ff0000` **Red**
+- ![#17a1e5](https://placehold.it/12/17a1e5/000000?text=+) Chicken Editor `#17a1e5` **Curious Blue/Summer Sky**
+- ![#0ab664](https://placehold.it/12/0ab664/000000?text=+) darknut :) `#0ab664` **Green Haze/Jade**
 - ![#7c48ff](https://placehold.it/12/7c48ff/000000?text=+) dragon was bored `#7c48ff` **Electric Violet/Neon Blue**
 - ![#ff80e8](https://placehold.it/12/ff80e8/000000?text=+) Grandma `#ff80e8` **Blush Pink/Fuchsia Pink**
 - ![#ff7475](https://placehold.it/12/ff7475/000000?text=+) Jennie `#ff7475` **Bittersweet**
@@ -87,7 +87,6 @@
 
 ### Hue-sorted
 
-- ![#ff0000](https://placehold.it/12/ff0000/000000?text=+) darknut :) `#ff0000` **Red**
 - ![#e74d3c](https://placehold.it/12/e74d3c/000000?text=+) MC Coder `#e74d3c` **Cinnabar**
 - ![#e74d3c](https://placehold.it/12/e74d3c/000000?text=+) Super Patron Deluxe for Wii U `#e74d3c` **Cinnabar**
 - ![#e74d3c](https://placehold.it/12/e74d3c/000000?text=+) Uploads `#e74d3c` **Cinnabar**
@@ -105,12 +104,13 @@
 - ![#1f8b4c](https://placehold.it/12/1f8b4c/000000?text=+) Perma MC Access `#1f8b4c` **Eucalyptus/Salem**
 - ![#2ecc70](https://placehold.it/12/2ecc70/000000?text=+) Gaming Gods `#2ecc70` **Shamrock**
 - ![#2ecc70](https://placehold.it/12/2ecc70/000000?text=+) Minecraft/MC Mods `#2ecc70` **Shamrock**
+- ![#0ab664](https://placehold.it/12/0ab664/000000?text=+) darknut :) `#0ab664` **Green Haze/Jade**
 - ![#55f7d4](https://placehold.it/12/55f7d4/000000?text=+) MC Builder `#55f7d4` **Aquamarine**
 - ![#1abc9c](https://placehold.it/12/1abc9c/000000?text=+) Dannyling `#1abc9c` **Mountain Meadow**
 - ![#1abc9c](https://placehold.it/12/1abc9c/000000?text=+) Founders `#1abc9c` **Mountain Meadow**
 - ![#29ffff](https://placehold.it/12/29ffff/000000?text=+) Admins `#29ffff` **Cyan/Aqua**
-- ![#14c7eb](https://placehold.it/12/14c7eb/000000?text=+) Chicken Editor `#14c7eb` **Bright Turquoise**
 - ![#607d8b](https://placehold.it/12/607d8b/000000?text=+) Hidden Bots `#607d8b` **Lynch/Hoki**
+- ![#17a1e5](https://placehold.it/12/17a1e5/000000?text=+) Chicken Editor `#17a1e5` **Curious Blue/Summer Sky**
 - ![#3498db](https://placehold.it/12/3498db/000000?text=+) Streams `#3498db` **Curious Blue/Summer Sky**
 - ![#0051ca](https://placehold.it/12/0051ca/000000?text=+) MC Developer `#0051ca` **Science Blue/Navy Blue**
 - ![#b9bbbe](https://placehold.it/12/b9bbbe/000000?text=+) Functional Bots/Trusted/Pronouns/Timezones `#b9bbbe` **Silver Sand/Ghost**
