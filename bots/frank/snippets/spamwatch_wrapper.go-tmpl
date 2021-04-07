@@ -5,7 +5,7 @@
 
 {{ define "spam_exec" }}
 {{ deleteTrigger 0 }}
-{{ execAdmin "warn" .User.ID "Stop spamming." }}
+{{ execAdmin "warn" .User.ID "Spamming.\n(Server-wide spam protection is in effect due to recent abuse, either by you or by other members)." }}
 {{ end }}
 
 {{ if (targetHasRoleID 204255221017214977 829172082918948885) }}
