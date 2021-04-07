@@ -18,13 +18,16 @@
 {{ takeRoleID 204255221017214977 829172082918948885 3600 }}
 {{ $embed := cembed 
     "title" "Spam Protection Enabled"
+    "description" "Manually disable it by removing the role from Frank."
     "color" 16720469
     "fields" (cslice
         (sdict "name" "Class" "value" (printf "`%s`" (.Get "spam_type")))
-        (sdict "name" "Expires at" "value" (printf "`%s`" ((currentTime).Add 3600)))
+        (sdict "name" "Expires at" "value" (printf "`%s` (in %d minutes)" ((currentTime).Add 3600) (div 3600 60)))
     )
+    "timestamp" currentTime
 }}
 {{/* Notify protection status. */}}
+{{ sendMessage nil "🔴 **End of spamming. Stop.**\n\n> Multiple of the same/similar messages have been sent in a short period of time, either by you or by other members."}}
 {{ sendMessage 571965793131036672 $embed }}
 {{ end }}
 
@@ -40,7 +43,12 @@
 
 {{/* Increase spam count. */}}
 {{ $spam_type := printf "spam_count.%s" ($ns.Get "spam_type") }}
-{{ $spam_weight := dbIncr 0 $spam_type 1 }}
+{{ $spam_weight := dbGet 0 $spam_type }}
+{{ if not $spam_weight }}
+    {{ dbSetExpire 0 $spam_type 1 600 }}
+{{ else }}
+    {{ dbSetExpire 0 $spam_type (add $spam_weight.Value 1) 600 }}
+{{ end }}
 {{ $spam_store := dbGetPattern 0 "spam_count.%" 6 0 }}
 
 {{ $ns.Set "db_entries" $spam_store }}
