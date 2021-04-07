@@ -1,0 +1,63 @@
+{{/* Define different classes and thresholds for trigger here. */}}
+{{ $spam_overflow := dict
+    "low_priority" 5
+}}
+
+{{ define "spam_db_clear" }}
+{{ $spam_store := .Get "db_entries" }}
+{{- range $spam := $spam_store -}}{{- dbDelByID 0 $spam.ID -}}{{- end -}}
+{{ end }}
+
+{{ define "spam_protect" }}
+{{/* Constants */}}
+{{/*
+    Give Frank the "_spam_protection" role.
+    Other commands/feature may check the status of this role.
+  */}}
+{{ giveRoleID 204255221017214977 829172082918948885 }}
+{{ takeRoleID 204255221017214977 829172082918948885 3600 }}
+{{ $embed := cembed 
+    "title" "Spam Protection Enabled"
+    "color" 16720469
+    "fields" (cslice
+        (sdict "name" "Class" "value" (printf "`%s`" (.Get "spam_type")))
+        (sdict "name" "Expires at" "value" (printf "`%s`" ((currentTime).Add 3600)))
+    )
+}}
+{{/* Notify protection status. */}}
+{{ sendMessage 571965793131036672 $embed }}
+{{ end }}
+
+{{ $ns := dict }}
+{{ if .CmdArgs }}
+    {{ $ns.Set "spam_type" (index .CmdArgs 0) }}
+{{ else if .ExecData }}
+    {{ $ns.Set "spam_type" .ExecData.SpamType }}
+{{ end }}
+
+{{/* If protection is already enabled, ignore. */}}
+{{ if (and ($ns.Get "spam_type") (not (targetHasRoleID 204255221017214977 829172082918948885))) }}
+
+{{/* Increase spam count. */}}
+{{ $spam_type := printf "spam_count.%s" ($ns.Get "spam_type") }}
+{{ $spam_weight := dbIncr 0 $spam_type 1 }}
+{{ $spam_store := dbGetPattern 0 "spam_count.%" 6 0 }}
+
+{{ $ns.Set "db_entries" $spam_store }}
+{{/* Check spam count in DB against defined thresholds. */}}
+{{- range $spam := $spam_store -}}
+    {{- $spam_type := reReplace "spam_count." $spam.Key "" -}}
+    {{- $ns.Set "spam_type" $spam_type -}}
+    {{- $ns.Set "spam_price" ($spam_overflow.Get $spam_type) -}}
+    {{- if not ($ns.Get "spam_price") -}}
+    {{- $ns.Set "spam_price" -1 -}}
+    {{- end -}}
+    {{- $spam_count := toInt64 $spam.Value -}}
+    {{- $spam_price := $ns.Get "spam_price" -}}
+    {{- if (and (gt $spam_price 0) (ge $spam_count $spam_price)) -}}
+        {{- template "spam_db_clear" $ns -}}
+        {{- template "spam_protect" $ns -}}
+    {{- end -}}
+{{- end -}}
+
+{{ end }}

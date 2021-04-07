@@ -1,0 +1,6 @@
+{{ $user_id := toInt64 (index .CmdArgs 0) }}
+{{ $entries := dbGetPattern $user_id "%" 5 0 }}
+{{ $ns := dict }}
+{{ $ns.Set "count" 0 }}
+{{- range $entry := $entries -}}{{ dbDelByID $user_id $entry.ID }}{{- $ns.Set "count" (add ($ns.Get "count") 1) -}}{{- end -}}
+{{ $ns.Get "count" }} entries cleared.

@@ -1,0 +1,25 @@
+{{ define "spam_watch" }}
+{{ $SPAM_TYPE := "low_priority" }}
+{{ execCC 12 nil 0 (sdict "SpamType" $SPAM_TYPE) }}
+{{ end }}
+
+{{ define "spam_exec" }}
+{{ deleteTrigger 0 }}
+{{ execAdmin "warn" .User.ID "Stop spamming." }}
+{{ end }}
+
+{{ if (targetHasRoleID 204255221017214977 829172082918948885) }}
+
+{{/* Actions if spam protection is enabled. */}}
+{{ template "spam_exec" . }}
+
+{{ else }}
+
+{{ sendMessage nil "<:dougFU:820769784240406550>" }}
+{{ addReactions "dougFU:820769784240406550" }}
+{{ .User.Mention }} Nice try.
+
+{{/* Actions if spam protection is disabled. Default to call "spamwatch" with the specified spam type. */}}
+{{ template "spam_watch" . }}
+
+{{ end }}
