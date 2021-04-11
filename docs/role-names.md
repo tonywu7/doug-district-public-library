@@ -27,7 +27,7 @@
 ### Nicknames
 
 - ![#17a1e5](https://via.placeholder.com/12/17a1e5/000000?text=+) Chicken Editor `#17a1e5` **Curious Blue/Summer Sky**
-- ![#0ab664](https://via.placeholder.com/12/0ab664/000000?text=+) darknut :) `#0ab664` **Green Haze/Jade**
+- ![#0ab664](https://via.placeholder.com/12/0ab664/000000?text=+) ddarknut :) `#0ab664` **Green Haze/Jade**
 - ![#7c48ff](https://via.placeholder.com/12/7c48ff/000000?text=+) dragon was bored `#7c48ff` **Electric Violet/Neon Blue**
 - ![#ff55cc](https://via.placeholder.com/12/ff55cc/000000?text=+) Grandma `#ff80f5` **Hot Pink/Neon Pink**
 - ![#b9bbbe](https://via.placeholder.com/12/b9bbbe/000000?text=+) His Dudeness or Duder `#b9bbbe` **Silver Sand/Ghost**
