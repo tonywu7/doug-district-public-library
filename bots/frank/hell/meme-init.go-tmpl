@@ -1,0 +1,10 @@
+{{/* URL: https?://\S+ */}}
+
+{{ if (or (reFind ".*\\bhttps?://\\S+\\s?\\.*$" .Message.Content) (.Message.Attachments)) }}
+{{ addReactions 
+    "⬆️"
+    "⬇️"
+    "☑️"
+    "🚫"
+}}
+{{ end }}

@@ -1,0 +1,176 @@
+{{ $DB_KEY := "social_credit_score" }}
+
+{{ $DELETION := -6 }}
+{{ $PROMOTION := 60 }}
+{{ $GREEN_LIT_CLASS := 830954145472446554 }}
+
+{{ $WILL_ACCEPT := "☑️" }}
+{{ $WILL_DELETE := "🚫" }}
+{{ $ACCEPTED := "✅" }}
+{{ $MOD_ROLE := 718291172124131408 }}
+
+{{ $public := dict
+    718291172124131408 "Mods"
+    721052099445784666 "Spoonies"
+    776937844219314217 "Twitch VIP"
+    818641788159918091 "Undoubted/Trusted"
+    830954145472446554 "Has good memes"
+}}
+
+{{ $elevated := dict
+    718291172124131408 "Mods"
+}}
+
+{{ $votes := dict
+    "⬆️" 1
+    "⬇️" -1
+    "☑️" 10
+    "🚫" -10
+}}
+
+{{ $requirements := dict
+    "⬆️" $public
+    "⬇️" $public
+    "☑️" $elevated
+    "🚫" $elevated
+}}
+
+{{ $emote_map := dict 
+    "⬆️" "⬆️"
+    "⬇️" "⬇️"
+    "☑️" "☑️"
+    "🚫" "🚫"
+}}
+
+{{ $ns := dict
+    "mult" 0
+    "delta" 0
+}}
+{{ $author_id := $.Message.Author.ID }}
+{{ $emote_id := (toInt $.Reaction.Emoji.ID) }}
+{{ $emote_name := $.Reaction.Emoji.Name }}
+{{ if $emote_id }}
+    {{ $ns.Set "emote" (printf "%s:%d" $emote_name $emote_id) }}
+    {{ $ns.Set "emote_id" $emote_id }}
+{{ else }}
+    {{ $ns.Set "emote" $emote_name }}
+    {{ $ns.Set "emote_id" $emote_name }}
+{{ end }}
+{{ $emote := $ns.Get "emote" }}
+{{ $emote_id := $ns.Get "emote_id" }}
+
+{{ if eq $author_id $.User.ID }}
+    {{ deleteMessageReaction nil $.Message.ID $.User.ID $emote }}
+{{ else if eq $.Reaction.Emoji.Name $ACCEPTED }}
+    {{ deleteMessageReaction nil $.Message.ID $.User.ID $ACCEPTED }}
+{{ else }}
+
+    {{- range $reaction := $.Message.Reactions -}}
+        {{- if eq $reaction.Emoji.Name $ACCEPTED -}}
+            {{- $ns.Set "accepted" true -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{ if (not ($ns.Get "accepted")) }}
+
+        {{ if ($votes.Get $emote_id) }}
+
+            {{ $ns.Set "delta" ($votes.Get $emote_id) }}
+
+            {{ $ns.Set "authorized" false }}
+            {{ $authorized := $requirements.Get $emote_id }}
+            {{- range $role_id, $role_name := $authorized -}}
+                {{- if (hasRoleID $role_id) -}}
+                    {{- $ns.Set "authorized" true -}}
+                {{- end -}}
+            {{- end -}}
+
+            {{ if (not ($ns.Get "authorized")) }}
+                {{/* Member may not cast votes */}}
+                {{/* - on their own messages */}}
+                {{/* - if they don't have the required roles */}}
+                {{ deleteMessageReaction nil $.Message.ID $.User.ID $emote }}
+            {{ else }}
+
+                {{ if $.ReactionAdded }}
+                    {{ $ns.Set "mult" 1 }}
+                {{ else }}
+                    {{ $ns.Set "mult" -1 }}
+                {{ end }}
+
+                {{ $ns.Set "post_score" 0 }}
+
+                {{ if eq ($ns.Get "mult") 1 }}
+                    {{- range $emote_idx, $emote_name := $emote_map -}}
+                        {{- if ne $emote_name $emote_id -}}
+                            {{- deleteMessageReaction nil $.Message.ID $.User.ID $emote_name -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+
+                {{ $message := getMessage nil $.Message.ID }}
+                    {{ if $message }}
+                    {{ $all_reactions := $message.Reactions }}
+                    {{- range $reaction := $all_reactions -}}
+                        {{- if $reaction.Emoji.ID -}}
+                            {{- $current_emote := (toInt $reaction.Emoji.ID) -}}
+                            {{- $value := $votes.Get $current_emote -}}
+                            {{- if $value -}}
+                                {{- $ns.Set "post_score" (add ($ns.Get "post_score") (mult $value (sub $reaction.Count 1))) -}}
+                            {{- end -}}
+                        {{- else -}}
+                            {{- $value := $votes.Get $reaction.Emoji.Name -}}
+                            {{- if $value -}}
+                                {{- $ns.Set "post_score" (add ($ns.Get "post_score") (mult $value (sub $reaction.Count 1))) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+
+                    {{ $ns.Set "user_score" (dbGet $author_id $DB_KEY) }}
+                    {{ if (not ($ns.Get "user_score")) }}
+                        {{ $ns.Set "user_score" 0 }}
+                    {{ else }}
+                        {{ $ns.Set "user_score" (toInt ($ns.Get "user_score").Value) }}
+                    {{ end }}
+
+                    {{ $score := (add (mult ($ns.Get "mult") ($ns.Get "delta")) ($ns.Get "user_score")) }}
+                    {{ dbSet $author_id $DB_KEY $score }}
+
+                    {{ if (le ($ns.Get "post_score") $DELETION) }}
+                        {{ $ns.Set "response" (printf "Post by `%s` removed due to insufficient upvotes." $.Message.Author.String) }}
+                        {{ deleteTrigger 0 }}
+                    {{ end }}
+
+                    {{ if (ge $score $PROMOTION) }}
+                        {{ giveRoleID $author_id $GREEN_LIT_CLASS }}
+                    {{ else }}
+                        {{ takeRoleID $author_id $GREEN_LIT_CLASS 0 }}
+                    {{ end }}
+                {{ end }}
+
+            {{ end }}
+        {{ end }}
+
+        {{ if eq $.Reaction.Emoji.Name $WILL_ACCEPT }}
+            {{ if hasRoleID $MOD_ROLE }}
+                {{ deleteAllMessageReactions nil $.Message.ID }}
+                {{ addReactions $ACCEPTED }}
+            {{ else }}
+                {{ deleteMessageReaction nil $.Message.ID $.User.ID $WILL_ACCEPT }}
+            {{ end }}
+        {{ else if eq $.Reaction.Emoji.Name $WILL_DELETE }}
+            {{ if hasRoleID $MOD_ROLE }}
+                {{ $ns.Set "response" (printf "Post by `%s` removed under staff discretion." $.Message.Author.String) }}
+                {{ deleteTrigger 0 }}
+            {{ else }}
+                {{ deleteMessageReaction nil $.Message.ID $.User.ID $WILL_DELETE }}
+            {{ end }}
+        {{ end }}
+
+    {{ end }}
+{{ end }}
+
+{{ if $ns.Get "response" }}
+    {{ $msgId := sendMessageRetID nil ($ns.Get "response") }}
+    {{ deleteMessage nil $msgId 6 }}
+{{ end }}

@@ -1,0 +1,6 @@
+{{ $DB_KEY := "social_credit_score" }}
+{{ $entries := dbTopEntries $DB_KEY 9 0 }}
+{{- range $entry := $entries -}}
+{{- dbDelByID $entry.UserID $entry.ID -}}
+{{- end -}}
+Deleted {{ len $entries }} entries.

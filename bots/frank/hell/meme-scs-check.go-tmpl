@@ -1,0 +1,21 @@
+{{ $DB_KEY := "social_credit_score" }}
+
+{{ $REQUIREMENT := 60 }}
+{{ $TITLE := "Meme Excellence" }}
+
+{{ $ns := dict }}
+
+
+{{ $ns.Set "current_score" (dbGet .User.ID $DB_KEY) }}
+{{ if (not ($ns.Get "current_score")) }}
+    {{ $ns.Set "current_score" 0 }}
+{{ else }}
+    {{ $ns.Set "current_score" (toInt ($ns.Get "current_score").Value) }}
+{{ end }}
+
+{{ sendDM (printf "Your current meme credit is %d\n%d is required for the **%s** Role"
+    ($ns.Get "current_score")
+    $REQUIREMENT
+    $TITLE
+) }}
+{{ deleteTrigger 1 }}
