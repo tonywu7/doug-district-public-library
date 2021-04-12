@@ -1,247 +1,196 @@
-{{ $timezones := dict
-    "PT [DST =0]" "America/Los_Angeles"
-    "Pacific Time" "America/Los_Angeles"
-    "Pacific" "America/Los_Angeles"
-    "PT" "America/Los_Angeles"
-    "Seattle" "America/Los_Angeles"
-    "Doug" "America/Los_Angeles"
-    "DougDoug" "America/Los_Angeles"
-    "Doug Time" "America/Los_Angeles"
-    "Doug Standard Time" "America/Los_Angeles"
-    "Doug Stream Time" "America/Los_Angeles"
-    "Gamez" "America/Los_Angeles"
-    "Eddie" "America/Los_Angeles"
-    "DST" "America/Los_Angeles"
-    "Henry" "America/Los_Angeles"
-    "Simon" "America/Los_Angeles"
-    "Rosa" "America/Los_Angeles"
-    "Monterey" "America/Los_Angeles"
-    "Monterey Bay" "America/Los_Angeles"
-    "Monterey Bay Aquarium" "America/Los_Angeles"
-    "MBA" "America/Los_Angeles"
-    "PST" "America/Los_Angeles"
-    "PDT" "America/Los_Angeles"
-    "Vancouver" "America/Vancouver"
-    "Umbu" "America/Los_Angeles"
-    "dogdog" "America/Los_Angeles"
-    "doglus readin" "America/Los_Angeles"
-    "Mobbin" "America/Los_Angeles"
-    "Mobbindirty" "America/Los_Angeles"
-    "Remdog" "America/Los_Angeles"
-    "Remdog510" "America/Los_Angeles"
-    "Grandma" "America/Los_Angeles"
+{{$timezones := dict
+    "PT [DST =0]" "America/Los_Angeles" "Pacific Time" "America/Los_Angeles"
+    "Pacific" "America/Los_Angeles" "PT" "America/Los_Angeles"
+    "Seattle" "America/Los_Angeles" "Doug" "America/Los_Angeles"
+    "DougDoug" "America/Los_Angeles" "Gamez" "America/Los_Angeles"
+    "Eddie" "America/Los_Angeles" "DST" "America/Los_Angeles"
+    "Henry" "America/Los_Angeles" "Simon" "America/Los_Angeles"
+    "Rosa" "America/Los_Angeles" "Monterey Bay" "America/Los_Angeles"
+    "PST" "America/Los_Angeles" "PDT" "America/Los_Angeles"
+    "Vancouver" "America/Vancouver" "Umbu" "America/Los_Angeles"
+    "dogdog" "America/Los_Angeles" "Mobbin" "America/Los_Angeles"
+    "Mobbindirty" "America/Los_Angeles" "Remdog" "America/Los_Angeles"
+    "Remdog510" "America/Los_Angeles" "Grandma" "America/Los_Angeles"
 
     "Arizona" "America/Phoenix"
 
-    "MT [DST +1]" "America/Denver"
-    "Denver" "America/Denver"
-    "Mountain Time" "America/Denver"
-    "Mountain" "America/Denver"
-    "MT" "America/Denver"
-    "MST" "America/Denver"
+    "MT [DST +1]" "America/Denver" "Denver" "America/Denver"
+    "Mountain Time" "America/Denver" "Mountain" "America/Denver"
+    "MT" "America/Denver" "MST" "America/Denver"
     "MDT" "America/Denver"
 
-    "CT [DST +2]" "America/Chicago"
-    "Houston" "America/Chicago"
-    "Central Time" "America/Chicago"
-    "Central" "America/Chicago"
-    "Chicago" "America/Chicago"
-    "CT" "America/Chicago"
-    "CDT" "America/Chicago"
-    "CST" "America/Chicago"
-    "dragon" "America/Chicago"
-    "not dragon" "America/Chicago"
-    "Ultra ColOBLIVIONel WoopSparse" "America/Chicago"
+    "CT [DST +2]" "America/Chicago" "Houston" "America/Chicago"
+    "Central Time" "America/Chicago" "Chicago" "America/Chicago" "CT" "America/Chicago"
+    "CDT" "America/Chicago" "CST" "America/Chicago" "dragon" "America/Chicago" "not dragon" "America/Chicago"
 
-    "ET [DST +3]" "America/New_York"
-    "New York" "America/New_York"
-    "Boston" "America/New_York"
-    "Washington D.C." "America/New_York"
-    "Eastern Time" "America/New_York"
-    "Eastern" "America/New_York"
-    "ET" "America/New_York"
-    "EDT" "America/New_York"
-    "EST" "America/New_York"
-    "Toronto" "America/Toronto"
-    "Ontario" "America/Toronto"
-    "Montreal" "America/Montreal"
-    "Quebec" "America/Montreal"
-    "sock" "America/New_York"
-    "socksarecool" "America/New_York"
+    "ET [DST +3]" "America/New_York" "New York" "America/New_York"
+    "Boston" "America/New_York" "Washington D.C." "America/New_York"
+    "Eastern Time" "America/New_York" "ET" "America/New_York" "EDT" "America/New_York"
+    "EST" "America/New_York" "Toronto" "America/Toronto"
+    "Ontario" "America/Toronto" "Montreal" "America/Montreal"
+    "sock" "America/New_York" "socksarecool" "America/New_York"
 
-    "AT [DST +4]" "America/Halifax"
-    "Atlantic Time" "America/Halifax"
-    "Atlantic" "America/Halifax"
-    "Nova Scotia" "America/Halifax"
-    "Halifax" "America/Halifax"
-    "AT" "America/Halifax"
-    "ADT" "America/Halifax"
-    "AST" "America/Halifax"
+    "AT [DST +4]" "America/Halifax" "Atlantic Time" "America/Halifax"
+    "Atlantic" "America/Halifax" "Nova Scotia" "America/Halifax"
+    "Halifax" "America/Halifax" "AT" "America/Halifax"
+    "ADT" "America/Halifax" "AST" "America/Halifax"
 
-    "GMT / BT [DST +8]" "Europe/London"
-    "GMT" "Europe/London"
-    "UK" "Europe/London"
-    "Britain" "Europe/London"
-    "London" "Europe/London"
-    "Greenwich Mean Time" "Europe/London"
-    "GMT" "Europe/London"
-    "BT" "Europe/London"
-    "BDT" "Europe/London"
-    "BST" "Europe/London"
-    "WET" "Europe/London"
-    "WEDT" "Europe/London"
-    "WEST" "Europe/London"
-    "GB" "Europe/London"
-    "England" "Europe/London"
-    "Wales" "Europe/London"
+    "GMT / BT [DST +8]" "Europe/London" "GMT" "Europe/London"
+    "UK" "Europe/London" "Britain" "Europe/London"
+    "London" "Europe/London" "Greenwich Mean Time" "Europe/London"
+    "GMT" "Europe/London" "BT" "Europe/London"
+    "England" "Europe/London" "Wales" "Europe/London"
     "Scotland" "Europe/London"
 
-    "Ireland" "Europe/Dublin"
-    "Dublin" "Europe/Dublin"
+    "Ireland" "Europe/Dublin" "Dublin" "Europe/Dublin"
 
-    "CET [DST +9]" "Europe/Amsterdam"
-    "Central European Time" "Europe/Amsterdam"
-    "Central European" "Europe/Amsterdam"
-    "Oslo" "Europe/Oslo"
-    "Berlin" "Europe/Berlin"
-    "Paris" "Europe/Paris"
-    "Amsterdam" "Europe/Amsterdam"
-    "Netherlands" "Europe/Amsterdam"
-    "Italy" "Europe/Rome"
-    "Germany" "Europe/Berlin"
-    "Austria" "Europe/Vienna"
-    "Romania" "Europe/Bucharest"
-    "Poland" "Europe/Warsaw"
-    "CET" "Europe/Amsterdam"
-    "CEDT" "Europe/Amsterdam"
-    "CEST" "Europe/Amsterdam"
-    "Switzerland" "Europe/Zurich"
-    "France" "Europe/Paris"
-    "Spain" "Europe/Madrid"
-    "IKEA" "Europe/Stockholm"
-    "ddarknut" "Europe/Oslo"
-    "Quicksparse" "Europe/Amsterdam"
-    "Dunsparce" "Europe/Amsterdam"
-    "qs" "Europe/Amsterdam"
-    "ds" "Europe/Amsterdam"
+    "CET [DST +9]" "Europe/Amsterdam" "Central European Time" "Europe/Amsterdam"
+    "Central European" "Europe/Amsterdam" "Oslo" "Europe/Oslo"
+    "Berlin" "Europe/Berlin" "Paris" "Europe/Paris"
+    "Amsterdam" "Europe/Amsterdam" "Netherlands" "Europe/Amsterdam"
+    "Italy" "Europe/Rome" "Germany" "Europe/Berlin"
+    "Austria" "Europe/Vienna" "Romania" "Europe/Bucharest"
+    "Poland" "Europe/Warsaw" "CET" "Europe/Amsterdam"
+    "CEDT" "Europe/Amsterdam" "CEST" "Europe/Amsterdam"
+    "Switzerland" "Europe/Zurich" "France" "Europe/Paris"
+    "Spain" "Europe/Madrid" "IKEA" "Europe/Stockholm"
+    "ddarknut" "Europe/Stockholm" "Quicksparse" "Europe/Copenhagen"
+    "Dunsparce" "Europe/Brussels" "qs" "Europe/Luxembourg"
+    "ds" "Europe/Zurich"
 
-    "EET [DST +10]" "Europe/Helsinki"
-    "Helsinki" "Europe/Helsinki"
-    "Bucharest" "Europe/Helsinki"
-    "EET" "Europe/Helsinki"
-    "EEDT" "Europe/Helsinki"
-    "EEST" "Europe/Helsinki"
+    "EET [DST +10]" "Europe/Helsinki" "Helsinki" "Europe/Helsinki"
+    "Bucharest" "Europe/Helsinki" "EET" "Europe/Helsinki"
+    "EEDT" "Europe/Helsinki" "EEST" "Europe/Helsinki"
 
-    "Kalinigrad" "Europe/Kalinigrad"
-    "Moscow" "Europe/Moscow"
+    "Kalinigrad" "Europe/Kalinigrad" "Moscow" "Europe/Moscow"
+    "Turkey" "Europe/Istanbul" "Istanbul" "Europe/Istanbul"
 
     "WAT [DST +15]" "Asia/Shanghai"
 
-    "WAT" "Australia/Perth"
-    "Australian Western Time" "Australia/Perth"
+    "WAT" "Australia/Perth" "Australian Western Time" "Australia/Perth"
     "AWT" "Australia/Perth"
 
-    "Shanghai" "Asia/Shanghai"
-    "Hong Kong" "Asia/Shanghai"
-    "China Standard Time" "Asia/Shanghai"
+    "Shanghai" "Asia/Shanghai" "Hong Kong" "Asia/Shanghai" "China" "Asia/Shanghai"
 
-    "JPT [DST +16]" "Asia/Tokyo"
-    "JPT" "Asia/Tokyo"
-    "Japan" "Asia/Tokyo"
-    "Tokyo" "Asia/Tokyo"
+    "JPT [DST +16]" "Asia/Tokyo" "JPT" "Asia/Tokyo"
+    "Japan" "Asia/Tokyo" "Tokyo" "Asia/Tokyo"
 
-    "EAT [DST +17]" "Australia/Sydney"
-    "EAT" "Australia/Sydney"
-    "AET" "Australia/Sydney"
-    "Sydney" "Australia/Sydney"
-    "Australian Eastern Time" "Asia/Melbourne"
+    "EAT [DST +17]" "Australia/Sydney" "EAT" "Australia/Sydney"
+    "AET" "Australia/Sydney" "Sydney" "Australia/Sydney"
 
     "Adelaide" "Australia/Adelaide"
 
-    "NZT [DST +19]" "Pacific/Auckland"
-    "NZT" "Pacific/Auckland"
-    "New Zealand" "Pacific/Auckland"
-    "Auckland" "Pacific/Auckland"
+    "NZT [DST +19]" "Pacific/Auckland" "NZT" "Pacific/Auckland"
+    "New Zealand" "Pacific/Auckland" "Auckland" "Pacific/Auckland"
 
-    "UTC" "UTC"
-
-    "Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch" "Europe/London"
-    "Timbuktu" "Africa/Timbuktu"
+    "UTC" "UTC" "Timbuktu" "Africa/Timbuktu"
 }}
+{{$prefix := exec "prefix"}}
+{{$prefix := slice $prefix (sub (len $prefix) 2) (sub (len $prefix) 1)}}
+
 {{- $spellings := dict -}}
 {{- range $idx, $elem := $timezones -}}{{- $timezones.Set (lower $idx) $elem -}}{{- $spellings.Set (lower $idx) $idx -}}{{- end -}}
-{{ $roleMap := dict }}
-{{ $inputStr := .StrippedMsg }}
-{{ $inputStrLower := lower .StrippedMsg }}
-{{ if not .CmdArgs }}
-    {{ $prefix := exec "prefix" }}
-    {{ $prefix := slice $prefix (sub (len $prefix) 2) (sub (len $prefix) 1) }}
-    To check the local time of a member/timezone, type `{{ $prefix }}time user_id` or `{{ $prefix }}time timezone`
-{{ else }}
-    {{ $ns := dict }}
-    {{ $arg := index .CmdArgs 0 }}
-    {{ if eq $inputStrLower "me" }}
-        {{ $targetMember := (getMember .User.ID) }}
-        {{ $ns.Set "target" $targetMember }}
-    {{ else }}
-        {{ $target := userArg $arg }}
-        {{ $targetMember := getMember $target.ID }}
-        {{ $ns.Set "target" $targetMember }}
-    {{ end }}
-    {{ $targetMember := $ns.Get "target" }}
-    {{ if $targetMember }}
-        {{- range .Guild.Roles -}}{{- $roleMap.Set .ID .Name -}}{{- end -}}
-        {{ if $targetMember.Nick }}
-            {{ $ns.Set "name" $targetMember.Nick }}
-        {{ else }}
-            {{ $ns.Set "name" $targetMember.User.Username }}
-        {{ end }}
-        {{- range $targetMember.Roles -}}{{- $roleName := $roleMap.Get . -}}{{- $tz := $timezones.Get $roleName -}}{{- if and ($tz) (not ($ns.Get "success")) -}}{{- $ns.Set "tzRole" $roleName -}}{{- $ns.Set "timezone" $tz -}}{{- end -}}{{- end -}}
-    {{ else }}
-        {{ $tz := $timezones.Get $inputStr }}
-        {{ $ns.Set "tzRole" $inputStr }}
-        {{ if $tz }}
-            {{ $ns.Set "timezone" $tz }}
-        {{ else }}
-            {{ $ns.Set "timezone" (reFind "[A-Za-z_]+/[A-Za-z_]+" $inputStr) }}
-        {{ end }}
-    {{ end }}
-    {{ if and (not ($ns.Get "name")) (not ($ns.Get "timezone")) }}
-        No such user/timezone `{{ $inputStrLower }}`
-    {{ else if not ($ns.Get "timezone") }}
-        {{ $ns.Get "name" }} is not assigned a timezone, or is assigned **"Other Time"**
-    {{ else }}
-        {{ $tz := $ns.Get "timezone" }}
-        {{ $utc := currentTime.UTC }}
-        {{ $mirrored := newDate $utc.Year $utc.Month $utc.Day $utc.Hour $utc.Minute $utc.Second $tz }}
-        {{ $diff := $utc.Sub $mirrored }}
-        {{ $datetime := $utc.Add $diff }}
-        {{ if ($ns.Get "name") }}
-            {{ $msg :=
-                joinStr "" "**" ($ns.Get "name") "** is in **" ($ns.Get "tzRole")
-                "**\nTheir local time is **"
-                ($datetime.Format "2 Jan 2006 3:04 PM")
-                "**"
-            }}
-            {{ $ns.Set "msg" $msg }}
-        {{ else }}
-            {{ $target := $ns.Get "tzRole" }}
-            {{ if not ($spellings.Get $target) }}
-                {{ $spellings.Set $target $target }}
-            {{ end }}
-            {{ $capitalized := $spellings.Get $target }}
-            {{ $msg :=
-                joinStr "" "Local time for **" $capitalized "** is **"
-                ($datetime.Format "2 Jan 2006 3:04 PM")
-                "**\n"
-                "Timezone: `" $tz "`"
-            }}
-            {{ $ns.Set "msg" $msg }}
-        {{ end }}
-        {{ $embed := cembed
-            "description" ($ns.Get "msg")
+{{$roleMap := dict}}
+{{- range .Guild.Roles -}}{{- $roleMap.Set .ID .Name -}}{{- end -}}
+{{$inputStr := .StrippedMsg}}
+{{$inputStrLower := lower .StrippedMsg}}
+{{if not .CmdArgs}}
+    {{sendMessage nil (printf "To check the local time of a member/timezone, type `%stime <user_id/mention/timezone>`\nTo convert local time for a member/timezone to your time, type `%stime <time at destination> <user_id/mention/timezone>`" $prefix $prefix)}}
+{{else}}
+
+{{$ns := dict}}
+{{$arg := index .CmdArgs (sub (len .CmdArgs) 1)}}
+{{if eq $inputStrLower "me"}}
+    {{$targetMember := (getMember .User.ID)}}
+    {{$ns.Set "target" $targetMember}}
+{{else}}
+    {{$target := userArg $arg}}
+    {{$targetMember := getMember $target.ID}}
+    {{$ns.Set "target" $targetMember}}
+{{end}}
+{{$conv := (reFindAllSubmatches "(\\d{1,2})(:\\d{2})?(:\\d{2})?\\s*([AaPp])?\\.?[Mm]?\\.?\\b" $inputStr)}}
+{{if $conv}}
+    {{with (index $conv 0)}}
+        {{$parsed := dict
+            "hh" (toInt (index . 1))
         }}
-        {{ $msg := $ns.Get "msg" }}
-        {{ sendMessage nil $embed }}
-    {{ end }}
-{{ end }}
+        {{if (index . 2)}}
+            {{$parsed.Set "mm" (toInt (slice (index . 2) 1))}}
+        {{else if (index . 4)}}
+            {{$parsed.Set "mm" 0}}
+        {{else}}
+            {{$parsed.Set "hh" 99}}
+            {{$parsed.Set "mm" 99}}
+        {{end}}
+        {{if (index . 4)}}
+            {{$halfday := index . 4}}
+            {{if (and (lt ($parsed.Get "hh") 12) (eq (lower $halfday) "p"))}}
+                {{$parsed.Set "hh" (add 12 ($parsed.Get "hh"))}}
+            {{else if (and (ge ($parsed.Get "hh") 12) (eq (lower $halfday) "a"))}}
+                {{$parsed.Set "hh" (sub 12 ($parsed.Get "hh"))}}
+            {{end}}
+        {{end}}
+        {{$hh := ($parsed.Get "hh")}}
+        {{$mm := ($parsed.Get "mm")}}
+        {{if ge $hh 0 | and (le $hh 23) | and (ge $mm 0) | and (le $mm 59)}}
+            {{$ns.Set "conversionTarget" .}}{{$ns.Set "hh" $hh}}{{$ns.Set "mm" $mm}}
+        {{end}}
+        {{$ns.Set "timezone" (reReplace ".*(\\d{1,2})(:\\d{2})?(:\\d{2})?\\s*([AaPp])?\\.?[Mm]?\\.?\\b\\s*" $inputStr "")}}
+        {{$ns.Set "tzRole" ($ns.Get "timezone")}}
+    {{end}}
+{{end}}
+{{if (not ($ns.Get "tzRole"))}}{{$ns.Set "tzRole" $inputStr}}{{end}}{{if (not ($ns.Get "timezone"))}}{{$ns.Set "timezone" $inputStr}}{{end}}
+{{$tz := $timezones.Get ($ns.Get "timezone")}}
+{{if $tz}}
+    {{$ns.Set "timezone" $tz}}
+{{else}}
+    {{$ns.Set "timezone" (reFind "[A-Za-z_]+/[A-Za-z_]+" $inputStr)}}
+{{end}}
+{{$targetMember := $ns.Get "target"}}
+{{- range (getMember $.User.ID).Roles -}}{{- $roleName := $roleMap.Get . -}}{{- $tz := $timezones.Get $roleName -}}{{- if $tz -}}{{- $ns.Set "localTZ" $tz -}}{{- end -}}{{- end -}}
+{{if $targetMember}}
+    {{if $targetMember.Nick}}
+        {{$ns.Set "name" $targetMember.Nick}}
+    {{else}}
+        {{$ns.Set "name" $targetMember.User.Username}}
+    {{end}}
+    {{- range $targetMember.Roles -}}{{- $roleName := $roleMap.Get . -}}{{- $tz := $timezones.Get $roleName -}}{{- if and ($tz) (not ($ns.Get "success")) -}}{{- $ns.Set "tzRole" $roleName -}}{{- $ns.Set "timezone" $tz -}}{{- end -}}{{- end -}}
+{{end}}
+{{if and (not ($ns.Get "name")) (not ($ns.Get "timezone"))}}
+    {{sendMessage nil (printf "Sorry, failed to parse arguments `%s`." $inputStr)}}
+{{else if not ($ns.Get "timezone")}}
+    {{sendMessage nil (printf "`%s` is not assigned a timezone" ($ns.Get "name"))}}
+{{else if and ($ns.Get "conversionTarget") (not ($ns.Get "localTZ"))}}
+    {{sendMessage nil "You must assign yourself a timezone to be able to use the conversion function"}}
+{{else}}
+    {{$ns.Set "queriedTZ" ($ns.Get "timezone")}}
+    {{with $ns.Get "conversionTarget"}}
+        {{$swap := $ns.Get "timezone"}}{{$ns.Set "timezone" ($ns.Get "localTZ")}}{{$ns.Set "localTZ" $swap}}
+        {{with $ns.Get "name"}}{{$ns.Set "localName" .}}{{else}}{{$ns.Set "localName" ($ns.Get "tzRole")}}{{end}}
+        {{$ns.Set "tzRole" "you"}}
+        {{$atime := currentTime}}
+        {{$ns.Set "atime" (newDate $atime.Year $atime.Month $atime.Day ($ns.Get "hh") ($ns.Get "mm") $atime.Second ($ns.Get "localTZ"))}}
+        {{$ns.Set "atimef" (printf "_%s_ for **%s**" (($ns.Get "atime").Format "2 Jan 3:04 PM") ($ns.Get "localName"))}}
+    {{else}}
+        {{$ns.Set "atime" currentTime}}{{$ns.Set "atimef" "Current time"}}
+    {{end}}
+    {{$utc := ($ns.Get "atime").UTC}}{{$tz := $ns.Get "timezone"}}{{$mirrored := newDate $utc.Year $utc.Month $utc.Day $utc.Hour $utc.Minute $utc.Second $tz}}{{$diff := $utc.Sub $mirrored}}{{$datetime := $utc.Add $diff}}
+    {{with $ns.Get "name"}}{{if not ($ns.Get "conversionTarget")}}{{$ns.Set "tzRole" .}}{{end}}{{end}}
+    {{$target := $ns.Get "tzRole"}}
+    {{if not ($spellings.Get $target)}}{{$spellings.Set $target $target}}{{end}}
+    {{$capitalized := $spellings.Get $target}}
+    {{$msg := (printf "%s is **%s** for **%s**\nTimezone: `%s`" ($ns.Get "atimef") ($datetime.Format "2 Jan 3:04 PM") $capitalized ($ns.Get "queriedTZ"))}}
+    {{$ns.Set "msg" $msg}}
+    {{$embed := cembed
+        "description" ($ns.Get "msg")
+    }}
+    {{$msg := $ns.Get "msg"}}
+    {{sendMessage nil $embed}}
+{{end}}
+
+{{if not ($ns.Get "conversionTarget")}}
+{{$ad := sendMessageRetID nil (printf "> **NEW!** You may now convert time with this command!\n> Syntax: `%stime <time at destination> <user_id/mention/timezone>`\n> Example: To see what time is it for you when it's 12:30pm ET, type `%stime 12:30pm ET`" $prefix $prefix)}}
+{{deleteMessage nil $ad 20}}
+{{end}}
+
+{{end}}
