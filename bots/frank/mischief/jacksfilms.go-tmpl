@@ -15,9 +15,11 @@
 
 {{ else }}
 
-{{ sendMessage nil "<:gamezAngy:804411857141104682>" }}
-{{ addReactions "gamezAngy:804411857141104682" }}
-{{ .User.Mention }} **No.**
+{{ addReactions "mayo_on_head_of_Doug:722457698750169119" }}
+{{ addReactions "Pword:689639407565013088" }}
+{{ addReactions "dougBarf:721393902942421082" }}
+{{ addReactions "🤢" }}
+{{ addReactions "🤮" }}
 
 {{/* Actions if spam protection is disabled. Default to call "spamwatch" with the specified spam type. */}}
 {{ template "spam_watch" . }}
