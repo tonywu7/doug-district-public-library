@@ -6,6 +6,7 @@
 {{$approvals := sdict
     "✅" "**✅ APPROVED by %s** on %s at %s"
     "🚫" "**🚫 REJECTED by %s** on %s at %s"
+    "🗑️" ":DELETE:"
 }}
 {{$NO_OP := "Vote by %s removed on %s at %s"}}
 
@@ -40,6 +41,8 @@
 {{- end -}}
 {{end}}
 
+{{if and (eq $.Message.Author.ID 204255221017214977) $.Message.Embeds}}
+
 {{if $.ReactionAdded}}
     {{if $votes.Get $emote}}
         {{template "single_choice_voting" (sdict "candidates" $votes "target" $emote "msg_id" $.Message.ID "user_id" $.User.ID)}}
@@ -49,11 +52,21 @@
     {{end}}
 {{end}}
 
+{{$embed := (structToSdict (index $.Message.Embeds 0))}}
+
 {{with $approvals.Get $emote}}
-{{if not (hasRoleID $AUTHORIZED_ROLE)}}
+{{if and (eq . ":DELETE:")}}
+    {{$user_id := toInt (slice ($embed.Get "Footer").Text 6)}}
+    {{if (eq $.Reaction.UserID $user_id)}}
+        {{deleteMessage nil $.Message.ID 0}}
+        {{$msg_id := sendMessageRetID nil "Suggestion deleted!"}}
+        {{deleteMessage nil $msg_id 5}}
+    {{else}}
+        {{deleteMessageReaction nil $.Message.ID $.User.ID $emote}}
+    {{end}}
+{{else if not (hasRoleID $AUTHORIZED_ROLE)}}
     {{deleteMessageReaction nil $.Message.ID $.User.ID $emote}}
 {{else}}
-    {{$embed := (structToSdict (index $.Message.Embeds 0))}}
     {{$ctime := currentTime}}
     {{if $.ReactionAdded}}
         {{$ns.Set "update" (printf . $.User.String (formatTime $ctime "2 Jan") (formatTime $ctime "3:04 PM UTC"))}}
@@ -70,4 +83,6 @@
         )}}
     {{end}}
 {{end}}
+{{end}}
+
 {{end}}

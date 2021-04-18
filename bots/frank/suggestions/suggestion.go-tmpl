@@ -36,6 +36,7 @@
     "🔽"
     "✅"
     "🚫"
+    "🗑️"
 }}
 
 {{define "suggestion_help"}}
@@ -90,6 +91,7 @@
     "description" $message
     "author" $user_info
     "image" ($ns.Get "atmt")
+    "footer" (sdict "text" (printf "User: %d" .User.ID))
     "timestamp" currentTime
 }}
 

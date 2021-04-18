@@ -10,9 +10,9 @@
     {{$matches := index $matches 0}}
     {{$channel_id := toInt (index $matches 1)}}
     {{$message_id := toInt (index $matches 2)}}
-    {{if gt $message_id 833104286158028840}}
+    {{$message := getMessage $channel_id $message_id}}
+    {{if and (and (eq $message.Author.ID 204255221017214977) (gt $message_id 833104286158028840)) $message.Embeds}}
     {{with $TARGET_CHANNEL.Get $channel_id}}
-        {{$message := getMessage $channel_id $message_id}}
         {{if $message.Embeds}}
             {{$embed := (structToSdict (index $message.Embeds 0))}}
             {{$fields := $embed.Get "Fields"}}
