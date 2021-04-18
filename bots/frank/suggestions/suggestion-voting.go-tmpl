@@ -1,0 +1,73 @@
+{{$votes := sdict
+    "🔼" 1
+    "🔽" -1
+}}
+
+{{$approvals := sdict
+    "✅" "**✅ APPROVED by %s** on %s at %s"
+    "🚫" "**🚫 REJECTED by %s** on %s at %s"
+}}
+{{$NO_OP := "Vote by %s removed on %s at %s"}}
+
+{{$AUTHORIZED_ROLE := 718291172124131408}}
+
+{{$ns := sdict}}
+{{$author_id := $.Message.Author.ID}}
+
+{{define "emote_name_util"}}
+{{$storage := .Get "storage"}}
+{{$emote := .Get "emote"}}
+{{with $emote.ID}}
+    {{$storage.Set "emote" (printf "%s:%d" $emote.Name $emote.ID)}}
+{{else}}
+    {{$storage.Set "emote" $emote.Name}}
+{{end}}
+{{end}}
+
+{{template "emote_name_util" (sdict "storage" $ns "emote" $.Reaction.Emoji)}}
+
+{{$emote := $ns.Get "emote"}}
+
+{{define "single_choice_voting"}}
+{{$candidates := .Get "candidates"}}
+{{$emote := .Get "target"}}
+{{$msg_id := .Get "msg_id" }}
+{{$user_id := .Get "user_id" }}
+{{- range $emote_id, $__ := $candidates -}}
+    {{- if (ne $emote_id $emote) -}}
+        {{- deleteMessageReaction nil $msg_id $user_id $emote_id -}}
+    {{- end -}}
+{{- end -}}
+{{end}}
+
+{{if $.ReactionAdded}}
+    {{if $votes.Get $emote}}
+        {{template "single_choice_voting" (sdict "candidates" $votes "target" $emote "msg_id" $.Message.ID "user_id" $.User.ID)}}
+    {{end}}
+    {{if $approvals.Get $emote}}
+        {{template "single_choice_voting" (sdict "candidates" $approvals "target" $emote "msg_id" $.Message.ID "user_id" $.User.ID)}}
+    {{end}}
+{{end}}
+
+{{with $approvals.Get $emote}}
+{{if not (hasRoleID $AUTHORIZED_ROLE)}}
+    {{deleteMessageReaction nil $.Message.ID $.User.ID $emote}}
+{{else}}
+    {{$embed := (structToSdict (index $.Message.Embeds 0))}}
+    {{$ctime := currentTime}}
+    {{if $.ReactionAdded}}
+        {{$ns.Set "update" (printf . $.User.String (formatTime $ctime "2 Jan") (formatTime $ctime "3:04 PM UTC"))}}
+        {{if $embed.Fields}}
+            {{$ns.Set "history" (printf "%s\n" (index $embed.Fields 0).Value)}}
+        {{else}}
+            {{$ns.Set "history" ""}}
+        {{end}}
+        {{$embed.Set "fields" (cslice
+            (sdict "name" "Status" "value" (printf "%s%s" ($ns.Get "history") ($ns.Get "update")) "inline" false) 
+        )}}
+        {{editMessage nil $.Message.ID (
+            complexMessageEdit "embed" (cembed $embed)
+        )}}
+    {{end}}
+{{end}}
+{{end}}

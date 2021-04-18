@@ -11,4 +11,3 @@ if __name__ == '__main__':
     print()
     for hsv, line in colors:
         print(line)
-

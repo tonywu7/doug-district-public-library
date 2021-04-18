@@ -1,0 +1,43 @@
+{{$TARGET_CHANNEL := 833078518907797554}}
+{{$RE := "^https://discord\\.com/channels/\\d+/(\\d+)/(\\d+)$"}}
+{{$COLOR := 12468223}}
+
+{{range $link := .CmdArgs}}
+
+{{$ns := dict}}
+{{$matches := reFindAllSubmatches $RE $link}}
+{{if $matches}}
+    {{$matches := index $matches 0}}
+    {{$channelId := toInt (index $matches 1)}}
+    {{$messageId := toInt (index $matches 2)}}
+    {{$message := getMessage $channelId $messageId}}
+    {{$ns.Set "message" $message}}
+{{end}}
+
+{{$ns.Set "name" ($ns.Get "message").Author.String}}
+{{$ns.Set "avatar" (($ns.Get "message").Author.AvatarURL "256")}}
+
+{{$votes := dict
+    "dougHappy:721392329289891882" 1
+    "dougDoubt:721393270088794162" -1
+}}
+
+{{with ($ns.Get "message").Attachments}}
+    {{$ns.Set "atmt" (index . 0)}}
+{{end}}
+
+{{$embed := cembed
+    "color" $COLOR
+    "description" ($ns.Get "message").Content
+    "author" (sdict
+        "name" ($ns.Get "name")
+        "icon_url" ($ns.Get "avatar")
+    )
+    "image" ($ns.Get "atmt")
+    "timestamp" ($ns.Get "message").Timestamp
+}}
+
+{{$msg_id := sendMessageRetID $TARGET_CHANNEL $embed}}
+{{range $emote_id, $emote_val := $votes}}{{addMessageReactions $TARGET_CHANNEL $msg_id $emote_id}}{{end}}
+
+{{end}}

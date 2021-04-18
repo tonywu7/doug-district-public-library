@@ -1,0 +1,31 @@
+{{$TARGET_CHANNEL := nil}}
+{{$COLOR := nil}}
+
+{{$ns := dict}}
+{{$ns.Set "name" .User.String}}
+
+{{$votes := cslice}}
+
+{{with .Message.Attachments}}
+    {{$ns.Set "atmt" (index . 0)}}
+{{end}}
+
+{{$embed := cembed
+    "color" $COLOR
+    "description" .StrippedMsg
+    "author" (sdict
+        "name" ($ns.Get "name")
+        "icon_url" (.User.AvatarURL "256")
+    )
+    "image" ($ns.Get "atmt")
+    "timestamp" currentTime
+}}
+
+{{$msg_id := sendMessageRetID $TARGET_CHANNEL $embed}}
+{{range $emote_id := $votes}}{{addMessageReactions $TARGET_CHANNEL $msg_id $emote_id}}{{end}}
+
+{{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
+{{deleteTrigger 5}}
+{{with ($ns.Get "response")}}
+{{deleteMessage nil . 20}}
+{{end}}

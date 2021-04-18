@@ -1,0 +1,3 @@
+{{deleteTrigger 0 }}
+{{$msg_id := sendMessageRetID nil "You may only use bot commands in this channel"}}
+{{deleteMessage nil $msg_id 10}}

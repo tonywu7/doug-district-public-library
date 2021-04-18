@@ -1,0 +1,158 @@
+{{$TARGET_CHANNEL := dict
+    "stream" 571177264000270366
+    "music" 583070645965946891
+    "discord" 723658112275578991
+    "emote" 571176760327274497
+}}
+
+{{$TITLE := dict
+    "stream" "Stream Suggestion"
+    "music" "Stream Music Suggestion"
+    "discord" "Discord Suggestion"
+    "emote" "Emote Suggestion"
+}}
+
+{{$COLOR := dict
+    "stream" 12468223
+    "music" 16711680
+    "discord" 7506394
+    "emote" 6323595
+}}
+
+{{$URL_RE := "https?://\\S+(\\.\\S+)+\\S*"}}
+
+{{$COOLDOWN := 3600}}
+{{$_COOLDOWN_MSG := printf "You may only make a suggestion once every %0d minutes. Try again later!" (div $COOLDOWN 60)}}
+
+{{$ns := dict}}
+{{$ns.Set "name" .User.String}}
+
+{{with .Message.Attachments}}
+    {{$ns.Set "atmt" (index . 0)}}
+{{end}}
+
+{{$votes := cslice
+    "🔼"
+    "🔽"
+    "✅"
+    "🚫"
+}}
+
+{{define "suggestion_help"}}
+{{$msg_id := sendMessageRetID nil (cembed
+    "title" "Doug District Suggestion System"
+    "description" (joinStr "\n"
+        "To make a suggestion, choose from one of the following types:"
+        "- `stream`"
+        "- `music`"
+        "- `discord`"
+        "- `emote`"
+        ""
+        "Then type in the command, a space, the type of suggestion you are making (see above), a space, and the text your suggestion, for example"
+        "```"
+        "?suggest stream Doug plays Skyrim _normally_"
+        "```"
+        "You may use markdown formatting and emotes in your message, you do not need to quote whitespaces."
+        "Additionally, you may upload an image to your suggestion (linking it won't work)."
+        ""
+        "For **emote** suggestions, you must upload the emote as an image file;"
+        "For **music** suggestions, your message must contain at least 1 but no more than 5 links to the songs/resources."
+    )
+)}}
+{{deleteMessage nil $msg_id 40}}
+{{end}}
+
+{{if not .CmdArgs}}
+    {{template "suggestion_help"}}
+{{else}}
+
+{{$cooldown := dbGet .User.ID "suggestion_cooldown"}}
+
+{{$suggestion_type := index .CmdArgs 0}}
+{{if gt (len .StrippedMsg) (len $suggestion_type)}}
+    {{$ns.Set "message" (slice .StrippedMsg (len $suggestion_type))}}
+{{else}}
+    {{$ns.Set "message" nil}}
+{{end}}
+{{$user_info := sdict
+    "name" ($ns.Get "name")
+    "icon_url" (.User.AvatarURL "256")
+}}
+
+{{$message := $ns.Get "message"}}
+{{$channel_id := $TARGET_CHANNEL.Get $suggestion_type}}
+{{$title := $TITLE.Get $suggestion_type}}
+{{$color := $COLOR.Get $suggestion_type}}
+
+{{$embed := cembed
+    "color" $color
+    "title" $title
+    "description" $message
+    "author" $user_info
+    "image" ($ns.Get "atmt")
+    "timestamp" currentTime
+}}
+
+{{if not $message}}
+
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Suggestions may not be empty."))}}
+
+{{else if $cooldown}}
+
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention $_COOLDOWN_MSG))}}
+
+{{else if eq $suggestion_type "stream"}}
+
+    {{$msg_id := sendMessageRetID $channel_id $embed}}
+    {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
+    {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+
+{{else if eq $suggestion_type "music"}}
+
+    {{$urls := reFindAll $URL_RE $message}}
+    {{if $urls}}
+        {{if le (len $urls) 5}}
+            {{- range $url := $urls -}}
+                {{ sendMessage $channel_id (printf "%s suggested: %s" ($ns.Get "name") $url) }}
+            {{- end -}}
+            {{$msg_id := sendMessageRetID $channel_id $embed}}
+            {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
+            {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
+            {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+        {{else}}
+            {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Sorry, to avoid flooding the channel, your suggestion may only include upto 5 links at a time."))}}
+        {{end}}
+    {{else}}
+        {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Sorry, music suggestions must include at least one links."))}}
+    {{end}}
+
+{{else if eq $suggestion_type "discord"}}
+
+    {{$msg_id := sendMessageRetID $channel_id $embed}}
+    {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
+    {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+
+{{else if eq $suggestion_type "emote"}}
+
+    {{if not .Message.Attachments}}
+        {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Sorry, you must upload the emote you'd like to suggest as a file."))}}
+    {{else}}
+        {{$msg_id := sendMessageRetID $channel_id $embed}}
+        {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
+        {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
+        {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+    {{end}}
+
+{{else}}
+
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s `%s`" .User.Mention "No such suggestion type" $suggestion_type))}}
+
+{{end}}
+{{end}}
+
+{{deleteTrigger 10}}
+{{with ($ns.Get "response")}}
+{{deleteMessage nil . 20}}
+{{end}}
