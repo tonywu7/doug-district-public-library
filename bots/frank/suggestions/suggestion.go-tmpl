@@ -5,6 +5,8 @@
     "emote" 571176760327274497
 }}
 
+{{$LOG_CHANNEL := 833312725329248296}}
+
 {{$TITLE := dict
     "stream" "Stream Suggestion"
     "music" "Stream Music Suggestion"
@@ -60,7 +62,11 @@
         "For **music** suggestions, your message must contain at least 1 but no more than 5 links to the songs/resources."
     )
 )}}
-{{deleteMessage nil $msg_id 40}}
+{{deleteMessage nil $msg_id 60}}
+{{end}}
+
+{{define "cooldown"}}
+{{/*dbSetExpire ."suggestion_cooldown" 1 $COOLDOWN*/}}
 {{end}}
 
 {{if not .CmdArgs}}
@@ -85,7 +91,7 @@
 {{$title := $TITLE.Get $suggestion_type}}
 {{$color := $COLOR.Get $suggestion_type}}
 
-{{$embed := cembed
+{{$embed := dict
     "color" $color
     "title" $title
     "description" $message
@@ -105,10 +111,10 @@
 
 {{else if eq $suggestion_type "stream"}}
 
-    {{$msg_id := sendMessageRetID $channel_id $embed}}
+    {{$msg_id := sendMessageRetID $channel_id (cembed $embed)}}
     {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
     {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
-    {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+    {{template "cooldown"}}
 
 {{else if eq $suggestion_type "music"}}
 
@@ -118,10 +124,10 @@
             {{- range $url := $urls -}}
                 {{ sendMessage $channel_id (printf "%s suggested: %s" ($ns.Get "name") $url) }}
             {{- end -}}
-            {{$msg_id := sendMessageRetID $channel_id $embed}}
+            {{$msg_id := sendMessageRetID $channel_id (cembed $embed)}}
             {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
             {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
-            {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+            {{template "cooldown"}}
         {{else}}
             {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Sorry, to avoid flooding the channel, your suggestion may only include upto 5 links at a time."))}}
         {{end}}
@@ -131,20 +137,26 @@
 
 {{else if eq $suggestion_type "discord"}}
 
-    {{$msg_id := sendMessageRetID $channel_id $embed}}
+    {{$msg_id := sendMessageRetID $channel_id (cembed $embed)}}
     {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
     {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
-    {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+    {{template "cooldown"}}
 
 {{else if eq $suggestion_type "emote"}}
 
     {{if not .Message.Attachments}}
         {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Sorry, you must upload the emote you'd like to suggest as a file."))}}
     {{else}}
-        {{$msg_id := sendMessageRetID $channel_id $embed}}
-        {{range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end}}
+        {{$ns.Set "i" 1}}
+        {{- range $atmt := $.Message.Attachments -}}
+            {{- $embed.Set "image" $atmt -}}
+            {{- $embed.Set "description" (printf "%s `(Part %d of %d)`" $message ($ns.Get "i") (len $.Message.Attachments)) -}}
+            {{- $msg_id := sendMessageRetID $channel_id (cembed $embed) -}}
+            {{- range $emote_id := $votes}}{{addMessageReactions $channel_id $msg_id $emote_id}}{{end -}}
+            {{$ns.Set "i" (add ($ns.Get "i") 1)}}
+        {{- end -}}
         {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s" .User.Mention "Thank you for the suggestion!"))}}
-        {{/*dbSetExpire .User.ID "suggestion_cooldown" 1 15*/}}
+        {{template "cooldown"}}
     {{end}}
 
 {{else}}
@@ -153,6 +165,9 @@
 
 {{end}}
 {{end}}
+
+{{sendMessage $LOG_CHANNEL (printf "%d :: %s" $.Message.Author.ID $.Message.Content)}}
+{{- range $atmt := $.Message.Attachments -}}{{sendMessage $LOG_CHANNEL $atmt.URL}}{{- end -}}
 
 {{deleteTrigger 10}}
 {{with ($ns.Get "response")}}
