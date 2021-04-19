@@ -10,7 +10,11 @@
 }}
 {{$NO_OP := "Vote by %s removed on %s at %s"}}
 
-{{$AUTHORIZED_ROLE := 718291172124131408}}
+{{$AUTHORIZED_ROLE := dict
+    567141600602357779 "Lord Pepper"
+    573364254720131082 "Admins"
+    718291172124131408 "Mods"
+}}
 
 {{$ns := sdict}}
 {{$author_id := $.Message.Author.ID}}
@@ -54,6 +58,8 @@
 
 {{$embed := (structToSdict (index $.Message.Embeds 0))}}
 
+{{range $role_id, $role_name := $AUTHORIZED_ROLE}}{{if and (not ($ns.Get "authorized")) (hasRoleID $role_id)}}{{$ns.Set "authorized" true}}{{end}}{{end}}
+
 {{with $approvals.Get $emote}}
 {{if and (eq . ":DELETE:")}}
     {{$user_id := toInt (slice ($embed.Get "Footer").Text 6)}}
@@ -64,24 +70,22 @@
     {{else}}
         {{deleteMessageReaction nil $.Message.ID $.User.ID $emote}}
     {{end}}
-{{else if not (hasRoleID $AUTHORIZED_ROLE)}}
+{{else if not ($ns.Get "authorized")}}
     {{deleteMessageReaction nil $.Message.ID $.User.ID $emote}}
 {{else}}
     {{$ctime := currentTime}}
-    {{if $.ReactionAdded}}
-        {{$ns.Set "update" (printf . $.User.String (formatTime $ctime "2 Jan") (formatTime $ctime "3:04 PM UTC"))}}
-        {{if $embed.Fields}}
-            {{$ns.Set "history" (printf "%s\n" (index $embed.Fields 0).Value)}}
-        {{else}}
-            {{$ns.Set "history" ""}}
-        {{end}}
-        {{$embed.Set "fields" (cslice
-            (sdict "name" "Status" "value" (printf "%s%s" ($ns.Get "history") ($ns.Get "update")) "inline" false) 
-        )}}
-        {{editMessage nil $.Message.ID (
-            complexMessageEdit "embed" (cembed $embed)
-        )}}
+    {{$ns.Set "update" (printf . $.User.String (formatTime $ctime "2 Jan") (formatTime $ctime "3:04 PM UTC"))}}
+    {{if $embed.Fields}}
+        {{$ns.Set "history" (printf "%s\n" (index $embed.Fields 0).Value)}}
+    {{else}}
+        {{$ns.Set "history" ""}}
     {{end}}
+    {{$embed.Set "fields" (cslice
+        (sdict "name" "Status" "value" (printf "%s%s" ($ns.Get "history") ($ns.Get "update")) "inline" false) 
+    )}}
+    {{editMessage nil $.Message.ID (
+        complexMessageEdit "embed" (cembed $embed)
+    )}}
 {{end}}
 {{end}}
 
