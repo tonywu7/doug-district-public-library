@@ -188,7 +188,9 @@
 {{sendMessage $LOG_CHANNEL (printf "%d :: %s" $.Message.Author.ID $.Message.Content)}}
 {{- range $atmt := $.Message.Attachments -}}{{sendMessage $LOG_CHANNEL $atmt.URL}}{{- end -}}
 
-{{deleteTrigger 20}}
+{{if not $.Message.Attachments}}
+    {{deleteTrigger 20}}
+{{end}}
 {{with ($ns.Get "response")}}
-{{deleteMessage nil . 20}}
+    {{deleteMessage nil . 20}}
 {{end}}
