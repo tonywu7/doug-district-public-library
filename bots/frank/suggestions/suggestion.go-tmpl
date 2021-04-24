@@ -45,21 +45,24 @@
 {{$msg_id := sendMessageRetID nil (cembed
     "title" "Doug District Suggestion System"
     "description" (joinStr "\n"
-        "To make a suggestion, choose from one of the following types:"
-        "- `stream`"
-        "- `music`"
-        "- `discord`"
-        "- `emote`"
+        "You can make the following kinds of suggestions:"
         ""
-        "Then type in the command, a space, the type of suggestion you are making (see above), a space, and the text your suggestion, for example"
+        "- `?suggest stream` for <#571177264000270366>"
+        "- `?suggest music` for <#583070645965946891>"
+        "- `?suggest discord` for <#723658112275578991>"
+        "- `?suggest emote` for <#571176760327274497>"
+        ""
+        "For example:"
         "```"
         "?suggest stream Doug plays Skyrim _normally_"
-        "```"
-        "You may use markdown formatting and emotes in your message, you do not need to quote whitespaces."
-        "Additionally, you may upload an image to your suggestion (linking it won't work)."
         ""
+        "?suggest music https://www.youtube.com/watch?v=2sy-12FQwXM"
+        "```"
         "For **emote** suggestions, you must upload the emote as an image file;"
         "For **music** suggestions, your message must contain at least 1 but no more than 5 links to the songs/resources."
+        ""
+        "You may use markdown formatting and emotes in your message, you do not need to quote whitespaces."
+        "Additionally, you may upload an image to your suggestion (linking it won't work)."
     )
 )}}
 {{deleteMessage nil $msg_id 60}}
@@ -185,12 +188,9 @@
 {{end}}
 {{end}}
 
-{{sendMessage $LOG_CHANNEL (printf "%d :: %s" $.Message.Author.ID $.Message.Content)}}
-{{- range $atmt := $.Message.Attachments -}}{{sendMessage $LOG_CHANNEL $atmt.URL}}{{- end -}}
+{{/*sendMessage $LOG_CHANNEL (printf "%d :: %s" $.Message.Author.ID $.Message.Content)*/}}
+{{/*- range $atmt := $.Message.Attachments -}}{{sendMessage $LOG_CHANNEL $atmt.URL}}{{- end -*/}}
 
-{{if not $.Message.Attachments}}
-    {{deleteTrigger 20}}
-{{end}}
 {{with ($ns.Get "response")}}
     {{deleteMessage nil . 20}}
 {{end}}

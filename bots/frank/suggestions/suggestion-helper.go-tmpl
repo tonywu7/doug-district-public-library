@@ -1,0 +1,2 @@
+{{.User.Mention}} The submission channel has moved to <#833769203054936094>! Please use the `?suggest` command there.
+{{deleteResponse 20}}
