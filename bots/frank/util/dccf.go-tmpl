@@ -1,0 +1,17 @@
+{{$embed := cembed
+    "title" "Data Collection Consent Form"
+    "author" (sdict "name" .User.String "icon_url" (.User.AvatarURL "256"))
+    "fields" (cslice 
+        (sdict
+            "name" "Dear DougDoug Twitch Mods,"
+            "value" (printf "do you consent me, %s, to download, store, and process your Twitch chat messages (henceforth referred to as \"Your Data\") to the channel DougDoug for the duration of Twitch's service available, for such analytics purposes as to\n> - Aggregate summary statistics related to chat of a stream, such as total and peak message volumes\n> - Analyze usage of particular terms and emotes that are relevant to the channel/stream\n> - Curate graphs of such usages to provide themed ways to navigate a particular stream\n> - ~~Judge your typos and emote preferences~~\nso long as Your Data have been properly anonymized, such as by replacing every occurrences of your username with an assigned UUID." .User.Mention)
+        )
+        (sdict
+            "name" "Select one of:"
+            "value" "<:peach:822286729770958909> **Yes**\n<:dougScared:819358247857029160> **Absolutely not you creepy fuck**"
+        )
+    )
+    "timestamp" currentTime
+}}
+{{$msg_id := sendMessageRetID nil $embed}}
+{{addMessageReactions nil $msg_id "peach:822286729770958909" "dougScared:819358247857029160"}}
