@@ -6,6 +6,7 @@
 {{$approvals := sdict
     "✅" "**✅ APPROVED by %s** on %s at %s"
     "🚫" "**🚫 REJECTED by %s** on %s at %s"
+    "⌛" "**⌛ Decision deferred** (%s, %s at %s)"
     "🗑️" ":DELETE:"
 }}
 {{$NO_OP := "Vote by %s removed on %s at %s"}}

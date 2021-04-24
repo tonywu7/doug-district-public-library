@@ -1,0 +1,106 @@
+{{$RE := "https://discord\\.com/channels/\\d+/(\\d+)/(\\d+)"}}
+
+{{$ACCESS_ZONES := dict
+	567149581121355788 200
+	828332722417303652 100
+	827681571300442213 100
+	755155718214123600 99
+	670405780108869642 99
+	714996322318549081 99
+	693526198629695528 99
+	730231700612972635 99
+	571965793131036672 99
+	747663244780371968 50
+	833152757648326656 10
+	571177264000270366 10
+	583070645965946891 10
+	723658112275578991 10
+	571176760327274497 10
+}}
+{{$ns := dict}}
+
+{{$all_matches := reFindAllSubmatches $RE $.Message.Content}}
+{{if le (len $all_matches) 3}}
+
+{{range $match := $all_matches}}
+
+{{$message_url := index $match 0}}
+{{$channel_id := toInt (index $match 1)}}
+{{$message_id := toInt (index $match 2)}}
+{{$message := getMessage $channel_id $message_id}}
+{{if $message}}
+
+{{$src := $ACCESS_ZONES.Get $channel_id}}
+{{$dst := $ACCESS_ZONES.Get (toInt $.Channel.ID)}}
+
+{{if not $src}}
+	{{$ns.Set "authorized" true}}
+{{else if not $dst}}
+	{{$ns.Set "authorized" false}}
+{{else}}
+	{{$ns.Set "authorized" (ge $dst $src)}}
+{{end}}
+
+{{if $ns.Get "authorized"}}
+
+	{{if (or $message.Content (len $message.Attachments))}}
+		{{with $message.Content}}
+			{{$ns.Set "main" .}}
+		{{else}}
+			{{$ns.Set "main" "(no text content)"}}
+		{{end}}
+		{{$embed := (sdict
+			"author" (sdict
+				"name" $message.Author.String
+				"icon_url" ($message.Author.AvatarURL "256")
+			)
+			"description" ($ns.Get "main")
+			"footer" (sdict "text" "Original message sent")
+			"timestamp" $message.Timestamp
+		)}}
+		{{$fields := cslice}}
+		{{$ns.Set "fields" $fields}}
+		{{$ns.Set "embed" $embed}}
+		{{if $message.Attachments}}{{with (index $message.Attachments 0)}}
+			{{($ns.Get "embed").Set "image" (sdict "url" .URL)}}
+		{{end}}{{end}}
+		{{$ns.Set "atmts" cslice}}
+		{{range $atmt := $message.Attachments}}
+			{{- $filename := $atmt.Filename -}}
+			{{- $filename := reReplace "\\[" $filename "%5B" -}}
+			{{- $filename := reReplace "\\]" $filename "%5D" -}}
+			{{- $ns.Set "atmts" (($ns.Get "atmts").Append (printf "[%s](%s)" $filename $atmt.URL)) -}}
+		{{end}}
+		{{with ($ns.Get "atmts")}}
+			{{$atmts := (joinStr " / " ($ns.Get "atmts").StringSlice true)}}
+			{{$fields := $ns.Get "fields"}}
+			{{$fields := ($fields.Append (sdict "name" "Attachments" "value" $atmts "inline" false))}}
+			{{$ns.Set "fields" $fields}}
+		{{end}}
+		{{$fields := $ns.Get "fields"}}
+		{{$fields := $fields.Append (sdict "name" "Channel" "value" (printf "<#%d>" $message.ChannelID) "inline" true)}}
+		{{$fields := $fields.Append (sdict "name" "Source" "value" (printf "[Jump to message](%s)" $message_url) "inline" true)}}
+		{{$embed.Set "fields" $fields}}
+		{{sendMessage nil (complexMessage "content" (printf "Quoting message#%d" $message_id) "embed" (cembed $embed))}}
+	{{end}}
+
+	{{if $message.Embeds}}
+		{{$msg_embed := (structToSdict (index $message.Embeds 0))}}
+		{{$fields := $msg_embed.Get "Fields"}}
+		{{$source := sdict "name" "Source" "value" (printf "[Jump to message](%s)" $message_url) "inline" true}}
+		{{with $fields}}
+			{{$ns.Set "fields" cslice}}
+			{{range $f := $fields}}{{$ns.Set "fields" (($ns.Get "fields").Append $f)}}{{end}}
+			{{$fields_ := $ns.Get "fields"}}
+			{{$fields_ := $fields_.Append $source}}
+			{{$msg_embed.Set "fields" $fields_}}
+		{{else}}
+			{{$msg_embed.Set "fields" (cslice $source)}}
+		{{end}}
+		{{sendMessage nil (complexMessage "content" (printf "^ Embed of message#%d" $message_id) "embed" (cembed $msg_embed))}}
+	{{end}}
+
+{{end}}
+{{end}}
+{{end}}
+{{end}}
