@@ -1,4 +1,4 @@
-{{$RE := "https://discord\\.com/channels/\\d+/(\\d+)/(\\d+)"}}
+{{$RE := "https://discord(?:app)?\\.com/channels/\\d+/(\\d+)/(\\d+)"}}
 
 {{$ACCESS_ZONES := dict
 	567149581121355788 200
@@ -11,11 +11,6 @@
 	730231700612972635 99
 	571965793131036672 99
 	747663244780371968 50
-	833152757648326656 10
-	571177264000270366 10
-	583070645965946891 10
-	723658112275578991 10
-	571176760327274497 10
 }}
 {{$ns := dict}}
 
@@ -54,7 +49,7 @@
 				"name" $message.Author.String
 				"icon_url" ($message.Author.AvatarURL "256")
 			)
-			"description" ($ns.Get "main")
+			"description" (printf "**[Message](%s) in <#%d>**\n%s" $message_url $message.ChannelID ($ns.Get "main"))
 			"footer" (sdict "text" "Original message sent")
 			"timestamp" $message.Timestamp
 		)}}
@@ -78,29 +73,21 @@
 			{{$ns.Set "fields" $fields}}
 		{{end}}
 		{{$fields := $ns.Get "fields"}}
-		{{$fields := $fields.Append (sdict "name" "Channel" "value" (printf "<#%d>" $message.ChannelID) "inline" true)}}
-		{{$fields := $fields.Append (sdict "name" "Source" "value" (printf "[Jump to message](%s)" $message_url) "inline" true)}}
 		{{$embed.Set "fields" $fields}}
 		{{sendMessage nil (complexMessage "content" (printf "Quoting message#%d" $message_id) "embed" (cembed $embed))}}
 	{{end}}
 
 	{{if $message.Embeds}}
 		{{$msg_embed := (structToSdict (index $message.Embeds 0))}}
-		{{$fields := $msg_embed.Get "Fields"}}
-		{{$source := sdict "name" "Source" "value" (printf "[Jump to message](%s)" $message_url) "inline" true}}
-		{{with $fields}}
-			{{$ns.Set "fields" cslice}}
-			{{range $f := $fields}}{{$ns.Set "fields" (($ns.Get "fields").Append $f)}}{{end}}
-			{{$fields_ := $ns.Get "fields"}}
-			{{$fields_ := $fields_.Append $source}}
-			{{$msg_embed.Set "fields" $fields_}}
-		{{else}}
-			{{$msg_embed.Set "fields" (cslice $source)}}
-		{{end}}
 		{{sendMessage nil (complexMessage "content" (printf "^ Embed of message#%d" $message_id) "embed" (cembed $msg_embed))}}
 	{{end}}
 
 {{end}}
 {{end}}
 {{end}}
+{{else}}
+
+{{$res := sendMessageRetID nil "You may quote up to 3 messages at a time."}}
+{{deleteMessage nil $res 10}}
+
 {{end}}

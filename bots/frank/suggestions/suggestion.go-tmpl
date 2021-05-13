@@ -23,6 +23,7 @@
 
 {{$RE_URL := "https?://\\S+(\\.\\S+)+\\S*"}}
 {{$RE_ATTRIB := "\\s*attrib::(\\d+)\\s*"}}
+{{$RE_TEE := "\\s*tee::(\\d+)\\s*"}}
 
 {{$COOLDOWN := 3600}}
 {{$_COOLDOWN_MSG := printf "You may only make a suggestion once every %0d minutes. Try again later!" (div $COOLDOWN 60)}}
@@ -38,7 +39,6 @@
     "🔽"
     "✅"
     "🚫"
-    "🗑️"
 }}
 
 {{define "suggestion_help"}}
