@@ -1,0 +1,29 @@
+{{$RE := "https://discord\\.com/channels/\\d+/(\\d+)/(\\d+)"}}
+{{$all_matches := reFindAllSubmatches $RE (index $.CmdArgs 0)}}
+{{$match := index $all_matches 0}}
+{{$message_url := index $match 0}}
+{{$channel_id := toInt (index $match 1)}}
+{{$message_id := toInt (index $match 2)}}
+{{$message := getMessage $channel_id $message_id}}
+{{$ns := dict}}
+{{$lines := split $.StrippedMsg "\n"}}
+{{$title := reReplace $RE (index $lines 0) ""}}
+{{$title := reReplace "^\\s+|\\s+$" $title ""}}
+{{$content := joinStr "\n" (slice $lines 1)}}
+{{if $message.Embeds}}
+    {{$msg_embed := (structToSdict (index $message.Embeds 0))}}
+    {{$fields := $msg_embed.Get "Fields"}}
+    {{$source := sdict "name" $title "value" $content "inline" false}}
+    {{with $fields}}
+        {{$ns.Set "fields" cslice}}
+        {{range $f := $fields}}{{$ns.Set "fields" (($ns.Get "fields").Append $f)}}{{end}}
+        {{$fields_ := $ns.Get "fields"}}
+        {{$fields_ := $fields_.Append $source}}
+        {{$msg_embed.Set "fields" $fields_}}
+    {{else}}
+        {{$msg_embed.Set "fields" (cslice $source)}}
+    {{end}}
+    {{editMessage $channel_id $message_id (
+        complexMessageEdit "embed" (cembed $msg_embed)
+    )}}
+{{end}}
