@@ -1,0 +1,406 @@
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #1a1a1a;
+    color: #d3d3d3;
+    font-family: 'Lato', 'Noto Serif SC', 'Helvetica Neue', 'Helvetica', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+        'Ubuntu', 'Open Sans', sans-serif;
+    font-size: 12pt;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+pre {
+    font-size: 9pt;
+    line-height: 1em;
+}
+
+main {
+    margin: 1rem 1rem 3rem;
+}
+@media screen and (max-width: 768px) {
+    main {
+        margin: 1rem 0.6rem 2rem;
+    }
+}
+
+p {
+    hyphens: auto;
+    overflow-wrap: break-word;
+}
+
+a {
+    color: #5cadf1;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+strong > a,
+em > a,
+span > a,
+mark > a {
+    color: inherit;
+}
+
+header {
+    margin-top: 60px;
+}
+
+header,
+article {
+    margin: auto 26% auto;
+    display: block;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    header,
+    article {
+        margin: auto 16% auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    header,
+    article {
+        margin: auto 3% auto;
+    }
+}
+header p,
+header li,
+header td,
+article p,
+article li,
+article td {
+    line-height: 1.8rem;
+}
+header h1,
+header h2,
+header h3,
+header h4,
+header h5,
+header h6,
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    font-family: 'Lato', 'Noto Serif SC', 'Helvetica Neue', 'Helvetica', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+        'Ubuntu', 'Open Sans', sans-serif;
+}
+
+article h1 {
+    margin: 4rem auto 3rem;
+}
+article h2 {
+    margin: 2rem auto 1.5rem;
+}
+@media screen and (max-width: 768px) {
+    article h1 {
+        margin: 2rem auto 1rem;
+    }
+    article h2 {
+        margin: 1.5rem auto 0.8rem;
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #46acdb;
+    font-weight: 900;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0.5rem auto 1.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0rem auto 1rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+p,
+li {
+    line-height: 1.5rem;
+}
+
+ul {
+    list-style: none;
+}
+ul ol {
+    list-style: unset;
+}
+
+ul li {
+    padding: 0;
+    text-indent: -5px;
+}
+ul li:before {
+    content: '-';
+    position: relative;
+    right: 5px;
+}
+ul li:before blockquote {
+    margin: 0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+ul li:last-of-type {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem 0 1rem;
+    padding: 1rem 2rem;
+    color: #46acdb;
+    background-color: #202933d8;
+}
+blockquote p {
+    margin: 0;
+}
+
+em {
+    color: #46acdb;
+}
+
+strong {
+    color: #dd54a2;
+    font-weight: 700;
+}
+
+pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: normal;
+    margin: 0;
+}
+
+code {
+    font-family: 'Fira Code', 'Inconsolata', 'Consolas', 'Ubuntu Mono', 'Courier New', monospace;
+    background-color: #6e7a9144;
+    color: #d3d3d3;
+    font-weight: 300;
+    letter-spacing: -0.3pt;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code,
+blockquote code {
+    background-color: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
+figure {
+    width: 100%;
+    margin: 2rem 0;
+}
+figure img {
+    display: block;
+    width: 90%;
+    margin: 0 auto 0;
+}
+
+mark {
+    color: #ebd248;
+    background-color: #685d2e;
+    border-color: #685d2e;
+    border: 3px;
+    border-radius: 2px;
+}
+
+hr {
+    border: 0.8px solid #787d86;
+    margin: 2rem 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+audio {
+    width: 80%;
+    margin: 1rem auto;
+    display: block;
+}
+
+video,
+iframe {
+    width: 100%;
+    margin: 1rem auto;
+    display: block;
+}
+
+table {
+    table-layout: fixed;
+}
+
+td img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cjk-serif {
+    font-family: 'Noto Serif SC', 'Songti SC', 'Adobe Song Std', serif !important;
+}
+
+.text-center-aligned {
+    text-align: center !important;
+}
+
+.text-weight-300 {
+    font-weight: 300;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+.ansi2html-content {
+    display: inline;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.body_foreground {
+    color: #d3d3d3;
+}
+
+.body_background {
+    background-color: #1a1a1a;
+}
+
+.body_foreground > .bold,
+.bold > .body_foreground,
+body.body_foreground > pre > .bold {
+    color: #d3d3d3;
+    font-weight: normal;
+}
+
+.inv_foreground {
+    color: #000000;
+}
+
+.inv_background {
+    background-color: #aaaaaa;
+}
+
+.ansi1 {
+    font-weight: bold;
+}
+
+.ansi4 {
+    text-decoration: underline;
+}
+
+.ansi31 {
+    color: #e06c75;
+}
+
+.ansi32 {
+    color: #96c475;
+}
+
+.ansi33 {
+    color: #d29a61;
+}
+
+.ansi35 {
+    color: #c774df;
+}
+
+.ansi36 {
+    color: #51b5c3;
+}
+
+.ansi37 {
+    color: #abb1bf;
+}
+
+.dannyling {
+    color: #1abc9c;
+}
+
+.comm-manager {
+    color: #9d4cff;
+}
+
+.discord-mods {
+    color: #7289da;
+}
+
+.twitch-mods {
+    color: #be3fff;
+}
+
+.spoonies {
+    color: #f1c40f;
+}
+
+.twitch-vip {
+    color: #dfbfd6;
+}
+
+.booster {
+    color: #f47fff;
+}
+
+.gaming-god {
+    color: #2ecc71;
+}
+
+.patreon {
+    color: #e74d3c;
+}
+
+.admin {
+    color: #29ffff;
+}
+
+.patreon {
+    color: #e74d3c;
+}
+
+.pepper {
+    color: #e67e22;
+}
+
+.founder {
+    color: #71d43f;
+}
+
+.perm-deny {
+    color: #e06c75;
+}
+
+.perm-allow {
+    color: #96c475;
+}
