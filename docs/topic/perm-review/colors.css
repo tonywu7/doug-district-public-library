@@ -118,3 +118,7 @@ body.body_foreground > pre > .bold {
 .perm-allow {
     color: #96c475;
 }
+
+.mods {
+    color: #e91e62;
+}

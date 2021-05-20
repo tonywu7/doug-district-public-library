@@ -96,30 +96,102 @@
                     is replaced with it, some channels will disappear.
                 </li>
             </ul>
-            <p>
-                Several improvements can be made:
-            </p>
+
+            <h3>Recommendations</h3>
             <ul>
-                <li>For channel perms, ensure that <span class="ansi1 dannyling">Dannyling</span>
-                    is only used to <span class="perm-allow">allow</span> <span class="ansi4">view_channel</span>
-                    and every other perm is set to <code>passthrough</code>, and ensure that
-                    roles such as <b>Muted</b> do not additionally <span class="perm-allow">allow</span> <span
-                        class="ansi4">view_channel</span>
+                <li><strong>Revamp bot hierarchy.</strong>
+                    <ul>
+                        <li><b>Admin Bots</b> MEE6, YAGPDB, AltDentifier; requires <code>administrator</code></li>
+                        <li><b>Utility Bots</b> Groovy, Rythm, Dyno; requires baseline message perms; limited to
+                            specific channels</li>
+                        <li><b>Integration Bots</b> Zapier, Patreon Bot, DiscordSRV; requires <code>webhooks</code>;
+                            hidden from sidebar</li>
+                    </ul>
+                    Alternatively, delegate perms to each bot's specific role instead of centrally manage them
+                    through role classes.
                 </li>
-                <li>For <b>Muted</b>, change YAGPDB to <em>not</em> remove <span
-                        class="ansi1 dannyling">Dannyling</span>
-                    when a member is muted. If the above step is done properly, YAGPDB's <b>Muted</b>
-                    role will correctly <span class="perm-deny">deny</span> <span class="ansi4">send_messages</span>
-                    without hiding the channel from the member.
+                <li><strong>Remove "mmm no nickname" and "mmm no perms".</strong></li>
+                <li><strong>Remove admins from channel permissions.</strong></li>
+                <li><strong>Refactor access control perms.</strong>
+                    <ul>
+                        <li>For channel perms, ensure that <span class="ansi1 dannyling">Dannyling</span>
+                            is only used to <span class="perm-allow">allow</span> <span
+                                class="ansi4">view_channel</span>
+                            and every other perm is set to <code>passthrough</code>, and ensure that
+                            roles such as <b>Muted</b> do not additionally <span class="perm-allow">allow</span> <span
+                                class="ansi4">view_channel</span>
+                        </li>
+                        <li>For <b>Muted</b>, change YAGPDB to <em>not</em> remove <span
+                                class="ansi1 dannyling">Dannyling</span>
+                            when a member is muted. If the above step is done properly, YAGPDB's <b>Muted</b>
+                            role will correctly <span class="perm-deny">deny</span> <span
+                                class="ansi4">send_messages</span>
+                            without hiding the channel from the member.
+                        </li>
+                        <li>For perms that are not channel perms (such as <code><span
+                                    class="ansi4">change_nickname</span></code>),
+                            possibly split <span class="ansi1 dannyling">Dannyling</span> into multiple mutually
+                            exclusive
+                            roles, each granting some perms. These baseline roles are granted at ?iagreetorules,
+                            and can be later added or removed.
+                            <br>
+                            (Alternatively, don't manage people's nickname perms when they are not breaking
+                            any rules, and use mod tools when they are.)
+                        </li>
+                    </ul>
                 </li>
-                <li>For perms that are not channel perms (such as <code><span
-                            class="ansi4">change_nickname</span></code>),
-                    possibly split <span class="ansi1 dannyling">Dannyling</span> into multiple mutually exclusive
-                    roles, each granting some perms. These baseline roles are granted at ?iagreetorules,
-                    and can be later added or removed.
-                    <br>
-                    (Alternatively, don't manage people's nickname perms when they are not breaking
-                    any rules, and use mod tools when they are.)
+                <li><strong>Refactor functional perms.</strong>
+                    Role perms should be mutually exclusive whenever possible.
+                    <ul>
+                        <li><span class="ansi1 dannyling">Dannyling</span> to only grant baseline read/write perms:
+                            <code>
+                                <span class="ansi4">invite</span>
+                                <span class="ansi4">send_messages</span>
+                                <span class="ansi4">embed_links</span>
+                                <span class="ansi4">attach_files</span>
+                                <span class="ansi4">add_reactions</span>
+                                <span class="ansi4">extern_emotes</span>
+                                <span class="ansi4">message_history</span>
+                                <span class="ansi4">voice_connect</span>
+                                <span class="ansi4">voice_speak</span>
+                                <span class="ansi4">voice_video</span>
+                            </code>
+                        </li>
+                        <li><span class="ansi1 mods">Mods</span> to grant, not including the above perms,
+                            shared moderation perms
+                            <code>
+                                <span class="ansi4">manage_messages</span>
+                            </code>
+                        </li>
+                        <li><span class="ansi1 discord-mods">Discord Mods</span> to grant, not including the above
+                            perms,
+                            <code>
+                                <span class="ansi4">manage_roles</span>
+                                <span class="ansi4">audit_log</span>
+                                <span class="ansi4">server_insights</span>
+                                <span class="ansi4">webhooks</span>
+                                <span class="ansi4">manage_nicknames</span>
+                                <span class="ansi4">kick_members</span>
+                                <span class="ansi4">ban_members</span>
+                                <span class="ansi4">mass_mentions</span>
+                                <span class="ansi4">mute_members</span>
+                                <span class="ansi4">deafen_members</span>
+                                <span class="ansi4">move_members</span>
+                            </code>
+                        </li>
+                        <li><span class="ansi1 comm-manager">Community Manager</span> to grant, not including the above
+                            perms,
+                            <code>
+                                <span class="ansi4">manage_emojis</span>
+                                <span class="ansi4">manage_server</span>
+                            </code>
+                        </li>
+                        <li><span class="ansi1 admin">Admins</span> to grant, not including the above perms,
+                            <code>
+                                <span class="ansi4">administrator</span>
+                            </code>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 
