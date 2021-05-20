@@ -1,0 +1,120 @@
+.ansi2html-content {
+    display: inline;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.body_foreground {
+    color: #d3d3d3;
+}
+
+.body_background {
+    background-color: #1a1a1a;
+}
+
+.body_foreground > .bold,
+.bold > .body_foreground,
+body.body_foreground > pre > .bold {
+    color: #d3d3d3;
+    font-weight: normal;
+}
+
+.inv_foreground {
+    color: #000000;
+}
+
+.inv_background {
+    background-color: #aaaaaa;
+}
+
+.ansi1 {
+    font-weight: bold;
+}
+
+.ansi4 {
+    text-decoration: underline;
+}
+
+.ansi31 {
+    color: #e06c75;
+}
+
+.ansi32 {
+    color: #96c475;
+}
+
+.ansi33 {
+    color: #d29a61;
+}
+
+.ansi35 {
+    color: #c774df;
+}
+
+.ansi36 {
+    color: #51b5c3;
+}
+
+.ansi37 {
+    color: #abb1bf;
+}
+
+.dannyling {
+    color: #1abc9c;
+}
+
+.comm-manager {
+    color: #9d4cff;
+}
+
+.discord-mods {
+    color: #7289da;
+}
+
+.twitch-mods {
+    color: #be3fff;
+}
+
+.spoonies {
+    color: #f1c40f;
+}
+
+.twitch-vip {
+    color: #dfbfd6;
+}
+
+.booster {
+    color: #f47fff;
+}
+
+.gaming-god {
+    color: #2ecc71;
+}
+
+.patreon {
+    color: #e74d3c;
+}
+
+.admin {
+    color: #29ffff;
+}
+
+.patreon {
+    color: #e74d3c;
+}
+
+.pepper {
+    color: #e67e22;
+}
+
+.founder {
+    color: #71d43f;
+}
+
+.perm-deny {
+    color: #e06c75;
+}
+
+.perm-allow {
+    color: #96c475;
+}
