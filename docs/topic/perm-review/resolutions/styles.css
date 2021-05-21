@@ -1,0 +1,76 @@
+.discord-message pre {
+    border-left: 6px solid #2a2a2a;
+    border-radius: 3px;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.5rem;
+
+    background-color: #37393e;
+    color: #dcddde;
+
+    font-family: 'Lato', 'Noto Serif SC', 'Helvetica Neue', 'Helvetica', -apple-system, BlinkMacSystemFont, 'Noto Sans',
+        'Ubuntu', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.375rem;
+}
+
+.discord-message pre strong {
+    color: inherit;
+    font-weight: 900;
+}
+
+.discord-message pre em {
+    color: inherit;
+}
+
+.emoji {
+    object-fit: contain;
+    width: 1.375em;
+    height: 1.375em;
+    vertical-align: bottom;
+}
+
+.interactive,
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: 500;
+    unicode-bidi: plaintext;
+    color: #687dc6;
+    background: rgba(114, 137, 218, 0.15);
+    position: relative;
+    cursor: pointer;
+}
+
+.interactive svg {
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+    position: absolute;
+    left: 0.125rem;
+    top: 0.125rem;
+}
+
+.interactive[class^='iconMention-'] {
+    padding-left: 1.25rem !important;
+}
+
+div[class^='embedTitle'] {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.375em;
+}
+
+pre[class^='embedWrapper'] a {
+    text-decoration: none;
+}
+
+.toc {
+    position: fixed;
+    left: 2vw;
+    width: 22%;
+    top: 3rem;
+}
+
+.toc a {
+    text-decoration: none;
+}
