@@ -43,7 +43,7 @@
                 even though most of them don't need this many perms. This is dangerous.
             </p>
             <p><strong>Public channels.</strong> <b>#announcement, #content, and #tweets</b> are accessible
-                even <span class="ansi1 dannyling">Dannyling</span>, and reactions are allowed.
+                even without <span class="ansi1 dannyling">Dannyling</span>, and reactions are allowed.
                 It is unclear if it is intentional or not.</p>
             <p>
                 <strong>Redundant role perms.</strong>
@@ -59,7 +59,7 @@
                 "mmm no perms" has no effect and "mmm no nickname" does virtually
                 nothing, yet they have to be present wherever <span class="ansi1 dannyling">Dannyling</span>
                 is present, adding significant clutter to channel perm configs and bot commands
-                (such as limiting who can type ?iagreetorules) and create hassle whenever we create new channels. (See
+                (such as limiting who can type ?iagreetorules) and hassle whenever we create new channels. (See
                 next item for a possible alternative implementation).
             </p>
             <p>
@@ -134,16 +134,17 @@
                         <li>For channel perms, ensure that <span class="ansi1 dannyling">Dannyling</span>
                             is only used to <span class="perm-allow">allow</span> <span
                                 class="ansi4">view_channel</span>
-                            and every other perm is set to <code>passthrough</code>, and ensure that
-                            roles such as <b>Muted</b> do not additionally <span class="perm-allow">allow</span> <span
-                                class="ansi4">view_channel</span>
+                            and every other perm is set to <code>passthrough</code>.
+                            <br>
+                            Ensure that roles such as <b>Muted</b> do not additionally
+                            <span class="perm-allow">allow</span> <span class="ansi4">view_channel</span>
                         </li>
                         <li>For <b>Muted</b>, change YAGPDB to <em>not</em> remove <span
                                 class="ansi1 dannyling">Dannyling</span>
                             when a member is muted. If the above step is done properly, YAGPDB's <b>Muted</b>
                             role will correctly <span class="perm-deny">deny</span> <span
                                 class="ansi4">send_messages</span>
-                            without hiding the channel from the member.
+                            without hiding channels from the member.
                         </li>
                         <li>For perms that are not channel perms (such as <code><span
                                     class="ansi4">change_nickname</span></code>),

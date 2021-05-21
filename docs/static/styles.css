@@ -193,6 +193,7 @@ strong {
 }
 
 pre {
+    font-family: 'Fira Code', 'Inconsolata', 'Consolas', 'Ubuntu Mono', 'Courier New', monospace;
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: normal;
