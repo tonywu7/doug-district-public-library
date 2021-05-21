@@ -104,7 +104,8 @@
                         <li><b>Admin Bots</b> MEE6, YAGPDB, AltDentifier; requires <code>administrator</code></li>
                         <li><b>Utility Bots</b> Groovy, Rythm, Dyno; requires baseline message perms; limited to
                             specific channels</li>
-                        <li><b>Integration Bots</b> Zapier, Patreon Bot, DiscordSRV; requires <code>webhooks</code>;
+                        <li><b>Integration Bots</b> Nightbot, Zapier, Patreon Bot, DiscordSRV; requires
+                            <code>webhooks</code>;
                             hidden from sidebar</li>
                     </ul>
                     Alternatively, delegate perms to each bot's specific role instead of centrally manage them
@@ -112,6 +113,18 @@
                 </li>
                 <li><strong>Remove "mmm no nickname" and "mmm no perms".</strong></li>
                 <li><strong>Remove admins from channel permissions.</strong></li>
+                <li><strong>Consolidate access control roles.</strong>
+                    The following roles are currently access control roles:
+                    <span class="ansi1 dannyling">Dannyling</span>, <span class="ansi1 spoonies">Spoonies</span>,
+                    <span class="ansi1 twitch-vip">Twitch VIP</span>, <span class="ansi1 booster">Pepto Bismol
+                        Spoonies</span>,
+                    <span class="ansi1 gaming-god">Gaming Gods</span>, and <span class="ansi1 founder">Founders</span>.
+                    <br>
+                    However, there really only exist three levels of access: <b>unverified</b> (@everyone),
+                    <b>regular</b>, and <b>elevated</b> (for <b>#elites-club</b>). A possible improvement is to
+                    grant members with elevated access a common role (e.g. "Elites," or some better name),
+                    and only use that for access control, other roles only for decorative use.
+                </li>
                 <li><strong>Refactor access control perms.</strong>
                     <ul>
                         <li>For channel perms, ensure that <span class="ansi1 dannyling">Dannyling</span>
@@ -155,6 +168,7 @@
                                 <span class="ansi4">voice_connect</span>
                                 <span class="ansi4">voice_speak</span>
                                 <span class="ansi4">voice_video</span>
+                                <span class="ansi4">request_to_speak</span>
                             </code>
                         </li>
                         <li><span class="ansi1 mods">Mods</span> to grant, not including the above perms,
