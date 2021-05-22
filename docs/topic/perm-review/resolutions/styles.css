@@ -1,3 +1,7 @@
+article {
+    margin-bottom: 6rem;
+}
+
 .discord-message pre {
     border-left: 6px solid #2a2a2a;
     border-radius: 3px;
@@ -33,7 +37,7 @@
 .mention {
     border-radius: 3px;
     padding: 0 2px;
-    font-weight: 500;
+    font-weight: 700;
     unicode-bidi: plaintext;
     color: #687dc6;
     background: rgba(114, 137, 218, 0.15);
@@ -64,13 +68,88 @@ pre[class^='embedWrapper'] a {
     text-decoration: none;
 }
 
-.toc {
+.toc-container {
+    z-index: 100;
+
     position: fixed;
     left: 2vw;
-    width: 22%;
     top: 3rem;
+
+    background-color: #1a1a1a80;
+}
+
+.toc {
+    width: 22vw;
+}
+
+.toc-toggle {
+    display: inline-block;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    color: #5cadf1;
+    user-select: none;
 }
 
 .toc a {
     text-decoration: none;
+}
+
+.table-container {
+    position: relative;
+    left: -26vw;
+    width: 100vw;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    margin: 2rem 0;
+}
+
+table.dataframe {
+    font-size: 10pt;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    vertical-align: middle;
+    padding: 0.4em 0.3em;
+    font-weight: 700;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #2a2a2a;
+}
+
+thead th {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #1f1f23;
+}
+
+tbody tr th {
+    padding-left: 0.8em;
+}
+
+td {
+    min-width: 128px;
+}
+
+.table-title th {
+    background-color: #283a5c;
 }

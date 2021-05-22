@@ -100,6 +100,12 @@ MESSAGE_WRITE_PERMS = [
 VOICE_WRITE_PERMS = [
     VOICE_VIDEO, VOICE_ACTIVITY, PRIORITY_SPEAKER,
 ]
+MOD_PERMS = [
+    MANAGE_CHANNELS, MANAGE_ROLES, MANAGE_EMOJIS, AUDIT_LOG, SERVER_INSIGHTS,
+    WEBHOOKS, MANAGE_SERVER, MANAGE_NICKNAMES, KICK_MEMBERS, BAN_MEMBERS,
+    MASS_MENTIONS, MANAGE_MESSAGES, PRIORITY_SPEAKER,
+    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS, ADMINISTRATOR,
+]
 
 HERE = colored('@here', 'white', None, ['bold'])
 
@@ -1260,8 +1266,8 @@ role_combinations = {
 
 members = {k: Member(name='|'.join([r.name for r in comb]), roles=comb) for k, comb in role_combinations.items()}
 
-if __name__ == '__main__':
 
+def check():
     os.makedirs('export/_server', exist_ok=True)
 
     print('Checking channel permission issues')
@@ -1287,3 +1293,92 @@ if __name__ == '__main__':
         for issue in m.evaluate():
             if issue.code[0] in ('W', 'E'):
                 print(k, issue)
+
+
+def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset', escape=False, **options):
+    (df.replace('allow', '<i class="bi bi-check-circle perm-allow"></i>')
+     .replace('deny', '<i class="bi bi-x-circle perm-deny"></i>')
+     .to_html(name, index_names=index_names, justify=justify, escape=escape, **options))
+
+
+def proposed_mod_roles():
+    mod = Role(
+        name='Mods', perms=PermissionTable(
+            allows=(MANAGE_ROLES, KICK_MEMBERS, BAN_MEMBERS, MASS_MENTIONS,
+                    MANAGE_MESSAGES, PRIORITY_SPEAKER, MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ), priority=1,
+    )
+    twitch_mod = Role(
+        name='Twitch Mods', perms=PermissionTable(
+            allows=(),
+        ), priority=2,
+    )
+    discord_mod = Role(
+        name='Discord Mods', perms=PermissionTable(
+            allows=(AUDIT_LOG, SERVER_INSIGHTS, WEBHOOKS, MANAGE_NICKNAMES),
+        ), priority=3,
+    )
+    comm_manager = Role(
+        name='Community Manager', perms=PermissionTable(
+            allows=(MANAGE_CHANNELS, MANAGE_EMOJIS, MANAGE_SERVER),
+        ), priority=4,
+    )
+
+    roles = (mod, twitch_mod, discord_mod, comm_manager, ADMINS)
+    members = {
+        'Twitch Mods': [mod, twitch_mod],
+        'Discord Mods': [mod, discord_mod],
+        'Community Manager': [mod, discord_mod, comm_manager],
+        'Admins': [ADMINS],
+    }
+    members = {k: Member(name=k, roles=v) for k, v in members.items()}
+
+    dfs = [r.perms.to_dataframe(name=r.name, mask=MOD_PERMS) for r in roles]
+    roleperms = pd.concat(dfs, axis=1)
+
+    dfs2 = [m.perms.to_dataframe(name=m.name, mask=MOD_PERMS) for m in members.values()]
+    memberperms = pd.concat(dfs2, axis=1)
+
+    for name, df in zip(('roles.html', 'members.html'), (roleperms, memberperms)):
+        export_html(df, name)
+
+
+def proposed_bot_roles():
+    bot = Role(
+        name='Bots', perms=PermissionTable(
+            allows=(MANAGE_ROLES, SEND_MESSAGES, EMBED_LINKS, ATTACH_FILES, ADD_REACTIONS, EXTERN_EMOTES, MASS_MENTIONS,
+                    MANAGE_MESSAGES, MESSAGE_HISTORY, VOICE_CONNECT, VOICE_SPEAK, VOICE_VIDEO),
+        ), priority=1,
+    )
+    integration_bots = Role(
+        name='Integration Bots', perms=PermissionTable(
+            allows=(MANAGE_CHANNELS, WEBHOOKS, AUDIT_LOG),
+        ), priority=2,
+    )
+    utility_bots = Role(
+        name='Utility Bots', perms=PermissionTable(
+            allows=(MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ), priority=3,
+    )
+    admin_bots = Role(name='Admin Bots', perms=PermissionTable(allows=(ADMINISTRATOR,)), priority=4)
+
+    roles = [bot, integration_bots, utility_bots, admin_bots]
+    members = {
+        'Integration Bots': [bot, integration_bots],
+        'Utility Bots': [bot, utility_bots],
+        'Admin Bots': [admin_bots],
+    }
+    members = {k: Member(name=k, roles=v) for k, v in members.items()}
+
+    dfs = [r.perms.to_dataframe(name=r.name) for r in roles]
+    roleperms = pd.concat(dfs, axis=1)
+
+    dfs2 = [m.perms.to_dataframe(name=m.name) for m in members.values()]
+    memberperms = pd.concat(dfs2, axis=1)
+
+    for name, df in zip(('roles.html', 'members.html'), (roleperms, memberperms)):
+        export_html(df, name)
+
+
+if __name__ == '__main__':
+    proposed_bot_roles()

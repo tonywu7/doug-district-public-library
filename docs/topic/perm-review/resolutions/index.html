@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
     <script src="./script.js"></script>
     <meta property="twitter:card" content="summary">
@@ -23,67 +24,70 @@
 </head>
 
 <body>
-    <main>
-        <article>
-            <h1 id="title">Doug District Permission Revamp</h1>
+    <article>
+        <h1 id="title">Doug District Permission Revamp</h1>
 
-            <div class="toc"></div>
-
-            <h2 id="section-cosmetic">Cosmetic updates</h2>
-
-            <p><em>These changes do not affect any function of the server.</em></p>
-
-            <h3 id="patch-prefix">Bot prefixes in nicknames</h3>
-
-            <p>Add bot command prefixes to bot nicknames like</p>
-
-            <div class="discord-message">
-                <pre
-                    class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_13729" aria-expanded="false" tabindex="0" role="button">@? Frank</span></pre>
+        <div class="toc-container">
+            <span class="toc-toggle">[hide menu]</span>
+            <div class="toc">
             </div>
+        </div>
 
-            <h3 id="patch-rules">#rules-and-info accessibility patch</h3>
+        <h2 id="section-cosmetic">Cosmetic updates</h2>
 
-            <p>
-                These changes make <b>#rules-and-info</b> more useful by adding
-                navigation and new info.
-            </p>
-            <ul>
-                <li>
-                    <b>Add a new "Table of contents" section</b> that allows people to jump to
-                    different parts of the channel. It will be at the bottom of the channel
-                    so will be the first thing people see.
-                </li>
-                <div class="discord-message">
-                    <pre class="embedWrapper-lXpS3L embedFull-2tM8-- embed-IeVjo6 markup-2BOw-j"
-                        aria-hidden="false"><div class="grid-1nZz7S"><div class="embedTitle-3OXDkz embedMargin-UO5XwE">Table of content</div><div class="embedDescription-1Cuq9a embedMargin-UO5XwE"><a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Rules" href="https://discord.com/channels/837884289516961833/842413424725459004/845088414368792628" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Rules</a> READ CAREFULLY 
+        <p><em>These changes do not affect any function of the server.</em></p>
+
+        <h3 id="patch-prefix">Bot prefixes in nicknames</h3>
+
+        <p>Add bot command prefixes to bot nicknames like</p>
+
+        <div class="discord-message">
+            <pre
+                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_13729" aria-expanded="false" tabindex="0" role="button">@? Frank</span></pre>
+        </div>
+
+        <h3 id="patch-rules">#rules-and-info accessibility patch</h3>
+
+        <p>
+            These changes make <b>#rules-and-info</b> more useful by adding
+            navigation and new info.
+        </p>
+        <ul>
+            <li>
+                <b>Add a new "Table of contents" section</b> that allows people to jump to
+                different parts of the channel. It will be at the bottom of the channel
+                so will be the first thing people see.
+            </li>
+            <div class="discord-message">
+                <pre class="embedWrapper-lXpS3L embedFull-2tM8-- embed-IeVjo6 markup-2BOw-j"
+                    aria-hidden="false"><div class="grid-1nZz7S"><div class="embedTitle-3OXDkz embedMargin-UO5XwE">Table of content</div><div class="embedDescription-1Cuq9a embedMargin-UO5XwE"><a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Rules" href="https://discord.com/channels/837884289516961833/842413424725459004/845088414368792628" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Rules</a> READ CAREFULLY 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Customs" href="https://discord.com/channels/837884289516961833/842413424725459004/845093146345340948" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Customs</a> 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Links and resources" href="https://discord.com/channels/837884289516961833/842413424725459004/845093195766431775" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Links and resources</a> 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Contacting the mod team" href="https://discord.com/channels/837884289516961833/842413424725459004/845093269238448198" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Contacting the mod team</a> 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Server tour" href="https://discord.com/channels/837884289516961833/842413424725459004/845093330799034368" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Server tour</a> 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Channel directory" href="https://discord.com/channels/837884289516961833/842413424725459004/845093390285799444" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Channel directory</a> 
 <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Role directory" href="https://discord.com/channels/837884289516961833/842413424725459004/845102949721047070" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Role directory</a></div></div></pre>
-                </div>
-                <li>
-                    <b>Add a new "Customs" section</b> explaining some unofficial
-                    rules.
-                </li>
-                <div class="discord-message">
-                    <pre
-                        class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Customs</strong></u>
+            </div>
+            <li>
+                <b>Add a new "Customs" section</b> explaining some unofficial
+                rules.
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Customs</strong></u>
 
 These are not formal rules. However, we <strong>strongly</strong> encourage you to follow them. You <em>could</em> be punished under Rule 1 if you repeatedly disregard these informal customs.
 
 <span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":one:" src="https://discord.com/assets/68546f5fc3b2166f42cf90b7e23c5ae9.svg" alt=":one:" draggable="false" class="emoji"></span> Do not ping @DougDoug hoping to receive a response. It is not manageable for Doug to speak in a place with thousands of other users. <strong>If you would like to reach out to Doug, Twitter and E-mail are much more accessible options.</strong>
 <span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":two:" src="https://discord.com/assets/eb29ce5fcf54bc3b23ff77039a4ecf3c.svg" alt=":two:" draggable="false" class="emoji"></span> Do not ping <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span>, <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mods</span>, and <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mods</span> <strong>without urgent reasons.</strong> Most of the mods team have school/work IRL, joke pings are disruptive and will erode our trust in you.</pre>
-                </div>
-                <li>
-                    <b>Add a new "Channel directory" section briefly explain the most used channels
-                        (also let unverified members know that what they are seeing isn't the whole server)
-                    </b>
-                </li>
-                <div class="discord-message">
-                    <pre class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Channel directory</strong></u>
+            </div>
+            <li>
+                <b>Add a new "Channel directory" section briefly explain the most used channels
+                    (also let unverified members know that what they are seeing isn't the whole server)
+                </b>
+            </li>
+            <div class="discord-message">
+                <pre class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Channel directory</strong></u>
 
 <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#rules-and-info</span>
     - Rules, FAQs and info about Doug and the server and how to reach the mods
@@ -143,13 +147,13 @@ These are not formal rules. However, we <strong>strongly</strong> encourage you 
     - VC and text channel for schoolwork discussions
 <span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>Practice Room</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#practice-room-text</span>
     - VC and text channel for practicing musical instruments, singing, or language speaking</pre>
-                </div>
-                <li>
-                    <b>Add a new "Role wiki" section</b> explaining commonly seen roles.
-                </li>
-                <div class="discord-message">
-                    <pre
-                        class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Role wiki</strong></u>
+            </div>
+            <li>
+                <b>Add a new "Role wiki" section</b> explaining commonly seen roles.
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Role wiki</strong></u>
 
 <span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> Certifies that you have read the rules (and will hopefully follow it). Required for access to most channels
 <span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonies</span> Twitch subscribers. You will receive this role automatically <u>as long as your Twitch is linked to your Discord</u>
@@ -164,137 +168,967 @@ These are not formal rules. However, we <strong>strongly</strong> encourage you 
 <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span> Server administrators. They manage server operations <strong>and will not assist you with moderation matters</strong>
 <span class="mention roleMention-2Bj0ju" style="color: rgb(255, 0, 247); background-color: rgba(255, 0, 247, 0.1);">@Lord Cockswain Jr</span> Eddie
 <span class="mention roleMention-2Bj0ju" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Lord Pepper</span> Our lord and savior and the true high king.</pre>
-                </div>
-                <li>
-                    <b>Explain better the different ways to contact the mods</b>
-                </li>
-                <div class="discord-message">
-                    <pre
-                        class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Contacting the mod team</strong></u>
+            </div>
+            <li>
+                <b>Explain better the different ways to contact the mods</b>
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Contacting the mod team</strong></u>
 
 <strong>Read the FAQ first: <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="https://www.dougdougw.com/faq" href="https://www.dougdougw.com/faq" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">https://www.dougdougw.com/faq</a></strong>
 
 - For questions and issues that do not need to be resolved immediately, <strong>open a ticket</strong> by pasting the following command in any channel: <code class="inline">?ticket open new ticket</code>
 - For issues that require attention, but not urgently, <strong>ping one Discord mod individually,</strong> most of the time mods can respond in a timely manner
 - For <em>urgent</em> problems (e.g. server raids or gross rule violations), ping the <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mods</span> role.</pre>
-                </div>
-            </ul>
+            </div>
+        </ul>
 
-            <h2 id="section-low-disruptions">Changes of low disruptions</h2>
+        <h2 id="section-low-disruptions">Low disruption changes</h2>
 
-            <p><em>These changes affect bot permissions. However, they are expected to not change any existing bot
-                    functions, and even if functions are affected, they will be easy to fix.
-                </em></p>
+        <p><em>These changes affect role permissions. However, they are expected to not change any existing server
+                functions, and even if functions are affected, they will be easy to fix.
+            </em></p>
 
-            <h3 id="patch-bot-hierarchy">Bot hiearchy patch</h3>
+        <h3 id="patch-bot-hierarchy">Bot hierarchy patch</h3>
 
-            <ul>
-                <li>
-                    <b>New role <span class="mention roleMention-2Bj0ju"
-                            style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
-                            Bots</span></b>
-                    <ul>
-                        <li>Candidate bots:</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8891" aria-expanded="false" tabindex="0" role="button">@Clarence</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8892" aria-expanded="false" tabindex="0" role="button">@Frank</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8893" aria-expanded="false" tabindex="0" role="button">@Fondle</span></pre>
-                        </div>
-                        <li>Permissions: <code>administrator</code></li>
-                        <li>Precedence (high to low):</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(255, 0, 247); background-color: rgba(255, 0, 247, 0.1);">@Lord Cockswain Jr</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@MEE6</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@YAGPDB.xyz</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@AltDentifier</span></pre>
-                        </div>
-                    </ul>
-                </li>
+        <ul>
+            <li>
+                <b>Deprecate <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Functional
+                        Bots</span> and <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Hidden
+                        Bots</span></b>
+            </li>
 
-                <li>
-                    <b>New role <span class="mention roleMention-2Bj0ju"
-                            style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
-                            Bots</span></b>
-                    <ul>
-                        <li>These bots are meant to be used by the community, and only in specific channels (e.g. VC,
-                            except Frank but Frank is covered by admin already)</li>
-                        <li>Candidate bots:</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10279" aria-expanded="false" tabindex="0" role="button">@Amanda (Team Rocket)</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10280" aria-expanded="false" tabindex="0" role="button">@Farkas</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10281" aria-expanded="false" tabindex="0" role="button">@Frank</span></pre>
-                        </div>
-                        <li>Permissions:
-                            <ul>
-                                <li><code>mass_mention</code> allow bots to notify roles if need be</li>
-                                <li><code>mute_members</code> <code>deafen_members</code> <code>move_members</code>
-                                    allow bots to manage VC activity (for Amanda and Farkas)</li>
-                            </ul>
-                        </li>
-                        <li>Access: use this role to limit integration bots to the channel where they operate (in VCs)
-                        </li>
-                        <li>Precedence (high to low):</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mods</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mods</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Rythm</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span></pre>
-                        </div>
-                    </ul>
-                </li>
+            <li>
+                <b>New role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                        Bots</span></b>
+                <ul>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8891" aria-expanded="false" tabindex="0" role="button">@Clarence</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8892" aria-expanded="false" tabindex="0" role="button">@Frank</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8893" aria-expanded="false" tabindex="0" role="button">@Fondle</span></pre>
+                    </div>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(255, 0, 247); background-color: rgba(255, 0, 247, 0.1);">@Lord Cockswain Jr</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@MEE6</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@YAGPDB.xyz</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@AltDentifier</span></pre>
+                    </div>
+                </ul>
+            </li>
 
-                <li>
-                    <b>New role <span class="mention roleMention-2Bj0ju"
-                            style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
-                            Bots</span></b>
-                    <ul>
-                        <li>These bots are for integrations: webhooks, subscriptions, Minecrafts, etc. They are likely
-                            to be hidden from members list (i.e. not listed separately)</li>
-                        <li>Candidate bots:</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20972" aria-expanded="false" tabindex="0" role="button">@Zapier</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20973" aria-expanded="false" tabindex="0" role="button">@Patreon</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20974" aria-expanded="false" tabindex="0" role="button">@DougBot</span></pre>
-                        </div>
-                        <li>Permissions:
-                            <ul>
-                                <li><code>manage_channels</code> allow bots to edit channel descriptions (for DougBot)
-                                </li>
-                                <li><code>manage_roles</code></li>
-                                <li><code>audit_log</code></li>
-                                <li><code>manage_webhooks</code></li>
-                            </ul>
-                        </li>
-                        <li>Access: use this role to limit integration bots to the channel where they operate (in
-                            <b>#content</b>, Minecraft channels etc.)</li>
-                        <li>Precedence (high to low):</li>
-                        <div class="discord-message">
-                            <pre
-                                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Zapier</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Patreon Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@DiscordSRV</span></pre>
-                        </div>
-                    </ul>
-                </li>
+            <li>
+                <b>New role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                        Bots</span></b>
+                <ul>
+                    <li>These bots are meant to be used by the community, and only in specific channels (e.g. VC,
+                        except Frank but Frank is covered by admin already)</li>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10279" aria-expanded="false" tabindex="0" role="button">@Amanda (Team Rocket)</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10280" aria-expanded="false" tabindex="0" role="button">@Farkas</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_10281" aria-expanded="false" tabindex="0" role="button">@Frank</span></pre>
+                    </div>
+                    <li>Access: use this role to limit integration bots to the channel where they operate (in VCs)
+                    </li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mods</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mods</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Rythm</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span></pre>
+                    </div>
+                </ul>
+            </li>
 
-                <li>
-                    <b>Modify role <span class="mention roleMention-2Bj0ju"
-                            style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bots</span></b>
-                    <ul>
-                        <li>This role grants basic message permissions and perms often used by bots</li>
-                        <li>Candidate bots: all bots</li>
-                        <li>Permissions:
-                            <ul>
-                                <li><code>send_messages</code> <code>embed_link</code> <code>attach_files</code>
-                                    <code>add_reactions</code> <code>extern_emotes</code></li>
-                                <li><code>manage_messages</code> <code>message_history</code></li>
-                                <li><code>voice_connect</code> <code>voice_speak</code> <code>voice_video</code></li>
-                            </ul>
-                        </li>
-                    </ul>
-                <li>Access: this role should <strong>not</strong> be used to control channel access (meaning no channel
-                    override with this role having <code>view_channels <span class="perm-allow">allow</span></code> or
-                    <code>view_channels <span class="perm-deny">deny</span></code></li>
-                </li>
-                <li>Precedence (high to low):</li>
-                <div class="discord-message">
-                    <pre
-                        class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bots</span></pre>
-                </div>
-            </ul>
-        </article>
-    </main>
+            <li>
+                <b>New role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                        Bots</span></b>
+                <ul>
+                    <li>These bots are for integrations: webhooks, subscriptions, Minecrafts, etc. They are likely
+                        to be hidden from members list (i.e. not listed separately)</li>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20972" aria-expanded="false" tabindex="0" role="button">@Zapier</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20973" aria-expanded="false" tabindex="0" role="button">@Patreon</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20974" aria-expanded="false" tabindex="0" role="button">@DougBot</span></pre>
+                    </div>
+                    <li>Access: use this role to limit integration bots to the channel where they operate (in
+                        <b>#content</b>, Minecraft channels etc.)</li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Zapier</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Patreon Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@DiscordSRV</span></pre>
+                    </div>
+                </ul>
+            </li>
+
+            <li>
+                <b>Modify role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bots</span></b>
+                <ul>
+                    <li>This role grants basic message permissions and perms often used by bots</li>
+                    <li>Candidate bots: all bots</li>
+                    <li>Access: this role should <strong>not</strong> be used to control channel access
+                        (meaning no channel
+                        override with this role having <code>view_channels <span class="perm-allow">allow</span></code>
+                        or <code>view_channels <span class="perm-deny">deny</span></code></li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bots</span></pre>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="table-container">
+            <table class="dataframe table-bot-roles">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="5">Permission settings for each role</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bots</span>
+                        </th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                                Bots</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                                Bots</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                                Bots</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_public_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>view_channel</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>change_nickname</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_connect</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_video</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_activity</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>request_to_speak</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table class="dataframe table-bot-perms">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="4">Cumulative permissions for each class of bots</th>
+                    </tr>
+                    <tr style="text-align: unset;">
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                                Bots</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                                Bots</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                                Bots</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_public_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>view_channel</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>change_nickname</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_connect</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_video</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_activity</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>request_to_speak</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 id="patch-mod-roles">Mod roles patch</h3>
+
+        <ul>
+            <li>All mods must have <span class="mention roleMention-2Bj0ju"
+                    style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                which grants them baseline text and VC perms</li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    from <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mods</span></b>
+            </li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    and <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mods</span> from
+                    <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                        Mods</span>
+                </b></li>
+            <li><b><span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                        Mods</span> are expected to not receive additional perms</b></li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    and <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mods</span> from
+                    <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                        Mods</span>
+                </b></li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    , <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mods</span>, and
+                    <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                        Mods</span> from <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                        Manager</span>
+                </b></li>
+        </ul>
+
+        <div class="table-container">
+            <table class="dataframe table-mod-roles">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="6">Permission settings for each role</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mods</span>
+                        </th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                                Mods</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                                Mods</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                                Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table class="dataframe table-mod-cumulative">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="5">Cumulative permissions for each group of mods (excluding baseline perms)</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                                Mods</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                                Mods</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                                Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju"
+                                style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admins</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
 </body>
 
 </html>
