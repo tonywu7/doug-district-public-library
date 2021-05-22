@@ -23,6 +23,7 @@
 from __future__ import annotations
 
 import dataclasses
+import io
 import os
 from collections import defaultdict
 from dataclasses import dataclass
@@ -1321,8 +1322,12 @@ def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset',
         '@Admin Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bot</span>',
         '@Admin': '<span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>',
     }
-    df.rename(columns=markups).replace(markups).to_html(name, index_names=index_names, justify=justify,
+    fn = io.StringIO()
+    df.rename(columns=markups).replace(markups).to_html(fn, index_names=index_names, justify=justify,
                                                         escape=escape, **options)
+    with open(name, 'w+') as f:
+        f.write(fn.getvalue().replace('border="1" ', '').replace(' style="text-align: unset;"', ''))
+    fn.close()
 
 
 _ACCESS_ONLY = PermissionTable(allows=(VIEW_CHANNEL,))
@@ -1499,7 +1504,6 @@ def proposed_server_roles_channels():
         '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
         '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
         '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
-        '@Admin': [r_everyone, ADMINS],
         '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
         '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
     }
