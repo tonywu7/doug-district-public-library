@@ -41,7 +41,7 @@ function initTableTooltips(table) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('h1, h2, h3, .for-approval').forEach((elem) => {
+    document.querySelectorAll('h1, h2, h3, h4, .for-approval').forEach((elem) => {
         elem.id = slugify(elem.textContent, '-', 10)
     })
 

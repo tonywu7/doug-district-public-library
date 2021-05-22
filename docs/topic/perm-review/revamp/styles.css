@@ -42,7 +42,6 @@ article {
     color: #7289da;
     background: rgba(114, 137, 218, 0.15);
     position: relative;
-    cursor: pointer;
 }
 
 .interactive svg {
@@ -82,7 +81,12 @@ pre[class^='embedWrapper'] a {
 }
 
 .toc {
-    width: 22vw;
+    width: 20vw;
+}
+
+.toc-container .toc-list-item {
+    font-size: 10pt;
+    line-height: 1.5em;
 }
 
 .toc-toggle {

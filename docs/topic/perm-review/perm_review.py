@@ -1306,11 +1306,11 @@ def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset',
         'deny': '<i class="bi bi-x-circle perm-deny"></i>',
         '@everyone': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span>',
         '@here': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@here</span>',
+        '@Game Event': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event</span>',
+        '@Game Event Organizer': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event Organizer</span>',
         '@Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span>',
         '@Muted': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Muted</span>',
         '@Text-only': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Text-only</span>',
-        '@Game Event': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event</span>',
-        '@Game Event Organizer': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event Organizer</span>',
         '@Dannyling': '<span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>',
         '@Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>',
         '@Twitch VIP': '<span class="mention roleMention-2Bj0ju" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span>',
@@ -1506,7 +1506,67 @@ r_mod_district = Channel(
         r_integration_bot: _ACCESS_ONLY,
         r_utility_bot: _ACCESS_ONLY,
         r_mod: _ACCESS_ONLY,
-    }
+    },
+)
+r_game_event_organizer = Role(
+    name='@Game Event Organizer', priority=4,
+    perms=PermissionTable(),
+)
+
+r_game_event = Role(
+    name='@Game Event', priority=3,
+    perms=PermissionTable(),
+)
+r_seasonal = Channel(
+    name='#seasonal',
+    baseline=_NO_ACCESS,
+    settings={
+        r_game_event_organizer: PermissionTable(
+            allows=(VIEW_CHANNEL, MANAGE_CHANNELS, PRIORITY_SPEAKER,
+                    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ),
+        r_game_event: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_seasonal_vc = Channel(
+    name='seasonal',
+    baseline=_NO_ACCESS,
+    settings={
+        r_game_event_organizer: PermissionTable(
+            allows=(VIEW_CHANNEL, MANAGE_CHANNELS, PRIORITY_SPEAKER,
+                    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ),
+        r_game_event: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_geo = Channel(
+    name='#geo',
+    baseline=_NO_ACCESS,
+    settings={
+        r_game_event_organizer: PermissionTable(
+            allows=(VIEW_CHANNEL, MANAGE_CHANNELS, PRIORITY_SPEAKER,
+                    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ),
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_ginfo = Channel(
+    name='#ginfo',
+    baseline=_NO_ACCESS,
+    settings={
+        r_game_event_organizer: PermissionTable(
+            allows=(VIEW_CHANNEL, SEND_MESSAGES, MANAGE_CHANNELS, MANAGE_MESSAGES, PRIORITY_SPEAKER,
+                    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+        ),
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL,), denies=(SEND_MESSAGES,)),
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES)),
+    },
 )
 
 
@@ -1564,21 +1624,8 @@ def readable_perms(perms: PermissionTable, name: str) -> pd.DataFrame:
     return df
 
 
-def proposed_server_roles_channels(channels: List[Channel]):
-    members = {
-        '@everyone': [r_everyone],
-        '@Dannyling': [r_everyone, r_dannyling],
-        '@Spoonie': [r_everyone, r_dannyling, r_spoonie],
-        '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
-        '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
-        '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
-        '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
-        '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
-    }
+def proposed_server_roles_channels(members: Dict[str, List[Role]], channels: List[Channel]):
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
-
-    # export_html(r_dannyling.perms.to_dataframe(), name='dannyling.html')
-
     for channel in channels:
         if channel.is_text_channel:
             mask = {k: None for k in [*BASE_CHANNEL_PERMS, *TEXT_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
@@ -1598,5 +1645,27 @@ def proposed_server_roles_channels(channels: List[Channel]):
         export_html(effective_settings, f'{channel.name}-perms.html')
 
 
+standard_members = {
+    '@everyone': [r_everyone],
+    '@Dannyling': [r_everyone, r_dannyling],
+    '@Spoonie': [r_everyone, r_dannyling, r_spoonie],
+    '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
+    '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
+    '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
+    '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
+    '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
+}
+game_event_members = {
+    '@everyone': [r_everyone],
+    '@Dannyling': [r_everyone, r_dannyling],
+    '@Game Event': [r_everyone, r_dannyling, r_game_event],
+    '@Game Event Organizer': [r_everyone, r_dannyling, r_game_event_organizer],
+    '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
+    '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
+    '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
+    '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
+    '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
+}
+
 if __name__ == '__main__':
-    proposed_server_roles_channels([r_mod_district])
+    proposed_server_roles_channels(game_event_members, [r_seasonal, r_seasonal_vc, r_geo, r_ginfo])
