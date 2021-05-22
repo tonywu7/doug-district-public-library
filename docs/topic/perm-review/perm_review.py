@@ -93,6 +93,10 @@ STAGE_CHANNEL_PERMS = [
     INVITE, VOICE_CONNECT, VOICE_ACTIVITY,
     MUTE_MEMBERS, MOVE_MEMBERS, REQUEST_TO_SPEAK,
 ]
+CHANNEL_MOD_PERMS = [
+    MANAGE_CHANNELS, MANAGE_ROLES, WEBHOOKS,
+    MASS_MENTIONS, MANAGE_MESSAGES,
+]
 MESSAGE_WRITE_PERMS = [
     EMBED_LINKS, ATTACH_FILES, MASS_MENTIONS,
     TEXT_TO_SPEECH, SLASH_COMMANDS,
@@ -1296,39 +1300,150 @@ def check():
 
 
 def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset', escape=False, **options):
-    (df.replace('allow', '<i class="bi bi-check-circle perm-allow"></i>')
-     .replace('deny', '<i class="bi bi-x-circle perm-deny"></i>')
-     .to_html(name, index_names=index_names, justify=justify, escape=escape, **options))
+    markups = {
+        'allow': '<i class="bi bi-check-circle perm-allow"></i>',
+        'deny': '<i class="bi bi-x-circle perm-deny"></i>',
+        '@everyone': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span>',
+        '@here': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@here</span>',
+        '@Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span>',
+        '@Muted': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Muted</span>',
+        '@Text-only': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Text-only</span>',
+        '@Game Event': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event</span>',
+        '@Game Event Organizer': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event Organizer</span>',
+        '@Dannyling': '<span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>',
+        '@Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>',
+        '@Integration Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span>',
+        '@Utility Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span>',
+        '@Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>',
+        '@Twitch Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>',
+        '@Discord Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span>',
+        '@Community Manager': '<span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span>',
+        '@Admin Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bot</span>',
+        '@Admin': '<span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>',
+    }
+    df.rename(columns=markups).replace(markups).to_html(name, index_names=index_names, justify=justify,
+                                                        escape=escape, **options)
+
+
+_ACCESS_ONLY = PermissionTable(allows=(VIEW_CHANNEL,))
+
+r_bot = Role(
+    name='@Bot', perms=PermissionTable(
+        allows=(MANAGE_ROLES, SEND_MESSAGES, EMBED_LINKS, ATTACH_FILES, ADD_REACTIONS, EXTERN_EMOTES, MASS_MENTIONS,
+                MANAGE_MESSAGES, MESSAGE_HISTORY, VOICE_CONNECT, VOICE_SPEAK, VOICE_VIDEO),
+    ), priority=10,
+)
+r_integration_bot = Role(
+    name='@Integration Bot', perms=PermissionTable(
+        allows=(MANAGE_CHANNELS, WEBHOOKS, AUDIT_LOG),
+    ), priority=30,
+)
+r_utility_bot = Role(
+    name='@Utility Bot', perms=PermissionTable(
+        allows=(MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+    ), priority=35,
+)
+r_admin_bot = Role(name='Admin Bot', perms=PermissionTable(allows=(ADMINISTRATOR,)), priority=85)
+
+r_mod = Role(
+    name='@Mod', perms=PermissionTable(
+        allows=(MANAGE_ROLES, KICK_MEMBERS, BAN_MEMBERS, MASS_MENTIONS,
+                MANAGE_MESSAGES, PRIORITY_SPEAKER, MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+    ), priority=50,
+)
+r_twitch_mod = Role(
+    name='@Twitch Mod', perms=PermissionTable(
+        allows=(),
+    ), priority=60,
+)
+r_discord_mod = Role(
+    name='@Discord Mod', perms=PermissionTable(
+        allows=(AUDIT_LOG, SERVER_INSIGHTS, WEBHOOKS, MANAGE_NICKNAMES),
+    ), priority=70,
+)
+r_comm_manager = Role(
+    name='@Community Manager', perms=PermissionTable(
+        allows=(MANAGE_CHANNELS, MANAGE_EMOJIS, MANAGE_SERVER),
+    ), priority=80,
+)
+
+r_everyone = Role(name='@everyone', priority=0, perms=PermissionTable())
+r_dannyling = Role(
+    name='@Dannyling', priority=20,
+    perms=PermissionTable(allows=(
+        VIEW_PUBLIC_CHANNELS, INVITE, CHANGE_NICKNAME,
+        SEND_MESSAGES, EMBED_LINKS, ATTACH_FILES, ADD_REACTIONS, EXTERN_EMOTES,
+        MESSAGE_HISTORY, VOICE_CONNECT, VOICE_SPEAK, VOICE_VIDEO, VOICE_ACTIVITY,
+        REQUEST_TO_SPEAK,
+    )),
+)
+r_muted = Role(name='Muted', priority=11, perms=PermissionTable())
+r_text = Role(name='Text-only', priority=12, perms=PermissionTable())
+r_official_dougdoug = Channel(
+    name='#official-dougdoug',
+    baseline=PermissionTable(
+        allows=(VIEW_CHANNEL, MESSAGE_HISTORY),
+        denies=(SEND_MESSAGES, ADD_REACTIONS),
+    ),
+    settings={
+        r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL, ADD_REACTIONS)),
+        r_mod: _ACCESS_ONLY,
+        r_integration_bot: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_comm_manager: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+    },
+)
+r_rules_and_info = Channel(
+    name='#rules-and-info',
+    baseline=PermissionTable(
+        allows=(VIEW_CHANNEL, SEND_MESSAGES, MESSAGE_HISTORY),
+        denies=(ADD_REACTIONS,),
+    ),
+    settings={
+        r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL), denies=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+    },
+)
+r_announcements = Channel(
+    name='#announcement+content',
+    baseline=PermissionTable(
+        allows=(VIEW_CHANNEL,),
+        denies=(SEND_MESSAGES, ADD_REACTIONS),
+    ),
+    settings={
+        r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL, ADD_REACTIONS)),
+        r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_integration_bot: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+    },
+)
+r_role_assignment = Channel(
+    name='#role-assignment',
+    baseline=PermissionTable(
+        allows=(VIEW_CHANNEL, MESSAGE_HISTORY),
+        denies=(SEND_MESSAGES, ADD_REACTIONS),
+    ),
+    settings={
+        r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL,)),
+        r_mod: _ACCESS_ONLY,
+        r_integration_bot: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_comm_manager: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
+    },
+)
 
 
 def proposed_mod_roles():
-    mod = Role(
-        name='Mods', perms=PermissionTable(
-            allows=(MANAGE_ROLES, KICK_MEMBERS, BAN_MEMBERS, MASS_MENTIONS,
-                    MANAGE_MESSAGES, PRIORITY_SPEAKER, MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
-        ), priority=1,
-    )
-    twitch_mod = Role(
-        name='Twitch Mods', perms=PermissionTable(
-            allows=(),
-        ), priority=2,
-    )
-    discord_mod = Role(
-        name='Discord Mods', perms=PermissionTable(
-            allows=(AUDIT_LOG, SERVER_INSIGHTS, WEBHOOKS, MANAGE_NICKNAMES),
-        ), priority=3,
-    )
-    comm_manager = Role(
-        name='Community Manager', perms=PermissionTable(
-            allows=(MANAGE_CHANNELS, MANAGE_EMOJIS, MANAGE_SERVER),
-        ), priority=4,
-    )
-
-    roles = (mod, twitch_mod, discord_mod, comm_manager, ADMINS)
+    roles = (r_mod, r_twitch_mod, r_discord_mod, r_comm_manager, ADMINS)
     members = {
-        'Twitch Mods': [mod, twitch_mod],
-        'Discord Mods': [mod, discord_mod],
-        'Community Manager': [mod, discord_mod, comm_manager],
+        'Twitch Mod': [r_mod, r_twitch_mod],
+        'Discord Mod': [r_mod, r_discord_mod],
+        'Communit Manager': [r_mod, r_discord_mod, r_comm_manager],
         'Admins': [ADMINS],
     }
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
@@ -1344,29 +1459,11 @@ def proposed_mod_roles():
 
 
 def proposed_bot_roles():
-    bot = Role(
-        name='Bots', perms=PermissionTable(
-            allows=(MANAGE_ROLES, SEND_MESSAGES, EMBED_LINKS, ATTACH_FILES, ADD_REACTIONS, EXTERN_EMOTES, MASS_MENTIONS,
-                    MANAGE_MESSAGES, MESSAGE_HISTORY, VOICE_CONNECT, VOICE_SPEAK, VOICE_VIDEO),
-        ), priority=1,
-    )
-    integration_bots = Role(
-        name='Integration Bots', perms=PermissionTable(
-            allows=(MANAGE_CHANNELS, WEBHOOKS, AUDIT_LOG),
-        ), priority=2,
-    )
-    utility_bots = Role(
-        name='Utility Bots', perms=PermissionTable(
-            allows=(MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
-        ), priority=3,
-    )
-    admin_bots = Role(name='Admin Bots', perms=PermissionTable(allows=(ADMINISTRATOR,)), priority=4)
-
-    roles = [bot, integration_bots, utility_bots, admin_bots]
+    roles = [r_bot, r_integration_bot, r_utility_bot, r_admin_bot]
     members = {
-        'Integration Bots': [bot, integration_bots],
-        'Utility Bots': [bot, utility_bots],
-        'Admin Bots': [admin_bots],
+        'Integration Bot': [r_bot, r_integration_bot],
+        'Utility Bot': [r_bot, r_utility_bot],
+        'Admin Bot': [r_admin_bot],
     }
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
 
@@ -1380,5 +1477,57 @@ def proposed_bot_roles():
         export_html(df, name)
 
 
+def readable_perms(perms: PermissionTable, name: str) -> pd.DataFrame:
+    df = perms.to_dataframe(name=name)
+    df = df.replace('', 'deny')
+    if not perms.view_channel:
+        df.loc[[*MESSAGE_WRITE_PERMS, *VOICE_WRITE_PERMS], :] = 'deny'
+    if not perms.send_messages:
+        df.loc[MESSAGE_WRITE_PERMS, :] = 'deny'
+    if not perms.voice_connect:
+        df.loc[VOICE_WRITE_PERMS, :] = 'deny'
+    if not perms.add_reactions:
+        df.loc[EXTERN_EMOTES, :] = 'deny'
+    return df
+
+
+def proposed_server_roles_channels():
+    members = {
+        '@everyone': [r_everyone],
+        '@Dannyling': [r_everyone, r_dannyling],
+        '@Spoonie': [r_everyone, r_dannyling, SPOONIES],
+        '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
+        '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
+        '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
+        '@Admin': [r_everyone, ADMINS],
+        '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
+        '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
+    }
+    members = {k: Member(name=k, roles=v) for k, v in members.items()}
+    channels = [
+        r_official_dougdoug, r_rules_and_info, r_announcements, r_role_assignment,
+    ]
+
+    export_html(r_dannyling.perms.to_dataframe(), name='dannyling.html')
+
+    for channel in channels:
+        if channel.is_text_channel:
+            mask = {k: None for k in [*BASE_CHANNEL_PERMS, *TEXT_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
+        else:
+            mask = {k: None for k in [*BASE_CHANNEL_PERMS, *VOICE_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
+        settings = []
+        settings.append(channel.baseline.perms.to_dataframe(mask, name='@everyone'))
+        for role, perm_settings in channel.settings.items():
+            settings.append(perm_settings.to_dataframe(mask, name=role.name))
+        channel_settings = pd.concat(settings, axis=1)
+        export_html(channel_settings, f'{channel.name}-settings.html')
+        effective_perms = []
+        for member in members.values():
+            effective = member.perms | (member @ channel)
+            effective_perms.append(readable_perms(effective, member.name).loc[mask, :])
+        effective_settings = pd.concat(effective_perms, axis=1)
+        export_html(effective_settings, f'{channel.name}-perms.html')
+
+
 if __name__ == '__main__':
-    proposed_bot_roles()
+    proposed_server_roles_channels()

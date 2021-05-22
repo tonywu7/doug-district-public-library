@@ -1,0 +1,2875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doug District Permission Revamp</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../static/styles.css">
+    <link rel="stylesheet" href="../colors.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+    <script src="./script.js"></script>
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Doug District Permission Revamp">
+    <meta property="og:title" content="Doug District Permission Revamp">
+</head>
+
+<body>
+    <article>
+        <h1>Doug District Permission Revamp</h1>
+
+        <div class="toc-container"> <span class="toc-toggle">[hide menu]</span>
+            <div class="toc"></div>
+        </div>
+
+        <h2>Updated guiding principles</h2>
+        <ul>
+            <li><strong>Single source of truth within same access level.</strong> Whenever possible, a permission for a
+                member should be granted by <em>at most one</em> role or channel role override per <a href="#access-levels">access level</a>. </li>
+            <li><strong>Isolation between access levels.</strong> A permission granted to a member at a lower access
+                level should be granted again on additional higher access levels. This is so that a change to
+                permissions to lower levels (such as regular members) do not affect access by higher level members (such
+                as Mods). </li>
+            <li><strong>Just enough access.</strong> A member should not have more permissions than it need. <em>This
+                    includes bots.</em></li>
+        </ul>
+
+        <h2>Access levels</h2>
+
+        <ol>
+            <li><strong>Unverified</strong> <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></li>
+            <li><strong>Regular</strong> <span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+            </li>
+            <li><strong>Privileged</strong> <span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>
+                <span class="mention roleMention-2Bj0ju" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span>
+                <span class="mention roleMention-2Bj0ju" style="color: rgb(244, 127, 255); background-color: rgba(244, 127, 255, 0.1);">@Pepto Bismol
+                    Spoonie</span> <span class="mention roleMention-2Bj0ju" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@Gaming God</span>
+                <span class="mention roleMention-2Bj0ju" style="color: rgb(113, 212, 63); background-color: rgba(113, 212, 63, 0.1);">@Founder</span>
+            </li>
+            <li><strong>Moderator</strong> <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span> <span
+                    class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>
+                <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span>
+                <span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                    Manager</span>
+            </li>
+            <li><strong>Administrator</strong> <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>
+            </li>
+            <li><strong>*Non-human</strong> <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></li>
+        </ol>
+
+        <h2>Cosmetic updates</h2>
+
+        <p><em>These changes do not affect any function of the server.</em></p>
+
+        <h3>Bot prefixes in nicknames</h3>
+
+        <p>Add bot command prefixes to bot nicknames like</p>
+
+        <div class="discord-message">
+            <pre
+                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_13729" aria-expanded="false" tabindex="0" role="button">@? Frank</span></pre>
+        </div>
+
+        <h3>The grammar police patch</h3>
+
+        <p><strong class="for-approval">Change <code>?iagreeonrules</code> to <code>?iagreetorules</code>.</strong> "to agree on" means <a
+                href="https://www.merriam-webster.com/thesaurus/agree%20%28on%29">to come to a consensus about
+                something</a>, new member do not negotiate with us about the rules, we define the rules and they
+            <em>accept</em> the rules, hence it should be "to agree to": <a href="https://www.merriam-webster.com/thesaurus/agrees%20%28to%29">to accedes to, to accept, to comply
+                with</a>
+        </p>
+
+        <p><strong class="for-approval">Pending a better use of the <span class="mention roleMention-2Bj0ju"
+                    style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Undoubted</span> role,
+                rename it to "Trusted,"</strong> or some other themed/non-meaningful name, say "Bernie" or "Barack", then explain what it does in the role wiki.
+            <br>
+            "Undoubted" means <a href="https://www.merriam-webster.com/thesaurus/undoubted">"indisputable," "incontrovertible," "unquestionable."</a> It does not communicate
+            clearly what it does, is not something we want to express,
+            <em>(you can't say that a member is "unquestionable," not even the mods are unquestionable),</em> is infrequently used, and is confusing for
+            new members.
+        </p>
+
+        <p><strong class="for-approval">Singularize role names.</strong> Role names indicate the identity of <em>each</em> member and should
+            be read like so:</p>
+
+        <div class="discord-message">
+            <pre
+                class="markup-2BOw-j messageContent-2qWWxC">umbu is <strong>a (singular) <span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span>, a <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span>, a <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>, a <span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>, and a <span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></strong></pre>
+        </div>
+
+        <p>This is in line with how many other servers describe their roles:</p>
+
+        <ul>
+            <li>Stardew Valley</li>
+
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC">You can gain our user ranks just by chatting. You gain XP once per minute and level up after gaining XP 30 times. We can tell if you spam, though! You can check your current level by typing <code class="inline">!lvl</code> in <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#governors-mansion</span>.
+
+<span class="mention roleMention-2Bj0ju" style="color: rgb(59, 184, 159); background-color: rgba(59, 184, 159, 0.1);">@Villager</span> - Level 1 - You earn this rank when you speak for the first time. So easy!
+<span class="mention roleMention-2Bj0ju" style="color: rgb(0, 190, 215); background-color: rgba(0, 190, 215, 0.1);">@Cowpoke</span> - Level 5 - This rank allows you to join our voice chat channels.
+<span class="mention roleMention-2Bj0ju" style="color: rgb(9, 157, 236); background-color: rgba(9, 157, 236, 0.1);">@Farmer</span> - Level 25 - This rank proves you're an active member in the community and lets you get special roles. It's blue.
+<span class="mention roleMention-2Bj0ju" style="color: rgb(67, 128, 244); background-color: rgba(67, 128, 244, 0.1);">@Shepherd</span> - Level 100 - This rank signifies the big ol' one oh oh! This is a blue so pretty that it gives the other blues low self-esteem.</pre>
+            </div>
+
+            <li>Call Me Kevin</li>
+
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><strong>Q: If I have a concern about something going on in the server, what should I do?</strong>
+A: If someone is breaking the rules or being disruptive, ping <span class="mention roleMention-2Bj0ju" style="color: rgb(200, 127, 230); background-color: rgba(200, 127, 230, 0.1);">@Moderator</span> or any online moderator to alert them (see who is online via the Member List), it is preferable to ping online Moderators first unless urgent or there is no response within a reasonable time (pinging Moderators without reason will result in a warning).</pre>
+            </div>
+
+            <li>Kurzgesagt</li>
+
+            <div class="discord-message">
+                <pre class="embedWrapper-lXpS3L embedFull-2tM8-- embed-IeVjo6 markup-2BOw-j" aria-hidden="false"
+                    style="border-color: rgb(127, 0, 255);"><div class="grid-1nZz7S"><div class="embedTitle-3OXDkz embedMargin-UO5XwE">ROLES</div><div class="embedDescription-1Cuq9a embedMargin-UO5XwE"><span class="mention roleMention-2Bj0ju" style="color: rgb(174, 57, 255); background-color: rgba(174, 57, 255, 0.1);">@Kurzgesagt Official</span> : Official members of the Kurzgesagt team. Do not ping or bother them.
+<span class="mention roleMention-2Bj0ju" style="color: rgb(13, 103, 177); background-color: rgba(13, 103, 177, 0.1);">@Administrator</span> : Moderators with full server access
+<span class="mention roleMention-2Bj0ju" style="color: rgb(25, 206, 42); background-color: rgba(25, 206, 42, 0.1);">@Moderator</span> : They watch over the server. Ping them if something comes up in chat.
+<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Contributor</span> : Those who make <strong>significant</strong> contributions to this Discord server, the r/Kurzgesagt subreddit or Kurzgesagt itself.</div><div class="embedFooter-3yVop- embedMargin-UO5XwE"><span class="embedFooterText-28V_Wb">Read channel from Top to bottom</span></div></div></pre>
+            </div>
+        </ul>
+
+        <h3>#rules-and-info accessibility patch</h3>
+        <p>These changes make <b>#rules-and-info</b> more useful by adding navigation and new info.</p>
+
+        <ul>
+            <li><strong class="for-approval">Add a new "Table of contents" section</strong> that allows people to jump to different parts of
+                the channel. It will be at the bottom of the channel so will be the first thing people see.</li>
+            <div class="discord-message">
+                <pre class="embedWrapper-lXpS3L embedFull-2tM8-- embed-IeVjo6 markup-2BOw-j"
+                    aria-hidden="false"><div class="grid-1nZz7S"><div class="embedTitle-3OXDkz embedMargin-UO5XwE">Table of content</div><div class="embedDescription-1Cuq9a embedMargin-UO5XwE"><a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Rules" href="https://discord.com/channels/837884289516961833/842413424725459004/845088414368792628" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Rules</a> READ CAREFULLY 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Customs" href="https://discord.com/channels/837884289516961833/842413424725459004/845093146345340948" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Customs</a> 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Links and resources" href="https://discord.com/channels/837884289516961833/842413424725459004/845093195766431775" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Links and resources</a> 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Contacting the mod team" href="https://discord.com/channels/837884289516961833/842413424725459004/845093269238448198" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Contacting the mod team</a> 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Server tour" href="https://discord.com/channels/837884289516961833/842413424725459004/845093330799034368" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Server tour</a> 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Channel directory" href="https://discord.com/channels/837884289516961833/842413424725459004/845093390285799444" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Channel directory</a> 
+<a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="Role directory" href="https://discord.com/channels/837884289516961833/842413424725459004/845102949721047070" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">Role directory</a></div></div></pre>
+            </div>
+            <li>
+                <strong class="for-approval">Add a new "Customs" section</strong> explaining some unofficial rules.
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Customs</strong></u>
+
+These are not formal rules. However, we <strong>strongly</strong> encourage you to follow them. You <em>could</em> be punished under Rule 1 if you repeatedly disregard these informal customs.
+
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":one:" src="https://discord.com/assets/68546f5fc3b2166f42cf90b7e23c5ae9.svg" alt=":one:" draggable="false" class="emoji"></span> Do not ping @DougDoug hoping to receive a response. It is not manageable for Doug to speak in a place with thousands of other users. <strong>If you would like to reach out to Doug, Twitter and E-mail are much more accessible options.</strong>
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":two:" src="https://discord.com/assets/eb29ce5fcf54bc3b23ff77039a4ecf3c.svg" alt=":two:" draggable="false" class="emoji"></span> Do not ping <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>, <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span>, and <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span> <strong>without urgent reasons.</strong> Most of the mods team have school/work IRL, joke pings are disruptive and will erode our trust in you.</pre>
+            </div>
+            <li>
+                <strong class="for-approval">Add a new "Channel directory" section</strong> briefly explaining the most used channels (also
+                let unverified members know that what they are seeing isn't the whole server)
+            </li>
+            <div class="discord-message">
+                <pre class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Channel directory</strong></u>
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#rules-and-info</span>
+    - Rules, FAQs and info about Doug and the server and how to reach the mods
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#announcements</span>
+    - <strong>Announcements from Doug</strong> and from the mod team go here
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#content</span> 
+    - <strong>Notifications about new content</strong> from YouTube &amp; Twitch
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#role-assignment</span>
+    - Assign yourself roles for timezones, genders, notifications to receive, etc
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#welcome</span>
+    - See who's joinin' (and <em>react</em>)
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#tweets</span>
+    - See what Doug's up to on Twitter
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#general</span>
+    - Talk to people
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#elites-club</span>
+    - A secrete society that only the elites of the server may have access to
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#doug-mine</span>
+    - Share Doug faces and Doug memes
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#hell</span>
+    - Meme channel, formerly named <code class="inline">#memes-galore</code>
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#chefs-and-foodies</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#creative-and-artsy</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#music-and-vibes</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#games-and-geeks</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#pets-and-cute-things</span>
+    - Specialty channels where you can geek out on specific topics
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#stream-clips</span>
+    - Share clips from Doug's streams here
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#promo-zone</span>
+    - Promote yourself here: your Twitch/YouTube channels, your Discord servers, etc
+    - If you have creative work to share, we welcome you to share images/videos snippets of it in <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#creative-and-artsy</span>, but keep the link in <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#promo-zone</span>
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#game-event-info</span>
+    - Get information about community events hosted by our server members
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#im-gonna-do-it</span>
+    - Set a personal goal and share it here for some motivation!
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#ive-done-it</span>
+    - Share your achievements and let us applaud you!
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#supportive-af</span>
+    - Talk about difficulties, confusions, mental health issues, or anything you'll need help with. We as a community will support you to our best effort
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#tech-support-and-discussions</span>
+    - Ask about tech stuff: building a PC, Twitch stream setup, programming, <em>Windows Update stuck,</em> etc
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#server-relations</span>
+    - Give feedback about the server
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#submit-and-discuss</span>
+    - Share your ideas for Doug's stream, the server, and new emotes using the <code class="inline">?suggest</code> command
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#stream-suggestions</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#stream-music-suggestions</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#discord-suggestions</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#emote-suggestions</span>
+    - Suggestions you posted will appear here for better visibility
+
+<span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#nightbot</span>
+    - Converse with your local <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Nightbot</span> here
+<span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>Hangout</span>, <span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>Hangout 2</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#hangout-text</span>
+    - VC and text channel for general hangouts
+<span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>THE DARGE BARGE</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#the-darge-barge-text</span>
+    - <strong>GAMER ZONE</strong>
+<span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>Class Room</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#class-room-text</span>
+    - VC and text channel for schoolwork discussions
+<span class="iconMention-O5BG9X wrapper-3WhCwL mention interactive" tabindex="0" role="button"><svg class="channelIcon-Lewl0l" aria-hidden="false" width="24" height="24" viewBox="0 0 24 24" aria-label="Voice Channel"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M11.383 3.07904C11.009 2.92504 10.579 3.01004 10.293 3.29604L6 8.00204H3C2.45 8.00204 2 8.45304 2 9.00204V15.002C2 15.552 2.45 16.002 3 16.002H6L10.293 20.71C10.579 20.996 11.009 21.082 11.383 20.927C11.757 20.772 12 20.407 12 20.002V4.00204C12 3.59904 11.757 3.23204 11.383 3.07904ZM14 5.00195V7.00195C16.757 7.00195 19 9.24595 19 12.002C19 14.759 16.757 17.002 14 17.002V19.002C17.86 19.002 21 15.863 21 12.002C21 8.14295 17.86 5.00195 14 5.00195ZM14 9.00195C15.654 9.00195 17 10.349 17 12.002C17 13.657 15.654 15.002 14 15.002V13.002C14.551 13.002 15 12.553 15 12.002C15 11.451 14.551 11.002 14 11.002V9.00195Z" aria-hidden="true"></path></svg>Practice Room</span>, <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#practice-room-text</span>
+    - VC and text channel for practicing musical instruments, singing, or language speaking</pre>
+            </div>
+            <li>
+                <strong class="for-approval">Add a new "Role wiki" section</strong> explaining commonly seen roles
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Role wiki</strong></u>
+
+<span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> Certifies that you have read the rules (and will hopefully follow it). Required for access to most channels
+<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonies</span> Twitch subscribers. You will receive this role automatically <u>as long as your Twitch is linked to your Discord</u>
+<span class="mention roleMention-2Bj0ju" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span> Twitch VIPs. (Currently this is manually managed, if you are a VIP on Twitch, tell a mod and we will assign you the role)
+<span class="mention roleMention-2Bj0ju" style="color: rgb(244, 127, 255); background-color: rgba(244, 127, 255, 0.1);">@Pepto Bismol Spoonies</span> <strong>Nitro boosters &lt;3</strong>
+<span class="mention roleMention-2Bj0ju" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@Gaming Gods</span> Seal of Excellency for a member's outstanding performance in a DougDoug gaming challenge. See <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="https://www.dougdougw.com/gaming-gods-statisitics" href="https://www.dougdougw.com/gaming-gods-statisitics" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">https://www.dougdougw.com/gaming-gods-statisitics</a>
+<span class="mention roleMention-2Bj0ju" style="color: rgb(113, 212, 63); background-color: rgba(113, 212, 63, 0.1);">@Founders</span> Salute these members for they started this magnificent place
+
+<span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span> Doug's Twitch moderators. They will not assist you with Discord matters
+<span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span> Server moderators. Ping this role <em>only</em> if you have <em>urgent</em> needs (e.g. if you witnessed gross rule violations)
+<span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span> They strive to shape this community into a welcoming, accessible place
+<span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span> Server administrators. They manage server operations <strong>and will not assist you with moderation matters</strong>
+<span class="mention roleMention-2Bj0ju" style="color: rgb(255, 0, 247); background-color: rgba(255, 0, 247, 0.1);">@Lord Cockswain Jr</span> Eddie
+<span class="mention roleMention-2Bj0ju" style="color: rgb(230, 126, 34); background-color: rgba(230, 126, 34, 0.1);">@Lord Pepper</span> Our lord and savior and the true high king.</pre>
+            </div>
+            <li>
+                <strong class="for-approval">Explain better the different ways to contact the mods</strong>
+            </li>
+            <div class="discord-message">
+                <pre
+                    class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Contacting the mod team</strong></u>
+
+<strong>Read the FAQ first: <a class="anchor-3Z-8Bb anchorUnderlineOnHover-2ESHQB" title="https://www.dougdougw.com/faq" href="https://www.dougdougw.com/faq" rel="noreferrer noopener" target="_blank" role="button" tabindex="0">https://www.dougdougw.com/faq</a></strong>
+
+- For questions and issues that do not need to be resolved immediately, <strong>open a ticket</strong> by pasting the following command in any channel: <code class="inline">?ticket open new ticket</code>
+- For issues that require attention, but not urgently, <strong>ping one Discord mod individually,</strong> most of the time mods can respond in a timely manner
+- For <em>urgent</em> problems (e.g. server raids or gross rule violations), ping the <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span> role.</pre>
+            </div>
+            <li>
+                <strong>Update rules to make clear that the command is for <em>participating</em> in the server</strong>
+            </li>
+            <div class="discord-message">
+                <pre class="markup-2BOw-j messageContent-2qWWxC"><u><strong>Rules</strong></u>
+
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":one:" src="https://discord.com/assets/68546f5fc3b2166f42cf90b7e23c5ae9.svg" alt=":one:" draggable="false" class="emoji"></span> <strong>Follow common sense</strong>
+Just because something isn't explicitly prohibited in the rules does not mean it is allowed. <u>If you are asked by a moderator to stop doing something, stop.</u>
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":two:" src="https://discord.com/assets/eb29ce5fcf54bc3b23ff77039a4ecf3c.svg" alt=":two:" draggable="false" class="emoji"></span> <strong>Be respectful</strong>
+<strong>We do not tolerate sexism, racism, homophobia, bigotry, hate speech, or any other forms of harassment.</strong> This includes hateful/racial wording in memes.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":three:" src="https://discord.com/assets/67f896405747f26f63f09e0cb048d358.svg" alt=":three:" draggable="false" class="emoji"></span> <strong>English only </strong>
+A majority of this discord is English speaking and would like to keep the conversations in English. We welcome non-English speakers and will try our best to help them speak English.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":four:" src="https://discord.com/assets/09fe8a2882cac4cdb4712ab9622d3fe1.svg" alt=":four:" draggable="false" class="emoji"></span> <strong>No NSFW content</strong>
+Any form of NSFW content is not allowed, including sexual, nude, and gore content.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":five:" src="https://discord.com/assets/5575865e2cb3d50ea051b09d7e1d2550.svg" alt=":five:" draggable="false" class="emoji"></span> <strong>No doxxing</strong>
+Do not post personal information of other users or otherwise invade their privacy.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":six:" src="https://discord.com/assets/f8b3e0e54d99d2b2962a2e474b2110e4.svg" alt=":six:" draggable="false" class="emoji"></span> <strong>No spam</strong>
+Copypasta and spam are not allowed. Spam includes repeating messages, giant "walls of text," and uncommon symbols that take up large spaces, including in nicknames.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":seven:" src="https://discord.com/assets/c5ef2ff553f9cecd81add57e79aaf81d.svg" alt=":seven:" draggable="false" class="emoji"></span> <strong>Respect channel functions</strong>
+Memes go in <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#hell</span>, Twitch promo in <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#promo-zone</span>, etc.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":eight:" src="https://discord.com/assets/71de2e3efd19455f1c63b9bd00329ec5.svg" alt=":eight:" draggable="false" class="emoji"></span> <strong>No impersonating other members</strong>
+It causes confusion regardless of intent.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":nine:" src="https://discord.com/assets/488cb48b4a6952b728df8bbe99fdbb20.svg" alt=":nine:" draggable="false" class="emoji"></span> <strong>No discussing politics</strong>
+This is a server dedicated to a Twitch streamer. We prefer you to take political discussions respectfully to DMs.
+<span class="emojiContainer-3X8SvE" role="button" tabindex="0"><img aria-label=":keycap_ten:" src="https://discord.com/assets/5e1630b749695f21d61dcf55fc09c2b6.svg" alt=":keycap_ten:" draggable="false" class="emoji"></span> <strong>No complaining about kicks/bans </strong>
+<u>Mods have full discretion over enforcing the rules.</u> If you think there is a mistake, DM a Discord mod, or submit a ticket or an unban request (in links).
+
+To participate in the server, agree to the rules above by typing <code class="inline">?iagreetorules</code> below.</pre>
+            </div>
+        </ul>
+
+        <h2>Low disruption changes</h2>
+
+        <p><em>These changes affect role permissions. However, they are expected to not change any existing server
+                functions, and even if functions are affected, they will be easy to fix. </em></p>
+
+        <h3>Bot hierarchy patch</h3>
+
+        <ul>
+            <li><strong class="for-approval">Deprecate <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">
+                        @Functional Bots</span> and <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">
+                        @Hidden Bots</span>
+                </strong></li>
+            <li><strong class="for-approval">New role <span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                        Bot</span></strong>
+                <ul>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8891" aria-expanded="false" tabindex="0" role="button">@Clarence</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8892" aria-expanded="false" tabindex="0" role="button">@Frank</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_8893" aria-expanded="false" tabindex="0" role="button">@Fondle</span></pre>
+                    </div>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(255, 0, 247); background-color: rgba(255, 0, 247, 0.1);">@Lord Cockswain Jr</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@MEE6</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@YAGPDB.xyz</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@AltDentifier</span></pre>
+                    </div>
+                </ul>
+            </li>
+            <li> <strong class="for-approval">New role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                        Bot</span></strong>
+                <ul>
+                    <li>These bots are meant to be used by the community, and only in specific channels (e.g. VC, except
+                        Frank but Frank is covered by admin already)</li>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bots</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Rythm</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span></pre>
+                    </div>
+                    <li>Access: use this role to limit integration bots to the channel where they operate (in VCs) </li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Rythm</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span></pre>
+                    </div>
+                </ul>
+            </li>
+            <li> <strong class="for-approval">New role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                        Bot</span></strong>
+                <ul>
+                    <li>These bots are for integrations: webhooks, subscriptions, Minecrafts, etc. They are likely to be
+                        hidden from members list (i.e. not listed separately)</li>
+                    <li>Candidate bots:</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20972" aria-expanded="false" tabindex="0" role="button">@Zapier</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20973" aria-expanded="false" tabindex="0" role="button">@Patreon</span> <span class="mention wrapper-3WhCwL mention interactive" aria-controls="popout_20974" aria-expanded="false" tabindex="0" role="button">@DougBot</span></pre>
+                    </div>
+                    <li>Access: use this role to limit integration bots to the channel where they operate (in
+                        <b>#content</b>, Minecraft channels etc.)
+                    </li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Groovy</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Zapier</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Patreon Bot</span> → <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@DiscordSRV</span></pre>
+                    </div>
+                </ul>
+            </li>
+            <li> <strong class="for-approval">Modify role <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></strong>
+                <ul>
+                    <li>This role grants basic message permissions and perms often used by bots</li>
+                    <li>Candidate bots: all bots</li>
+                    <li>Access: this role should <strong>not</strong> be used to control channel access (meaning no
+                        channel override with this role should have
+                        <code>view_channels <span class="perm-allow">allow</span></code> or
+                        <code>view_channels <span class="perm-deny">deny</span></code>)
+                    </li>
+                    <li>Precedence (high to low):</li>
+                    <div class="discord-message">
+                        <pre
+                            class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></pre>
+                    </div>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="table-container">
+            <table class="dataframe table-bot-roles">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="5">Permission settings for each role</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span>
+                        </th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                                Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                                Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                                Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_public_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>view_channel</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>change_nickname</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_connect</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_video</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_activity</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>request_to_speak</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table class="dataframe table-bot-perms">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="4">Cumulative permissions for each class of bots</th>
+                    </tr>
+                    <tr style="text-align: unset;">
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration
+                                Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility
+                                Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin
+                                Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_public_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>view_channel</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>change_nickname</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_connect</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_video</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_activity</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>request_to_speak</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Mod roles patch</h3>
+
+        <ul>
+            <li>All mods must have <span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                which grants them baseline text and VC perms</li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    from <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span></b>
+            </li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    and <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span> from
+                    <span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>
+                </b></li>
+            <li><b><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>
+                    are expected to not receive additional perms</b></li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    and <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span> from
+                    <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                        Mod</span>
+                </b></li>
+            <li><b>Remove all perms already enabled by <span class="mention roleMention-2Bj0ju"
+                        style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>
+                    , <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>, and
+                    <span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                        Mod</span> from <span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                        Manager</span>
+                </b></li>
+        </ul>
+
+        <div class="table-container">
+            <table class="dataframe table-mod-roles">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="6">Permission settings for each role</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>
+                        </th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                                Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                                Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                                Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table class="dataframe table-mod-cumulative">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="5">Cumulative permissions for each group of mods (excluding baseline perms)</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch
+                                Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord
+                                Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                                Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Server-wide changes</h2>
+
+        <p><strong>These changes affect the community at large, although they have been tested in the mock server.
+            </strong></p>
+
+        <h3>Modifier roles</h3>
+
+        <p><strong class="for-approval">Create a <span class="mention roleMention-2Bj0ju"
+                    style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Text-only</span>
+                role</strong>.
+            The role is transparent and only used to <code><span class="perm-deny">deny</span> embed_links attach_files</code> permissions per channel
+        </p>
+
+        <p>Precedence:</p>
+        <div class="discord-message">
+            <pre
+                class="markup-2BOw-j messageContent-2qWWxC"><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Muted</span> → <span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Text-only</span></pre>
+        </div>
+
+        <h3>Adjust baseline roles (<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span> and <span
+                class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>)</h3>
+
+        <p><strong class="for-approval">Adjust <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span>
+                to remove of the following permissions</strong></p>
+
+        <ul>
+            <li><code>slash_commands</code></li>
+            <li><code>request_to_speak</code></li>
+        </ul>
+
+        <p><strong class="for-approval">Adjust <span class="mention roleMention-2Bj0ju"
+                    style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></strong></p>
+
+        <div class="table-container">
+            <table class="dataframe">
+                <thead>
+                    <tr class="table-title">
+                        <th colspan="2"><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>permission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_public_channels</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>view_channel</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_emojis</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>audit_log</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>server_insights</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_server</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>change_nickname</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_nicknames</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>kick_members</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>ban_members</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>voice_connect</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_video</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>voice_activity</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>priority_speaker</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>mute_members</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>deafen_members</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>move_members</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>request_to_speak</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>administrator</th>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Consolidate channel permissions</h3>
+
+        <h4>Official DougDoug</h4>
+
+        <p>The following applies to <strong class="for-approval"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#welcome</span> and <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#tweets</span></strong>, and is the
+            default settings for the category</p>
+        <p>In summary: <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span> may only view channels and see history, <span
+                class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> may additionally add reactions,
+            all <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>s
+            may manage channel permissions, <span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community
+                Manager</span> and above may send messages.</p>
+
+        <div class="table-container">
+            <span class="table-title-defer">Settings for <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#welcome</span>, <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#tweets</span>, and
+                <b>Official DougDoug</b></span>
+            <table class="dataframe">
+                <thead>
+                    <tr style="text-align: unset;">
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <span class="table-title-defer">Cumulative perms for <span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#welcome</span>, <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#tweets</span>, and
+                <b>Official DougDoug</b></span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The following applies to <strong class="for-approval"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#rules-and-info</span></strong></p>
+
+        <p>In summary: <span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span> may view channels, see history, and send
+            text-only messages,
+            <span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> may not send messages,
+            <span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>s may send messages and add reactions.
+        </p>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#rules-and-info</span> settings</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#rules-and-info</span> perms</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The following applies to <strong class="for-approval"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#announcements</span> and <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#content</span></strong></p>
+
+        <p>In summary: this is the same as category perms except all <span class="mention roleMention-2Bj0ju"
+                style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>s may send messages</p>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#announcements</span> and <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#content</span> settings</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#announcements</span> and <span
+                    class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#content</span> perms</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The following applies to <strong class="for-approval"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#role-assignment</span></strong></p>
+
+        <p>In summary: this is the same as category perms except <span class="mention roleMention-2Bj0ju"
+                style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span> cannot add their own reactions</p>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#role-assignment</span> settings</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <span class="table-title-defer"><span class="wrapper-3WhCwL mention interactive" tabindex="0" role="button">#role-assignment</span> perms</span>
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span></th>
+                        <th><span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>view_channel</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_channels</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_roles</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>webhooks</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>invite</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>send_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>embed_links</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>attach_files</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>add_reactions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>extern_emotes</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>mass_mentions</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>manage_messages</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>message_history</th>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                    </tr>
+                    <tr>
+                        <th>text_to_speech</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                    <tr>
+                        <th>slash_commands</th>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-check-circle perm-allow"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                        <td><i class="bi bi-x-circle perm-deny"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2>Index of all proposed changes</h2>
+
+        <div class="for-approval-list"></div>
+    </article>
+</body>
+
+</html>
