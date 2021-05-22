@@ -1568,6 +1568,38 @@ r_ginfo = Channel(
         r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES)),
     },
 )
+r_suggestions = Channel(
+    name='#suggestions',
+    baseline=_NO_ACCESS,
+    settings={
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL,), denies=(SEND_MESSAGES,)),
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES)),
+    },
+)
+r_suggest_and_discuss = Channel(
+    name='#suggest-and-discuss',
+    baseline=_NO_ACCESS,
+    settings={
+        r_dannyling: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_nightbot = Channel(
+    name='#nightbot',
+    baseline=_NO_ACCESS,
+    settings={
+        r_dannyling: PermissionTable(allows=(VIEW_CHANNEL,), denies=(SEND_MESSAGES, ADD_REACTIONS)),
+        r_spoonie: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_twitch_vip: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_booster: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_gaming_god: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_founder: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
+    },
+)
 
 
 def proposed_mod_roles():
@@ -1668,4 +1700,4 @@ game_event_members = {
 }
 
 if __name__ == '__main__':
-    proposed_server_roles_channels(game_event_members, [r_seasonal, r_seasonal_vc, r_geo, r_ginfo])
+    proposed_server_roles_channels(standard_members, [r_nightbot])
