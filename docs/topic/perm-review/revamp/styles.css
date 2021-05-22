@@ -224,3 +224,8 @@ td.perm-allow-deco:hover {
 td.perm-deny-deco:hover {
     background-color: #e06c7515;
 }
+
+.popper-tooltip [class^='bi-']::before,
+.popper-tooltip [class*=' bi-']::before {
+    vertical-align: middle;
+}

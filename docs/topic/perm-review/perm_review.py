@@ -1313,6 +1313,10 @@ def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset',
         '@Game Event Organizer': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event Organizer</span>',
         '@Dannyling': '<span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>',
         '@Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>',
+        '@Twitch VIP': '<span class="mention roleMention-2Bj0ju" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span>',
+        '@Pepto Bismol Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(244, 127, 255); background-color: rgba(244, 127, 255, 0.1);">@Pepto Bismol Spoonie</span>',
+        '@Gaming God': '<span class="mention roleMention-2Bj0ju" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@Gaming God</span>',
+        '@Founder': '<span class="mention roleMention-2Bj0ju" style="color: rgb(113, 212, 63); background-color: rgba(113, 212, 63, 0.1);">@Founder</span>',
         '@Integration Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span>',
         '@Utility Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span>',
         '@Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>',
@@ -1326,11 +1330,13 @@ def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset',
     df.rename(columns=markups).replace(markups).to_html(fn, index_names=index_names, justify=justify,
                                                         escape=escape, **options)
     with open(name, 'w+') as f:
-        f.write(fn.getvalue().replace('border="1" ', '').replace(' style="text-align: unset;"', ''))
+        table = fn.getvalue().replace('border="1" ', '').replace(' style="text-align: unset;"', '')
+        f.write(f'<div class="table-container"><span class="table-title-defer"></span>{table}</div>')
     fn.close()
 
 
 _ACCESS_ONLY = PermissionTable(allows=(VIEW_CHANNEL,))
+_NO_ACCESS = PermissionTable(denies=(VIEW_CHANNEL,))
 
 r_bot = Role(
     name='@Bot', perms=PermissionTable(
@@ -1384,6 +1390,36 @@ r_dannyling = Role(
 )
 r_muted = Role(name='Muted', priority=11, perms=PermissionTable())
 r_text = Role(name='Text-only', priority=12, perms=PermissionTable())
+r_spoonie = Role(
+    name='@Spoonie', priority=20,
+    perms=PermissionTable(),
+)
+
+r_twitch_vip = Role(
+    name='@Twitch VIP', priority=21,
+    perms=PermissionTable(),
+)
+
+r_booster = Role(
+    name='@Pepto Bismol Spoonie', priority=22,
+    perms=PermissionTable(),
+)
+
+r_patreon = Role(
+    name='@Super Patreon Deluxe for Wii U', priority=23,
+    perms=PermissionTable(),
+)
+
+r_gaming_god = Role(
+    name='@Gaming God', priority=24,
+    perms=PermissionTable(),
+)
+
+r_founder = Role(
+    name='@Founder', priority=25,
+    perms=PermissionTable(),
+)
+
 r_official_dougdoug = Channel(
     name='#official-dougdoug',
     baseline=PermissionTable(
@@ -1441,6 +1477,37 @@ r_role_assignment = Channel(
         r_comm_manager: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
     },
 )
+r_hangouts = Channel(
+    name='#hangouts',
+    baseline=_NO_ACCESS,
+    settings={
+        r_dannyling: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_elites_club = Channel(
+    name='#elites-club',
+    baseline=_NO_ACCESS,
+    settings={
+        r_spoonie: _ACCESS_ONLY,
+        r_twitch_vip: _ACCESS_ONLY,
+        r_booster: _ACCESS_ONLY,
+        r_gaming_god: _ACCESS_ONLY,
+        r_founder: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_mod_district = Channel(
+    name='#mods',
+    baseline=_NO_ACCESS,
+    settings={
+        r_integration_bot: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    }
+)
 
 
 def proposed_mod_roles():
@@ -1486,7 +1553,8 @@ def readable_perms(perms: PermissionTable, name: str) -> pd.DataFrame:
     df = perms.to_dataframe(name=name)
     df = df.replace('', 'deny')
     if not perms.view_channel:
-        df.loc[[*MESSAGE_WRITE_PERMS, *VOICE_WRITE_PERMS], :] = 'deny'
+        df.loc[:, :] = 'deny'
+        return df
     if not perms.send_messages:
         df.loc[MESSAGE_WRITE_PERMS, :] = 'deny'
     if not perms.voice_connect:
@@ -1496,11 +1564,11 @@ def readable_perms(perms: PermissionTable, name: str) -> pd.DataFrame:
     return df
 
 
-def proposed_server_roles_channels():
+def proposed_server_roles_channels(channels: List[Channel]):
     members = {
         '@everyone': [r_everyone],
         '@Dannyling': [r_everyone, r_dannyling],
-        '@Spoonie': [r_everyone, r_dannyling, SPOONIES],
+        '@Spoonie': [r_everyone, r_dannyling, r_spoonie],
         '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
         '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
         '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
@@ -1508,11 +1576,8 @@ def proposed_server_roles_channels():
         '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
     }
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
-    channels = [
-        r_official_dougdoug, r_rules_and_info, r_announcements, r_role_assignment,
-    ]
 
-    export_html(r_dannyling.perms.to_dataframe(), name='dannyling.html')
+    # export_html(r_dannyling.perms.to_dataframe(), name='dannyling.html')
 
     for channel in channels:
         if channel.is_text_channel:
@@ -1534,4 +1599,4 @@ def proposed_server_roles_channels():
 
 
 if __name__ == '__main__':
-    proposed_server_roles_channels()
+    proposed_server_roles_channels([r_mod_district])
