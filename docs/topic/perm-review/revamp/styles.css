@@ -114,7 +114,7 @@ pre[class^='embedWrapper'] a {
     margin: 2rem 0;
 }
 
-table.dataframe {
+table {
     font-size: 10pt;
     table-layout: fixed;
     border-collapse: collapse;
@@ -169,6 +169,7 @@ tbody tr th {
     padding-left: 0.8em;
 }
 
+th,
 td {
     min-width: 128px;
 }
@@ -232,4 +233,70 @@ td.perm-deny-deco:hover {
 .popper-tooltip [class^='bi-']::before,
 .popper-tooltip [class*=' bi-']::before {
     vertical-align: middle;
+}
+
+.discord-twitch-mod {
+    color: rgb(191, 63, 255);
+    background-color: rgba(191, 63, 255, 0.1);
+}
+
+.discord-discord-mod {
+    color: rgb(114, 137, 218);
+    background-color: rgba(114, 137, 218, 0.1);
+}
+
+.discord-community-manager {
+    color: rgb(157, 76, 255);
+    background-color: rgba(157, 76, 255, 0.1);
+}
+
+.discord-dannyling {
+    color: rgb(26, 188, 156);
+    background-color: rgba(26, 188, 156, 0.1);
+}
+
+.discord-spoonie {
+    color: rgb(241, 196, 15);
+    background-color: rgba(241, 196, 15, 0.1);
+}
+
+.discord-admin {
+    color: rgb(41, 255, 255);
+    background-color: rgba(41, 255, 255, 0.1);
+}
+
+.discord-utility-bot {
+    color: rgb(52, 152, 219);
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.discord-integration-bot {
+    color: rgb(84, 110, 122);
+    background-color: rgba(84, 110, 122, 0.1);
+}
+
+.warn-informal {
+    color: #20c997;
+}
+
+.warn-formal {
+    color: #ffc107;
+}
+
+.kick {
+    color: #0dcaf0;
+}
+
+.mute {
+    color: #fd7e14;
+}
+
+.tempban {
+    color: #d63384;
+}
+
+.permaban {
+    color: #dc3545;
+    background-color: #2a2121;
+    font-weight: 700;
 }
