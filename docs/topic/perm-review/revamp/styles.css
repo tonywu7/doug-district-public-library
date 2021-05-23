@@ -275,6 +275,11 @@ td.perm-deny-deco:hover {
     background-color: rgba(84, 110, 122, 0.1);
 }
 
+.discord-admin-bot {
+    color: rgb(231, 76, 60);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
 .warn-informal {
     color: #20c997;
 }
