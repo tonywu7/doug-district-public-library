@@ -361,3 +361,11 @@ td.perm-deny-deco:hover {
     background-color: #2a2121;
     font-weight: 700;
 }
+
+li > input[type='checkbox'] {
+    position: relative;
+    top: -1px;
+
+    margin-inline-start: 0;
+    margin-inline-end: 5px;
+}

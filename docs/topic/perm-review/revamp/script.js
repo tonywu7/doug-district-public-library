@@ -87,4 +87,10 @@ window.addEventListener('DOMContentLoaded', () => {
         if (hidden) tocToggle.textContent = '[show menu]'
         else tocToggle.textContent = '[hide menu]'
     })
+
+    document.querySelectorAll('.procedure li').forEach((elem) => {
+        let checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        elem.prepend(checkbox)
+    })
 })
