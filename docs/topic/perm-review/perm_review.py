@@ -409,8 +409,12 @@ class Channel:
         return total
 
     @property
-    def is_text_channel(self) -> bool:
-        return self.name[0] == '#'
+    def channel_type(self) -> str:
+        if self.name[0] == '!':
+            return 'category'
+        if self.name[0] == '#':
+            return 'text'
+        return 'voice'
 
 
 @dataclass(eq=True, frozen=True)
@@ -1284,9 +1288,10 @@ def check():
                 print(channel, issue)
         for k, m in members.items():
             channel_member_perms = channel.with_member(m)
-            if channel.is_text_channel:
+            ctype = channel.channel_type
+            if ctype == 'text':
                 channel_member_perms = channel_member_perms.loc[[*BASE_CHANNEL_PERMS, *TEXT_CHANNEL_PERMS], :]
-            else:
+            elif ctype == 'voice':
                 channel_member_perms = channel_member_perms.loc[[*BASE_CHANNEL_PERMS, *VOICE_CHANNEL_PERMS], :]
             channel_member_perms.to_csv(f'export/{channel.name}/{m.name}.csv')
 
@@ -1304,27 +1309,30 @@ def export_html(df: pd.DataFrame, name: str, index_names=False, justify='unset',
     markups = {
         'allow': '<i class="bi bi-check-circle perm-allow"></i>',
         'deny': '<i class="bi bi-x-circle perm-deny"></i>',
-        '@everyone': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@everyone</span>',
-        '@here': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" tabindex="-1" role="button">@here</span>',
-        '@Game Event': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event</span>',
-        '@Game Event Organizer': '<span class="mention roleMention-2Bj0ju wrapper-3WhCwL mention" color="0" tabindex="-1" role="button">@Game Event Organizer</span>',
-        '@Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Bot</span>',
-        '@Muted': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Muted</span>',
-        '@Text-only': '<span class="mention roleMention-2Bj0ju" style="color: rgb(96, 125, 139); background-color: rgba(96, 125, 139, 0.1);">@Text-only</span>',
-        '@Dannyling': '<span class="mention roleMention-2Bj0ju" style="color: rgb(26, 188, 156); background-color: rgba(26, 188, 156, 0.1);">@Dannyling</span>',
-        '@Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(241, 196, 15); background-color: rgba(241, 196, 15, 0.1);">@Spoonie</span>',
-        '@Twitch VIP': '<span class="mention roleMention-2Bj0ju" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span>',
-        '@Pepto Bismol Spoonie': '<span class="mention roleMention-2Bj0ju" style="color: rgb(244, 127, 255); background-color: rgba(244, 127, 255, 0.1);">@Pepto Bismol Spoonie</span>',
-        '@Gaming God': '<span class="mention roleMention-2Bj0ju" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@Gaming God</span>',
-        '@Founder': '<span class="mention roleMention-2Bj0ju" style="color: rgb(113, 212, 63); background-color: rgba(113, 212, 63, 0.1);">@Founder</span>',
-        '@Integration Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(84, 110, 122); background-color: rgba(84, 110, 122, 0.1);">@Integration Bot</span>',
-        '@Utility Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(52, 152, 219); background-color: rgba(52, 152, 219, 0.1);">@Utility Bot</span>',
-        '@Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>',
-        '@Twitch Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(191, 63, 255); background-color: rgba(191, 63, 255, 0.1);">@Twitch Mod</span>',
-        '@Discord Mod': '<span class="mention roleMention-2Bj0ju" style="color: rgb(114, 137, 218); background-color: rgba(114, 137, 218, 0.1);">@Discord Mod</span>',
-        '@Community Manager': '<span class="mention roleMention-2Bj0ju" style="color: rgb(157, 76, 255); background-color: rgba(157, 76, 255, 0.1);">@Community Manager</span>',
-        '@Admin Bot': '<span class="mention roleMention-2Bj0ju" style="color: rgb(231, 76, 60); background-color: rgba(231, 76, 60, 0.1);">@Admin Bot</span>',
-        '@Admin': '<span class="mention roleMention-2Bj0ju" style="color: rgb(41, 255, 255); background-color: rgba(41, 255, 255, 0.1);">@Admin</span>',
+        '@everyone': '<span class="mention">@everyone</span>',
+        '@here': '<span class="mention">@here</span>',
+        '@Verification': '<span class="mention">@Verification</span>',
+        '@Game Event': '<span class="mention">@Game Event</span>',
+        '@Game Event Organizer': '<span class="mention">@Game Event Organizer</span>',
+        '@Bot': '<span class="mention discord-bot">@Bot</span>',
+        '@Nightbot': '<span class="mention discord-bot">@Nightbot</span>',
+        '@Muted': '<span class="mention discord-muted">@Muted</span>',
+        '@Text-only': '<span class="mention discord-muted">@Text-only</span>',
+        '@Dannyling': '<span class="mention discord-dannyling">@Dannyling</span>',
+        '@Spoonie': '<span class="mention discord-spoonie">@Spoonie</span>',
+        '@Twitch VIP': '<span class="mention" style="color: rgb(223, 181, 214); background-color: rgba(223, 181, 214, 0.1);">@Twitch VIP</span>',
+        '@Pepto Bismol Spoonie': '<span class="mention" style="color: rgb(244, 127, 255); background-color: rgba(244, 127, 255, 0.1);">@Pepto Bismol Spoonie</span>',
+        '@Gaming God': '<span class="mention" style="color: rgb(46, 204, 113); background-color: rgba(46, 204, 113, 0.1);">@Gaming God</span>',
+        '@Founder': '<span class="mention style="color: rgb(113, 212, 63); background-color: rgba(113, 212, 63, 0.1);">@Founder</span>',
+        '@Integration Bot': '<span class="mention discord-integration-bot">@Integration Bot</span>',
+        '@Music Bot': '<span class="mention discord-music-bot">@Music Bot</span>',
+        '@Utility Bot': '<span class="mention discord-util-bot">@Utility Bot</span>',
+        '@Mod': '<span class="mention" style="color: rgb(233, 30, 98); background-color: rgba(233, 30, 98, 0.1);">@Mod</span>',
+        '@Twitch Mod': '<span class="mention discord-twitch-mod">@Twitch Mod</span>',
+        '@Discord Mod': '<span class="mention discord-discord-mod">@Discord Mod</span>',
+        "@Comm' Manager": '<span class="mention discord-community-manager">@Comm\' Manager</span>',
+        '@Admin Bot': '<span class="mention discord-admin-bot">@Admin Bot</span>',
+        '@Admin': '<span class="mention discord-admin">@Admin</span>',
     }
     fn = io.StringIO()
     df.rename(columns=markups).replace(markups).to_html(fn, index_names=index_names, justify=justify,
@@ -1346,15 +1354,23 @@ r_bot = Role(
 )
 r_integration_bot = Role(
     name='@Integration Bot', perms=PermissionTable(
-        allows=(MANAGE_CHANNELS, WEBHOOKS, AUDIT_LOG),
+        allows=(MANAGE_CHANNELS, WEBHOOKS),
     ), priority=30,
 )
 r_utility_bot = Role(
     name='@Utility Bot', perms=PermissionTable(
-        allows=(MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
-    ), priority=35,
+        allows=(AUDIT_LOG,),
+    ), priority=31,
 )
-r_admin_bot = Role(name='Admin Bot', perms=PermissionTable(allows=(ADMINISTRATOR,)), priority=85)
+r_nightbot_role = Role(
+    name='@Nightbot', perms=PermissionTable(), priority=29,
+)
+r_music_bot = Role(
+    name='@Music Bot', perms=PermissionTable(
+        allows=(MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
+    ), priority=32,
+)
+r_admin_bot = Role(name='@Admin Bot', perms=PermissionTable(allows=(ADMINISTRATOR,)), priority=85)
 
 r_mod = Role(
     name='@Mod', perms=PermissionTable(
@@ -1373,7 +1389,7 @@ r_discord_mod = Role(
     ), priority=70,
 )
 r_comm_manager = Role(
-    name='@Community Manager', perms=PermissionTable(
+    name="@Comm' Manager", perms=PermissionTable(
         allows=(MANAGE_CHANNELS, MANAGE_EMOJIS, MANAGE_SERVER),
     ), priority=80,
 )
@@ -1388,8 +1404,8 @@ r_dannyling = Role(
         REQUEST_TO_SPEAK,
     )),
 )
-r_muted = Role(name='Muted', priority=11, perms=PermissionTable())
-r_text = Role(name='Text-only', priority=12, perms=PermissionTable())
+r_muted = Role(name='@Muted', priority=11, perms=PermissionTable())
+r_text = Role(name='@Text-only', priority=12, perms=PermissionTable())
 r_spoonie = Role(
     name='@Spoonie', priority=20,
     perms=PermissionTable(),
@@ -1419,6 +1435,10 @@ r_founder = Role(
     name='@Founder', priority=25,
     perms=PermissionTable(),
 )
+r_verification = Role(
+    name='@Verification', priority=-1,
+    perms=PermissionTable(),
+)
 
 r_official_dougdoug = Channel(
     name='#official-dougdoug',
@@ -1427,11 +1447,11 @@ r_official_dougdoug = Channel(
         denies=(SEND_MESSAGES, ADD_REACTIONS),
     ),
     settings={
+        r_verification: _NO_ACCESS,
         r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
         r_dannyling: PermissionTable(allows=(VIEW_CHANNEL, ADD_REACTIONS)),
         r_mod: _ACCESS_ONLY,
         r_integration_bot: _ACCESS_ONLY,
-        r_utility_bot: _ACCESS_ONLY,
         r_comm_manager: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
     },
 )
@@ -1442,9 +1462,9 @@ r_rules_and_info = Channel(
         denies=(ADD_REACTIONS,),
     ),
     settings={
+        r_verification: _NO_ACCESS,
         r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
         r_dannyling: PermissionTable(allows=(VIEW_CHANNEL), denies=(SEND_MESSAGES, ADD_REACTIONS)),
-        r_utility_bot: _ACCESS_ONLY,
         r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
     },
 )
@@ -1455,11 +1475,11 @@ r_announcements = Channel(
         denies=(SEND_MESSAGES, ADD_REACTIONS),
     ),
     settings={
+        r_verification: _NO_ACCESS,
         r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
         r_dannyling: PermissionTable(allows=(VIEW_CHANNEL, ADD_REACTIONS)),
         r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
         r_integration_bot: _ACCESS_ONLY,
-        r_utility_bot: _ACCESS_ONLY,
     },
 )
 r_role_assignment = Channel(
@@ -1469,11 +1489,10 @@ r_role_assignment = Channel(
         denies=(SEND_MESSAGES, ADD_REACTIONS),
     ),
     settings={
+        r_verification: _NO_ACCESS,
         r_bot: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
         r_dannyling: PermissionTable(allows=(VIEW_CHANNEL,)),
         r_mod: _ACCESS_ONLY,
-        r_integration_bot: _ACCESS_ONLY,
-        r_utility_bot: _ACCESS_ONLY,
         r_comm_manager: PermissionTable(allows=(SEND_MESSAGES, ADD_REACTIONS)),
     },
 )
@@ -1482,6 +1501,16 @@ r_hangouts = Channel(
     baseline=_NO_ACCESS,
     settings={
         r_dannyling: _ACCESS_ONLY,
+        r_utility_bot: _ACCESS_ONLY,
+        r_mod: _ACCESS_ONLY,
+    },
+)
+r_vcs = Channel(
+    name='!Voice Chat',
+    baseline=_NO_ACCESS,
+    settings={
+        r_dannyling: _ACCESS_ONLY,
+        r_music_bot: _ACCESS_ONLY,
         r_utility_bot: _ACCESS_ONLY,
         r_mod: _ACCESS_ONLY,
     },
@@ -1504,6 +1533,7 @@ r_mod_district = Channel(
     baseline=_NO_ACCESS,
     settings={
         r_integration_bot: _ACCESS_ONLY,
+        r_music_bot: _ACCESS_ONLY,
         r_utility_bot: _ACCESS_ONLY,
         r_mod: _ACCESS_ONLY,
     },
@@ -1518,7 +1548,7 @@ r_game_event = Role(
     perms=PermissionTable(),
 )
 r_seasonal = Channel(
-    name='#seasonal',
+    name='!seasonal',
     baseline=_NO_ACCESS,
     settings={
         r_game_event_organizer: PermissionTable(
@@ -1526,19 +1556,7 @@ r_seasonal = Channel(
                     MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
         ),
         r_game_event: _ACCESS_ONLY,
-        r_utility_bot: _ACCESS_ONLY,
-        r_mod: _ACCESS_ONLY,
-    },
-)
-r_seasonal_vc = Channel(
-    name='seasonal',
-    baseline=_NO_ACCESS,
-    settings={
-        r_game_event_organizer: PermissionTable(
-            allows=(VIEW_CHANNEL, MANAGE_CHANNELS, PRIORITY_SPEAKER,
-                    MUTE_MEMBERS, DEAFEN_MEMBERS, MOVE_MEMBERS),
-        ),
-        r_game_event: _ACCESS_ONLY,
+        r_music_bot: _ACCESS_ONLY,
         r_utility_bot: _ACCESS_ONLY,
         r_mod: _ACCESS_ONLY,
     },
@@ -1577,15 +1595,6 @@ r_suggestions = Channel(
         r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES)),
     },
 )
-r_suggest_and_discuss = Channel(
-    name='#suggest-and-discuss',
-    baseline=_NO_ACCESS,
-    settings={
-        r_dannyling: _ACCESS_ONLY,
-        r_utility_bot: _ACCESS_ONLY,
-        r_mod: _ACCESS_ONLY,
-    },
-)
 r_nightbot = Channel(
     name='#nightbot',
     baseline=_NO_ACCESS,
@@ -1597,6 +1606,7 @@ r_nightbot = Channel(
         r_gaming_god: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
         r_founder: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
         r_utility_bot: _ACCESS_ONLY,
+        r_nightbot_role: _ACCESS_ONLY,
         r_mod: PermissionTable(allows=(VIEW_CHANNEL, SEND_MESSAGES, ADD_REACTIONS)),
     },
 )
@@ -1623,11 +1633,12 @@ def proposed_mod_roles():
 
 
 def proposed_bot_roles():
-    roles = [r_bot, r_integration_bot, r_utility_bot, r_admin_bot]
+    roles = [r_bot, r_integration_bot, r_music_bot, r_utility_bot, r_admin_bot]
     members = {
-        'Integration Bot': [r_bot, r_integration_bot],
-        'Utility Bot': [r_bot, r_utility_bot],
-        'Admin Bot': [r_admin_bot],
+        '@Integration Bot': [r_bot, r_integration_bot],
+        '@Music Bot': [r_bot, r_music_bot],
+        '@Utility Bot': [r_bot, r_utility_bot],
+        '@Admin Bot': [r_admin_bot],
     }
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
 
@@ -1659,10 +1670,12 @@ def readable_perms(perms: PermissionTable, name: str) -> pd.DataFrame:
 def proposed_server_roles_channels(members: Dict[str, List[Role]], channels: List[Channel]):
     members = {k: Member(name=k, roles=v) for k, v in members.items()}
     for channel in channels:
-        if channel.is_text_channel:
+        if channel.channel_type == 'text':
             mask = {k: None for k in [*BASE_CHANNEL_PERMS, *TEXT_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
-        else:
+        elif channel.channel_type == 'voice':
             mask = {k: None for k in [*BASE_CHANNEL_PERMS, *VOICE_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
+        else:
+            mask = {k: None for k in [*BASE_CHANNEL_PERMS, *TEXT_CHANNEL_PERMS, *VOICE_CHANNEL_PERMS, *CHANNEL_MOD_PERMS]}
         settings = []
         settings.append(channel.baseline.perms.to_dataframe(mask, name='@everyone'))
         for role, perm_settings in channel.settings.items():
@@ -1683,8 +1696,9 @@ standard_members = {
     '@Spoonie': [r_everyone, r_dannyling, r_spoonie],
     '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
     '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
-    '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
+    "@Comm' Manager": [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
     '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
+    '@Music Bot': [r_everyone, r_bot, r_music_bot],
     '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
 }
 game_event_members = {
@@ -1694,10 +1708,11 @@ game_event_members = {
     '@Game Event Organizer': [r_everyone, r_dannyling, r_game_event_organizer],
     '@Twitch Mod': [r_everyone, r_dannyling, r_mod, r_twitch_mod],
     '@Discord Mod': [r_everyone, r_dannyling, r_mod, r_discord_mod],
-    '@Community Manager': [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
+    "@Comm' Manager": [r_everyone, r_dannyling, r_mod, r_discord_mod, r_comm_manager],
     '@Integration Bot': [r_everyone, r_bot, r_integration_bot],
+    '@Music Bot': [r_everyone, r_bot, r_music_bot],
     '@Utility Bot': [r_everyone, r_bot, r_utility_bot],
 }
 
 if __name__ == '__main__':
-    proposed_server_roles_channels(standard_members, [r_nightbot])
+    proposed_server_roles_channels({'@Verification': [r_everyone, r_verification], **standard_members}, [r_official_dougdoug, r_announcements, r_role_assignment, r_rules_and_info])
