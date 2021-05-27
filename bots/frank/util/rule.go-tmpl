@@ -1,0 +1,16 @@
+{{$RULES := dict
+    "1" ":one: **Follow common sense**\nJust because something isn't explicitly prohibited in the rules does not mean it is allowed. __If you are asked by a moderator to stop doing something, stop.__"
+    "2" ":two: **Be respectful**\n**We do not tolerate sexism, racism, homophobia, bigotry, hate speech, or any other forms of harassment.** This includes hateful/racial wording in memes."
+    "3" ":three: **English only **\nA majority of this server is English speaking and would like to keep the conversations in English.\nNote that proper nouns such as food names and well-known phrases (phrases that have entered English usage) are allowed, so long as they are within context and you explain what they mean."
+    "4" ":four: **No NSFW content**\nAny form of NSFW content is not allowed, including sexual, nude, and gore content."
+    "5" ":five: **No doxxing**\nDo not post personal information of other users or otherwise invade their privacy."
+    "6" ":six: **No spam**\nCopypasta and spam are not allowed. Spam includes repeating messages, giant \"walls of text,\" and uncommon symbols that take up large spaces, including in nicknames."
+    "7" ":seven: **Respect channel functions**\nMemes go in <#567147305069969410>, Twitch/YouTube promotions in <#623990728191639552>, etc."
+    "8" ":eight: **No impersonating other members**\nIt causes confusion regardless of intent."
+    "9" ":nine: **No discussing politics**\nThis is a server dedicated to a Twitch streamer. We prefer you to take political discussions respectfully to DMs."
+    "10" ":keycap_ten: **Respect moderation **\n__Mods have full discretion over enforcing the rules.__ If you think there is a mistake, DM a Discord mod, or submit a ticket or an unban request (in links)."
+}}
+{{if .CmdArgs}}
+{{$rule := $RULES.Get (index .CmdArgs 0)}}
+{{if $rule}}{{sendMessage nil $rule}}{{end}}
+{{end}}
