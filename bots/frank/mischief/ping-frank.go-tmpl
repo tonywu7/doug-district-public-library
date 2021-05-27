@@ -1,0 +1,19 @@
+{{$ns := dict}}
+{{with .StrippedMsg}}
+	{{$quote := reReplace "\n" . "\n> "}}
+	{{$rtype := randInt 6}}
+	{{if eq $rtype 0}}{{$ns.Set "response" (exec "weather" "Seattle WA")}}
+	{{else if eq $rtype 1}}{{$ns.Set "response" (exec "weather" "New York NY")}}
+	{{else if eq $rtype 2}}{{$ns.Set "response" (exec "cat")}}
+	{{else if eq $rtype 3}}{{$ns.Set "response" (exec "dog")}}
+	{{else if eq $rtype 4}}{{$ns.Set "response" (exec "advice")}}
+	{{else if eq $rtype 5}}
+		{{$throw := exec "throw" $.User.Username}}
+		{{$throw := reReplace $.User.Username $throw "you"}}
+		{{$throw := reReplace "Threw" $throw "Throws"}}
+		{{$ns.Set "response" (printf "_%s_" $throw)}}
+	{{end}}
+	{{sendDM (printf "> %s\nNah\n%s" $quote ($ns.Get "response"))}}
+{{else}}
+    {{sendDM "Don't have something nice to say? How about don't say anything?"}}
+{{end}}
