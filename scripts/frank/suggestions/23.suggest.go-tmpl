@@ -183,7 +183,7 @@
 
 {{else}}
 
-    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s `%s`" $.User.Mention "No such suggestion type" $suggestion_type))}}
+    {{$ns.Set "response" (sendMessageRetID nil (printf "%s %s `%s`; available types are `?suggest stream`, `?suggest music`, `?suggest discord` and `?suggest emote`" $.User.Mention "No such suggestion type" $suggestion_type))}}
 
 {{end}}
 {{end}}
@@ -192,5 +192,5 @@
 {{/*- range $atmt := $.Message.Attachments -}}{{sendMessage $LOG_CHANNEL $atmt.URL}}{{- end -*/}}
 
 {{with ($ns.Get "response")}}
-    {{deleteMessage nil . 20}}
+    {{deleteMessage nil . 30}}
 {{end}}
