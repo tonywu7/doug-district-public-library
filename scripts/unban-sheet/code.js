@@ -1,5 +1,4 @@
-let webhookURL =
-    'https://discord.com/api/webhooks/847582826479484978/RG-XGIf1fH816p6_LeZHEz87xm-JlVzRhrCgppz4Wob9cR0Ir9hDvGnWRWk0VGUaTmtR'
+let webhookURL = null
 
 let appealForm = {
     Timestamp: 'timestamp',

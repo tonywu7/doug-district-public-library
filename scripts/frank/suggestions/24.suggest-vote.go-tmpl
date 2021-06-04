@@ -62,7 +62,7 @@
 {{range $role_id, $role_name := $AUTHORIZED_ROLE}}{{if and (not ($ns.Get "authorized")) (hasRoleID $role_id)}}{{$ns.Set "authorized" true}}{{end}}{{end}}
 
 {{with $approvals.Get $emote}}
-{{if eq . ":DELETE:"}}
+{{if and (eq . ":DELETE:")}}
     {{$user_id := toInt (slice ($embed.Get "Footer").Text 6)}}
     {{if (eq $.Reaction.UserID $user_id)}}
         {{deleteMessage nil $.Message.ID 0}}

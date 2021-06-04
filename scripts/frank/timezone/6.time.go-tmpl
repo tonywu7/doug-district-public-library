@@ -55,8 +55,7 @@
 	"Switzerland" "Europe/Zurich" "France" "Europe/Paris"
 	"Spain" "Europe/Madrid" "IKEA" "Europe/Stockholm"
 	"ddarknut" "Europe/Stockholm" "Quicksparse" "Europe/Copenhagen"
-	"Dunsparce" "Europe/Brussels" "qs" "Europe/Luxembourg"
-	"ds" "Europe/Zurich"
+	"qs" "Europe/Luxembourg"
 
 	"EET [DST +10]" "Europe/Helsinki" "Helsinki" "Europe/Helsinki"
 	"Bucharest" "Europe/Helsinki" "EET" "Europe/Helsinki"
@@ -84,6 +83,7 @@
 	"New Zealand" "Pacific/Auckland" "Auckland" "Pacific/Auckland"
 
 	"UTC" "UTC" "Timbuktu" "Africa/Timbuktu"
+	"UTC [UTC]" "UTC"
 }}
 {{$prefix := exec "prefix"}}
 {{$prefix := slice $prefix (sub (len $prefix) 2) (sub (len $prefix) 1)}}
@@ -168,7 +168,7 @@
 		{{$ns.Set "tzRole" ($ns.Get "self")}}
 		{{$atime := currentTime}}
 		{{$ns.Set "atime" (newDate $atime.Year $atime.Month $atime.Day ($ns.Get "hh") ($ns.Get "mm") $atime.Second ($ns.Get "localTZ"))}}
-		{{$ns.Set "atimef" (printf "__%s__ for **%s**" (($ns.Get "atime").Format "2 Jan 3:04 PM") ($ns.Get "localName"))}}
+		{{$ns.Set "atimef" (printf "__%s__ for **%s**" (($ns.Get "atime").Format "2006-01-02 15:04:05") ($ns.Get "localName"))}}
 	{{else}}
 		{{$ns.Set "atime" currentTime}}{{$ns.Set "atimef" "Current time"}}
 	{{end}}
@@ -177,7 +177,7 @@
 	{{$target := $ns.Get "tzRole"}}
 	{{if not ($spellings.Get $target)}}{{$spellings.Set $target $target}}{{end}}
 	{{$capitalized := $spellings.Get $target}}
-	{{$msg := (printf "%s is **%s** for **%s**\nTimezone: `%s`" ($ns.Get "atimef") ($datetime.Format "2 Jan 3:04 PM") $capitalized ($ns.Get "queriedTZ"))}}
+	{{$msg := (printf "%s is **%s** for **%s**\nTimezone: `%s`" ($ns.Get "atimef") ($datetime.Format "2006-01-02 15:04:05") $capitalized ($ns.Get "queriedTZ"))}}
 	{{$ns.Set "msg" $msg}}
 	{{$embed := cembed
 		"description" ($ns.Get "msg")

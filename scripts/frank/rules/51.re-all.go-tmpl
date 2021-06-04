@@ -1,0 +1,6 @@
+{{if or (eq $.Message.Content "?iagreetorules") (eq $.Message.Content "?iagreeonrules")}}
+{{giveRoleID .User.ID 720807137319583804}}
+{{$msg_id := sendMessageRetID nil "Welcome to madness!"}}
+{{deleteMessage nil $msg_id 10}}
+{{end}}
+{{deleteTrigger 0}}

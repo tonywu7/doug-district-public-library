@@ -1,6 +1,6 @@
 {{/* Define different classes and thresholds for trigger here. */}}
 {{ $spam_overflow := dict
-    "low_priority" 5
+    "low_priority" 10
 }}
 
 {{ define "spam_db_clear" }}

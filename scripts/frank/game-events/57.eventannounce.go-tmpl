@@ -1,0 +1,2 @@
+{{sendMessage 755419014200819732 (printf "**Game Event Announcement**\n%s" .StrippedMsg)}}
+{{sendMessageNoEscape 755419014200819732 "<@&755419145218293820>"}}

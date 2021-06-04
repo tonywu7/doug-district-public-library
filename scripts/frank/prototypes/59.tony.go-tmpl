@@ -1,0 +1,13 @@
+{{$RESPONSES := cslice
+	"Help me"
+	nil nil nil
+	"No this is Patrick"
+	"bot channel when"
+	nil nil nil
+	"more like bad"
+}}
+{{$res := index $RESPONSES (randInt (len $RESPONSES))}}
+{{with $res}}
+{{$msg := sendMessageRetID nil .}}
+{{editMessage nil $msg "[Redacted by the Cybersecurity Administration of China]"}}
+{{end}}

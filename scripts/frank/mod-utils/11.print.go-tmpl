@@ -1,0 +1,2 @@
+{{ $channel := index .CmdArgs 0 }}
+{{ sendMessage $channel (reReplace (printf "%s " $channel) .StrippedMsg "") }}
