@@ -1,0 +1,11 @@
+{{$url := printf "https://discord.com/channels/%d/%d/%d" .Guild.ID .Channel.ID .Message.ID}}
+{{$embed := cembed
+    "title" "Last Discord Mod Ping"
+    "color" 0xff2255
+    "description" (printf "Invoked by **%s** in <#%d>\n[Jump to message](%s)" .Message.Author.String .Channel.ID $url)
+    "footer" (sdict "text" "Invoked at")
+    "timestamp" .Message.Timestamp
+}}
+{{sendMessage 571965793131036672 (execAdmin "warnings" .User.ID)}}
+{{sendMessage 571965793131036672 (execAdmin "whois" .User.ID)}}
+{{sendMessage 571965793131036672 $embed}}
