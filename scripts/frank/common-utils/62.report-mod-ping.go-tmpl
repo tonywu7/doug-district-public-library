@@ -4,7 +4,7 @@
     "title" "Last Discord Mod Ping"
     "color" 0xff2255
     "description" (printf "Invoked by **%s** in <#%d>\n[**Jump to message**](%s)\n[**Last 100 messages in channel**](%s)" .Message.Author.String .Channel.ID $url $log)
-    "footer" (sdict "text" "Invoked at")
+    "footer" (sdict "text" "Invoked")
     "timestamp" .Message.Timestamp
 }}
 {{sendMessage 571965793131036672 (execAdmin "warnings" .User.ID)}}
