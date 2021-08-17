@@ -1,0 +1,7 @@
+{{ if (eq .User.ID 306186288908861440) }}
+{{ giveRoleName 306186288908861440 "Trusted" }}
+{{ execAdmin "mute" 306186288908861440 "420s" }}
+{{ else }}
+{{ .User.Mention }} I don't trust you.
+{{ deleteResponse 10 }}
+{{ end }}

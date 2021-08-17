@@ -13,7 +13,7 @@
 		{{$throw := reReplace "Threw" $throw "Throws"}}
 		{{$ns.Set "response" (printf "_%s_" $throw)}}
 	{{end}}
-	{{sendDM (printf "> %s\nNah\n%s" $quote ($ns.Get "response"))}}
+	{{sendDM (printf "> %s\nNo u\n%s" $quote ($ns.Get "response"))}}
 {{else}}
-    {{sendDM "Don't have something nice to say? How about don't say anything?"}}
+    {{sendDM "No u."}}
 {{end}}

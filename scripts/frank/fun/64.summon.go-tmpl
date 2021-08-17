@@ -1,0 +1,19 @@
+{{$WHITELIST := dict
+	"5:01 am gang" 851748620876251147
+}}
+ 
+{{if not .CmdArgs}}
+	{{.User.Mention}} You forgot to add the role
+{{else}}
+{{with $WHITELIST.Get .StrippedMsg}}
+	{{if targetHasRoleID $.User.ID .}}
+		{{sendMessageNoEscape nil (printf "<@&%d>" .)}}
+	{{else}}
+		{{$.User.Mention}} Can't do that because you don't have the role yourself.
+	{{end}}
+{{else}}
+	{{.User.Mention}} Nope. Can't do that (role not found or you can't use this command with that role)
+{{end}}
+{{end}}
+ 
+{{deleteResponse 10}}

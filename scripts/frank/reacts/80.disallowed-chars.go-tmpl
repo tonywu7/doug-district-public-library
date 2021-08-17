@@ -1,0 +1,3 @@
+{{ if reFind "𒈙|𒐫|﷽|҉" .User.Username }}
+{{ execAdmin "kick" .User.ID "Disallowed character in username (Rule 6: No spam)" }}
+{{ end }}

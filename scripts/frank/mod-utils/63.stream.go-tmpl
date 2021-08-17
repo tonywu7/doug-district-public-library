@@ -1,0 +1,1 @@
+{{ sendMessageNoEscape 731407385624838197 (printf "%s %s" "<@&720717534210555945>" .StrippedMsg) }}

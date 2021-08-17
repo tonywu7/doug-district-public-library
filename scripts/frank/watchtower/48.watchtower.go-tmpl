@@ -1,0 +1,7 @@
+{{$WATCHLIST := dict
+	720689439306809364 true
+	795068982024863816 true
+}}
+{{if ($WATCHLIST.Get (toInt $.User.ID))}}
+{{sendMessage 571965793131036672 (printf "Target in sight: %s. Good luck 47." $.User.String)}}
+{{end}}
