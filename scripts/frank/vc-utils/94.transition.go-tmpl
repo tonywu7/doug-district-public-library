@@ -1,0 +1,7 @@
+{{$match := reFindAllSubmatches "(?i)([af])!\\s*(p|s|fs|dc|disconnect|commands)" .Message.Content 1}}
+{{if $match}}
+    {{$g := index $match 0}}
+    {{$prefix := index $g 1}}
+    {{$cmd := index $g 2}}
+    {{$prefix}}!{{$cmd}}
+{{end}}

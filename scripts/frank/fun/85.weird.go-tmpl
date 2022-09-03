@@ -1,0 +1,10 @@
+{{if eq (len .CmdArgs) 0}}
+    guys this is getting pretty fucking weird can we calm down?
+{{else}}
+    {{$member := getMember (index .CmdArgs 0)}}
+    {{if and $member (not $member.User.Bot)}}
+        {{or $member.Nick $member.User.Username}} this is getting pretty fucking weird can you calm down?
+    {{else}}
+        guys this is getting pretty fucking weird can we calm down?
+    {{end}}
+{{end}}
